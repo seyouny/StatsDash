@@ -5,14 +5,16 @@ import Navigation from "./components/Navigation";
 import NewPlayer from "./pages/NewPlayer"
 import Landing from "./pages/Landing"
 import NewTournament from "./pages/NewTournament"
+import Start from "./components/Start"
 
 function App() {
   return (
     <div className="App">
-      <Navigation />
+      <Start></Start>
+      {/* <Navigation /> */}
       {/* <NewPlayer /> */}
       {/* <Landing /> */}
-      <NewTournament />
+      {/* <NewTournament /> */}
 
       
     </div>
