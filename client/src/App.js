@@ -4,13 +4,15 @@ import './App.css';
 import Navbar from "./components/Navbar";
 import NewPlayer from "./pages/NewPlayer"
 import Landing from "./pages/Landing"
+import NewTournament from "./pages/NewTournament"
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <NewPlayer />
+      {/* <Navbar />
+      <NewPlayer /> */}
       {/* <Landing /> */}
+      <NewTournament />
 
       
     </div>
