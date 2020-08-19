@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import Navigation from "./components/Navigation";
 import NewPlayer from "./pages/NewPlayer"
@@ -10,12 +10,20 @@ import Start from "./components/Start"
 function App() {
   return (
     <div className="App">
-      {/* <Start></Start> */}
+      <Router>
       <Navigation />
+
+      <Switch>
+          <Route exact path="/" component={Landing}/>
+          <Route exact path="/newplayer" component={NewPlayer}/>
+          <Route exact path="/newtournament" component={NewTournament}/>
+
+        </Switch>
+      {/* <Start></Start> */}
       {/* <NewPlayer /> */}
       {/* <Landing /> */}
-      <NewTournament />
-
+      {/* <NewTournament /> */}
+      </Router>
       
     </div>
   );
