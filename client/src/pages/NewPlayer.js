@@ -1,20 +1,52 @@
-import React, { Component } from "react";
+import React, { useCallback } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
+import app from "../firebase";
+import {withRouter} from "react-router";
+import API from "../utils/API"
 
 
 
 
-class NewPlayer extends Component {
+
+const NewPlayer = ({history}) =>{
+    const handleSignUp = useCallback(async event =>{
+        event.preventDefault();
+        const {email, password, gamerTag,activisionId,platform,firstName, lastName } = event.target.elements;
+        console.log("email: "+ email.value+ " password: "+ password.value+ 
+        " gamertag: " +gamerTag.value+ " activisionId: "+ activisionId.value+ 
+        " platform: "+ platform.value+ " firstName: "+ firstName.value+ 
+        " lastName: "+ lastName);
+        var newUser ={
+            firstName: firstName.value,
+            lastName: lastName.value,
+            email: email.value,
+            gamerTag: gamerTag.value,
+            activisionId:activisionId.value,
+            platform: platform.value
+
+        }
+        try {
+            await app 
+            .auth().createUserWithEmailAndPassword(email.value,password.value).then(function(userRecord){
+                newUser.id = userRecord.uid
+                API.createUser(newUser);
+            });
+            
+            history.push("/");
+        }
+        catch (error){
+            alert(error);
+        }
+    },[history]
+    );
 
 
-    render() {
-        
-        return (
+    return (
             <Container>
 
             <Row>
@@ -26,22 +58,22 @@ class NewPlayer extends Component {
                 <Col md={8}>
                     <Card>
                         <Card.Body>
-                            <Form>
+                            <Form onSubmit = {handleSignUp}>
                             <Form.Group controlId="formGamerTag">
                                 <Form.Label >Gamer Tag</Form.Label>
-                                <Form.Control type="text" placeholder="Enter Gamer Tag" />
+                                <Form.Control name ="gamerTag" type="text" placeholder="Enter Gamer Tag" />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" placeholder="Password" />
+                                <Form.Control  name ="password"type="password" placeholder="Password" />
                             </Form.Group>
 
                             <br></br>
 
                             <Form.Group controlId="exampleForm.ControlSelect1">
                                 <Form.Label>Choose a platform</Form.Label>
-                                <Form.Control as="select">
+                                <Form.Control name ="platform" as="select">
                                 <option>Playstation - (psn)</option>
                                 <option>Steam - (steam)</option>
                                 <option>XBox - (xbl)</option>
@@ -51,24 +83,24 @@ class NewPlayer extends Component {
 
                             <Form.Group controlId="formActivisionId">
                                 <Form.Label>Activision ID (optional)</Form.Label>
-                                <Form.Control type="text" placeholder="Enter ID" />
+                                <Form.Control  name ="activisionId"type="text" placeholder="Enter ID" />
                             </Form.Group>
 
                             <br></br>
 
                             <Form.Group controlId="formFirstName">
                                 <Form.Label>First Name</Form.Label>
-                                <Form.Control type="text" placeholder="Enter First Name" />
+                                <Form.Control name ="firstName" type="text" placeholder="Enter First Name" />
                             </Form.Group>
 
                             <Form.Group controlId="formLastName">
                                 <Form.Label>Last Name</Form.Label>
-                                <Form.Control type="text" placeholder="Enter Last Name" />
+                                <Form.Control  name ="lastName" type="text" placeholder="Enter Last Name" />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label>Email address</Form.Label>
-                                <Form.Control type="email" placeholder="Enter email" />
+                                <Form.Control  name ="email" type="email" placeholder="Enter email" />
                             </Form.Group>
 
                             <Button variant="primary" type="submit">
@@ -83,7 +115,7 @@ class NewPlayer extends Component {
             </Row>
             </Container>
         )
-    }
 }
+
 
 export default NewPlayer;

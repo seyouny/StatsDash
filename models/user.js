@@ -10,7 +10,8 @@ module.exports = function (sequelize, DataTypes) {
         gamerTag:DataTypes.STRING,
         platform:DataTypes.STRING,
         activisionId:DataTypes.STRING,
-        username: DataTypes.STRING
+        username: DataTypes.STRING,
+        password: DataTypes.STRING
     });
 
     Users.associate = function (models) {
