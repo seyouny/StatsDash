@@ -15,17 +15,17 @@ function Navigation() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-                <Nav.Link href="#my-tournaments">My Tournaments</Nav.Link>
-                <Nav.Link href="#new-tournament">New Tournament</Nav.Link>
-                <Nav.Link href="#leaderboard">Leaderboard</Nav.Link>
+                <Nav.Link href="/mytournaments">My Tournaments</Nav.Link>
+                <Nav.Link href="/newtournament">New Tournament</Nav.Link>
+                <Nav.Link href="/leaderboard">Leaderboard</Nav.Link>
             </Nav>
             <Nav>
                 <Form inline>
                     <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                     <Button variant="outline-primary">Search</Button>
                 </Form>
-                <Nav.Link href="#deets">New Player Account</Nav.Link>
-                <Nav.Link href="#sign-in">Sign In</Nav.Link>
+                <Nav.Link href="/newplayer">New Player Account</Nav.Link>
+                <Nav.Link href="/signin">Sign In</Nav.Link>
             </Nav>
         </Navbar.Collapse>
         </div>
