@@ -18,9 +18,7 @@ module.exports = function (sequelize, DataTypes) {
         Tournaments.hasMany(models.Performances, {
             onDelete: "cascade"
         });
-        Tournaments.hasMany(models.Users,{
-            onDelete: "cascade"
-        });
+        
     };
-    return Users;
+    return Tournaments;
 };
