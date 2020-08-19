@@ -17,7 +17,7 @@ export default {
         });
     },
     createUser: function(user){
-        axios.post("/newUser",user);
+        axios.post("/api/user",user);
     }
     
 }

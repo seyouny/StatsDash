@@ -3,10 +3,12 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 var db = require("./models"); // used in router
+const routes = require("./routes/cod-route"); // api routes for db
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(routes);
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));

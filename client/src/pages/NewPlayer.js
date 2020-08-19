@@ -20,7 +20,7 @@ const NewPlayer = ({history}) =>{
         console.log("email: "+ email.value+ " password: "+ password.value+ 
         " gamertag: " +gamerTag.value+ " activisionId: "+ activisionId.value+ 
         " platform: "+ platform.value+ " firstName: "+ firstName.value+ 
-        " lastName: "+ lastName);
+        " lastName: "+ lastName.value);
         var newUser ={
             firstName: firstName.value,
             lastName: lastName.value,
@@ -33,7 +33,8 @@ const NewPlayer = ({history}) =>{
         try {
             await app 
             .auth().createUserWithEmailAndPassword(email.value,password.value).then(function(userRecord){
-                newUser.id = userRecord.uid
+                newUser.id = userRecord.user.uid
+                console.log(userRecord.user.uid);
                 API.createUser(newUser);
             });
             
