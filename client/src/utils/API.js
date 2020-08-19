@@ -15,6 +15,9 @@ export default {
             console.log(response);
             return response.matches;
         });
+    },
+    createUser: function(user){
+        axios.post("/newUser",user);
     }
     
 }
