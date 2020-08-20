@@ -60,6 +60,7 @@ class Splash extends React.Component {
   
   const RightSide = props => {
     return (
+      <a href= "/newplayer">
       <div
         className="right-side"
         ref={props.containerRef}
@@ -69,6 +70,7 @@ class Splash extends React.Component {
           <div className="text">{props.current}</div>
         </div>
       </div>
+      </a>
     );
   };
   
