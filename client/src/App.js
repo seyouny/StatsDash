@@ -10,6 +10,7 @@ import {AuthProvider} from "./Auth";
 import PrivateRoute from "./PrivateRoute";
 import "./App.scss";
 import Splash from "./pages/Splash";
+import MyHome from "./pages/MyHome";
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
         <Router>
         {/* <Navigation /> */}
         <Switch>
-            <Route exact path="/login" component={Splash}/>
+            {/* <Route exact path="/login" component={Splash}/> */}
+            <Route exact path="/" component={Splash}/>
+            <Route exact path="/myhome" component={MyHome}/>
             {/* <Route exact path="/newplayer" component={NewPlayer}/>
             <Route exact path="/newtournament" component={NewTournament}/> */}
           </Switch>
