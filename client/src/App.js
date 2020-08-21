@@ -23,8 +23,8 @@ function App() {
             {/* <Route exact path="/login" component={Splash}/> */}
             <Route exact path="/" component={Splash}/>
             <Route exact path="/myhome" component={MyHome}/>
-            {/* <Route exact path="/newplayer" component={NewPlayer}/>
-            <Route exact path="/newtournament" component={NewTournament}/> */}
+            <Route exact path="/newplayer" component={NewPlayer}/>
+            <Route exact path="/newtournament" component={NewTournament}/>
 
           </Switch>
      

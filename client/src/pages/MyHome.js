@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component, useContext } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -13,6 +13,8 @@ import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import Navigation from "../components/Navigation";
 import { Container } from '@material-ui/core';
+import { AuthContext } from "../Auth";
+
 
 
 const useStyles = makeStyles({
@@ -35,7 +37,7 @@ const rows = [
 
 function MyHome() {
   const classes = useStyles();
-
+  const { currentUser } = useContext(AuthContext)
   return (
     <Box>
     <Navigation />
