@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Login, Register } from "./index";
 import "./style.scss";
-import { Login } from "./login";
+import  Login  from "./login";
 import { Register } from "./register";
 
 

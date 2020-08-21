@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -9,6 +9,7 @@ import Modal from 'react-bootstrap/Modal';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
+import { AuthContext } from "../Auth";
 
 
 // const classes = useStyles();
@@ -37,17 +38,18 @@ class NewTournament extends Component {
             damage:1,
             lastStandingKills:10,
             damageToKills:25,
-            placement:50
+            placement:50,
         }
         this.getSettings = this.getSettings.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.currentUser = useContext(AuthContext);
 
     }
-
     handleModalShowHide() {
         this.setState({ ...this.state ,showHide: !this.state.showHide })
     }
     getSettings(event){
+        event.preventDefault();
         const {kills, deaths, gkills, gdeaths, damage, damageToKills, revives, lastStandingKills, placement } = event.target.elements;
         const newState= {
             kills: parseInt(kills.value),
@@ -72,6 +74,22 @@ class NewTournament extends Component {
         console.log(games.value)
         console.log(title.value);
         console.log(this.state);
+        console.log(this.currentUser);
+        const tournament = {
+            name: title,
+            games: games,
+            gulagKillsMultiplier: this.state.gkills,
+            gulagDeathsMultiplier: this.state.gdeaths,
+            killsMultiplier: this.state.kills,
+            deathsMultiplier: this.state.deaths,
+            damageMultiplier: this.state.damage,
+            placementMultiplier: this.state.placement,
+            revivesMultiplier: this.state.revives,
+            clutchKillsMultiplier: this.state.lastStandingKills,
+            damageToKillsMultiplier:this.state.damageToKills,
+            // UserId:
+        }
+        console.log(tournament)
 
     }
     render() {
