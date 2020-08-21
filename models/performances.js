@@ -1,6 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
     var Performances = sequelize.define("Performances", {
-        
         gulagKills: DataTypes.INTEGER,
         gulagDeaths: DataTypes.INTEGER,
         kills: DataTypes.INTEGER,
@@ -10,6 +9,7 @@ module.exports = function (sequelize, DataTypes) {
         revives: DataTypes.INTEGER,
         clutchKills: DataTypes.INTEGER,
         damageToKills:DataTypes.INTEGER,
+        overallScore: DataTypes.INTEGER
 
     });
 
