@@ -47,7 +47,8 @@
   background-image: url(https://ghostselite.com/wp-content/uploads/2013/05/cod-ghosts-elite-background.jpg);
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center;;
+  background-position: center;
+  background-color: black;
 }
 
 .App-logo {
@@ -98,8 +99,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
-    box-shadow: 0px 0px 12px 2px rgba(15, 15, 15, 0.2);
+    background-color: black;
+    box-shadow: 0px 0px 20px 2px rgb(243, 240, 240);
     border-radius: 4px;
     position: relative;
     z-index: 99;
@@ -113,42 +114,68 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 90%;
+    height: 50%;
     background-color: #3498db;
-    width: 100%;
+    width: 80%;
     position: absolute;
-    right: -34%;
+    right: -80%;
     border-radius: 6px;
     z-index: 1;
-    transition: all 400ms ease-in-out;
+    transition: all 250ms ease-in-out;
     cursor: pointer;
     box-shadow: 0px 0px 12px 2px rgba(15, 15, 15, 0.281);
 
     &.right {
-      right: -40%;
+      right: -10%;
       align-items: flex-end;
       &:hover {
-        right: -45%;
+        right: -30%;
       }
     }
-    &.left {
-      right: 40%;
-      align-items: flex-start;
-      &:hover {
-        right: 45%;
-      }
-    }
+    // &.left {
+    //   right: 40%;
+    //   align-items: flex-start;
+    //   &:hover {
+    //     right: 45%;
+    //   }
+    // }
+    .rotate {
 
+      transform: rotate(-90deg);
+    
+    
+      /* Legacy vendor prefixes that you probably don't need... */
+    
+      /* Safari */
+      -webkit-transform: rotate(90deg);
+    
+      /* Firefox */
+      -moz-transform: rotate(90deg);
+    
+      /* IE */
+      -ms-transform: rotate(90deg);
+    
+      /* Opera */
+      -o-transform: rotate(90deg);
+    
+      /* Internet Explorer */
+      filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    
+    }
     .text {
       font-size: 21px;
       font-weight: 500;
       color: #fff;
-      margin-right: 3em;
+      margin-right: 2em;
       margin-left: 3em;
+      rotate: 90deg;
+      
     }
   }
 }
-
+#login-button{
+  color: white;
+}
 //Button
 .btn {
   font-size: 21px;
