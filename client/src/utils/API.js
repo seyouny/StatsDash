@@ -18,6 +18,8 @@ export default {
     },
     createUser: function(user){
         axios.post("/api/user",user);
+    },
+    createTournament: function(tournament){
+        axios.post("/api/tournament",tournament)
     }
-    
 }
