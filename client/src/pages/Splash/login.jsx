@@ -1,5 +1,5 @@
 import React from "react";
-import warzoneImg from "./CODWAR.svg";
+import braggingwhiteImg from "./braggingwhite.svg";
 
 export class Login extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ export class Login extends React.Component {
         <div className="header">Login</div>
         <div className="content">
           <div className="image">
-            <img src={warzoneImg} />
+            <img src={braggingwhiteImg} alt=""/>
           </div>
           <div className="form">
             <div className="form-group">
