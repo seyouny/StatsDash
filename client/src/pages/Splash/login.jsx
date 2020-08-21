@@ -11,7 +11,7 @@ const Login = ({history},props)=>{
   // constructor(props) {
   //   super(props);
   // }
-  app.auth().signOut()
+  // app.auth().signOut()
   const handleLogin = useCallback(
     async event => {
       console.log("hello");
@@ -20,7 +20,10 @@ const Login = ({history},props)=>{
       try {
         await app
           .auth()
-          .signInWithEmailAndPassword(email.value, password.value);
+          .signInWithEmailAndPassword(email.value, password.value).then((user)=>{
+              console.log(user);
+              return <Redirect to="/myhome" />;
+          });
         // history.push("/");
       } catch (error) {
         alert(error);
