@@ -27,24 +27,24 @@ function createData(tournName, startDate, endDate, tournStatus) {
   return { tournName, startDate, endDate, tournStatus };
 }
 
-// const rows = [
-//   createData('Gio Is Dope Tournament', "8/1/20", "8/2/2020", "complete"),
-//   createData('Alex Is My Homey Tournament', "8/15/2020", "8/16/2020", "complete"),
-//   createData('Stacey Is Queen Yaaas Tournament', "8/24/2020", "8/24/2020", "scheduled"),
-//   createData("Royce's This MY Brainchild Y'all Grand Tournament", "8/19/2020", "8/20/2020", "active"),
-//   createData('Jen Rocks Up On the Mic Tourney', "8/20/2020", "8/20/2020", "active"),
-// ];
+const rows = [
+  createData('Gio Is Dope Tournament', "8/1/20", "8/2/2020", "complete"),
+  createData('Alex Is My Homey Tournament', "8/15/2020", "8/16/2020", "complete"),
+  createData('Stacey Is Queen Yaaas Tournament', "8/24/2020", "8/24/2020", "scheduled"),
+  createData("Royce's This MY Brainchild Y'all Grand Tournament", "8/19/2020", "8/20/2020", "active"),
+  createData('Jen Rocks Up On the Mic Tourney', "8/20/2020", "8/20/2020", "active"),
+];
 
 
 function MyHome() {
   const classes = useStyles();
   const { currentUser } = useContext(AuthContext)
-  const data = API.getTournaments(currentUser.uid);
+  // const data = API.getTournaments(currentUser.uid);
   console.log(currentUser);
-  console.log(data);
-  const rows = data.map((item)=>{
-    item.dataValues.id
-  })
+  // console.log(data);
+  // rows.map((row)=>{
+  //   rows.dataValues.id
+  // })
   return (
     <Box>
     <Navigation />
@@ -65,10 +65,15 @@ function MyHome() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {/* {rows.map((row) => (
             <TableRow key={row.tournName}>
               <TableCell component="th" scope="row">
-                {row.tournName}
+                {row.tournName} */}
+
+          {rows.map((row) => (
+            <TableRow key={row.name}>
+              <TableCell component="th" scope="row">
+                {row.name}
               </TableCell>
               <TableCell align="right">{row.startDate}</TableCell>
               <TableCell align="right">{row.endDate}</TableCell>
