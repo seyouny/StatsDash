@@ -67,7 +67,7 @@ class Splash extends React.Component {
         onClick={props.onClick}
       >
         <div className="inner-container">
-          <div className="text">{props.current}</div>
+          <div class= "rotate" className="text">{props.current}</div>
         </div>
       </div>
       </a>

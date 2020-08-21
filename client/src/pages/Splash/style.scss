@@ -9,18 +9,21 @@
     .header {
       font-size: 24px;
       font-family: "Open Sans", sans-serif;
+      color:white;
     }
   
     .content {
       display: flex;
       flex-direction: column;
+      color:white;
       
   
       .image {
         width: 25em;
         img {
-          width: 70%;
-          height: 70%;
+          margin-top: 20px;;
+          width: 90%;
+          height: 90%;
           
         }
       }
@@ -30,6 +33,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        color: white;
   
         .form-group {
           margin-bottom: inherit;

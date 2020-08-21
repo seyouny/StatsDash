@@ -3,7 +3,7 @@ import braggingwhiteImg from "./braggingwhite.svg";
 import { AuthContext } from "../../Auth";
 import { withRouter, Redirect } from "react-router";
 import app from "../../firebase";
-
+import "./style.scss";
 
 
 // export class Login extends React.Component {
@@ -47,16 +47,16 @@ const Login = ({history},props)=>{
           <form onSubmit ={handleLogin}>
             <div className="form" >
               <div className="form-group">
-                <label htmlFor="email">Email</label>
+                <label class="col-lg-2 col-md-3 col-sm-4 col-xs-4 control-label" htmlFor="email">Email</label>
                 <input type="text" name="email" placeholder="Email" />
               </div>
               <div className="form-group">
-                <label htmlFor="password">Password</label>
+                <label class="col-lg-2 col-md-3 col-sm-4 col-xs-4 control-label" htmlFor="password">Password</label>
                 <input type="password" name="password" placeholder="password" />
               </div>
             </div>
             <div className="footer">
-            <button type="button" className="btn" type = "submit">
+            <button type="button" class="login-button" id="login-button" className="btn" type = "submit">
               Login
             </button>
           </div>
