@@ -1,4 +1,4 @@
-import React, { Component, useContext } from "react";
+import React, { Component, useContext, useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -46,7 +46,9 @@ const NewTournament= () =>{
 
     // }
     const { currentUser } = useContext(AuthContext)
-    var state = {
+    //   const [show, setShow] = useState(false);
+
+    const [state,setState] = useState({
         showHide : false,
         kills: 50,
         deaths: -25,
@@ -57,9 +59,10 @@ const NewTournament= () =>{
         lastStandingKills:10,
         damageToKills:25,
         placement:50
-    }
+    })
+        
     const handleModalShowHide =() =>{
-        state = { ...state ,showHide: !state.showHide }
+        setState({ ...state ,showHide: !state.showHide })
         console.log(state);
     }
     const getSettings =(event)=>{
@@ -77,7 +80,7 @@ const NewTournament= () =>{
         }
         console.log(newState);
         // this.saveSettings(newState);
-        state = {...newState, showHide: !state.showHide}
+        setState({...newState, showHide: !state.showHide})
         console.log(state);
 
     }
@@ -90,8 +93,8 @@ const NewTournament= () =>{
         console.log(state);
         console.log(currentUser);
         const tournament = {
-            name: title,
-            games: games,
+            name: title.value,
+            games: games.value,
             gulagKillsMultiplier: state.gkills,
             gulagDeathsMultiplier: state.gdeaths,
             killsMultiplier: state.kills,
@@ -101,10 +104,9 @@ const NewTournament= () =>{
             revivesMultiplier: state.revives,
             clutchKillsMultiplier: state.lastStandingKills,
             damageToKillsMultiplier: state.damageToKills,
-            // UserId:
+            UserId: currentUser.uid
         }
         console.log(tournament)
-
     }
     // render() {
         
@@ -132,13 +134,14 @@ const NewTournament= () =>{
                             </Form.Group>
 
                             <br></br>
+                            <Button variant="primary" size="sm" className="d-block mb-3" onClick={handleModalShowHide}>
+                                Adjust Game Settings
+                            </Button>
                             <Button variant="primary" size="sm" type="submit">
                                 Generate Link
                             </Button>
                             </Form>
-                            <Button variant="primary" size="sm" className="d-block mb-3" onClick={handleModalShowHide}>
-                                Adjust Game Settings
-                            </Button>
+                           
 
                             <Modal show={state.showHide}>
                                 <Modal.Header closeButton onClick={handleModalShowHide}>

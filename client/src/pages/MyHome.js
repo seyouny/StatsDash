@@ -38,6 +38,7 @@ const rows = [
 function MyHome() {
   const classes = useStyles();
   const { currentUser } = useContext(AuthContext)
+  console.log(currentUser);
   return (
     <Box>
     <Navigation />
