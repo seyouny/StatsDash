@@ -40,8 +40,8 @@ class Landing extends Component {
                         <Form>
                             <h5 >Player Sign In</h5>
                             <Form.Group controlId="formUserName">
-                                <Form.Label>User Name</Form.Label>
-                                <Form.Control type="text" placeholder="User Name" />
+                                <Form.Label>Gamertag</Form.Label>
+                                <Form.Control type="text" placeholder="User Name (Gamertag)" />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicPassword">

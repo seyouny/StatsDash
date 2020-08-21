@@ -6,27 +6,74 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Modal from 'react-bootstrap/Modal';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Slider from '@material-ui/core/Slider';
 
 
+// const classes = useStyles();
 
-
-
+// const useStyles = makeStyles({
+//     root: {
+//       width: 300,
+//     },
+//   });
+  
+//   function valuetext(value) {
+//     return `${value}°C`;
+//   }
 
 
 class NewTournament extends Component {
-
     constructor(){
         super();
         this.state = {
-            showHide : false
+            showHide : false,
+            kills: 50,
+            deaths: -25,
+            gkills: 75,
+            gdeaths:100,
+            revives:10,
+            damage:1,
+            lastStandingKills:10,
+            damageToKills:25,
+            placement:50
         }
+        this.getSettings = this.getSettings.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+
     }
 
     handleModalShowHide() {
-        this.setState({ showHide: !this.state.showHide })
+        this.setState({ ...this.state ,showHide: !this.state.showHide })
+    }
+    getSettings(event){
+        const {kills, deaths, gkills, gdeaths, damage, damageToKills, revives, lastStandingKills, placement } = event.target.elements;
+        const newState= {
+            kills: parseInt(kills.value),
+            deaths: parseInt(deaths.value),
+            gkills: parseInt(gkills.value),
+            gdeaths: parseInt(gdeaths.value),
+            damage: parseInt(damage.value),
+            lastStandingKills: parseInt(lastStandingKills.value),
+            damageToKills: parseInt(damageToKills.value),
+            placement: parseInt(placement.value)
+        }
+        console.log(newState);
+        // this.saveSettings(newState);
+        this.setState({...newState,showHide: !this.state.showHide})
+        console.log(this.state);
+
     }
 
+    handleFormSubmit(event){
+        event.preventDefault();
+        const {games, title } = event.target.elements;
+        console.log(games.value)
+        console.log(title.value);
+        console.log(this.state);
 
+    }
     render() {
         
         return (
@@ -41,19 +88,22 @@ class NewTournament extends Component {
                 <Col md={8}>
                     <Card>
                         <Card.Body>
-                            <Form>
+                            <Form onSubmit ={this.handleFormSubmit}>
                             <Form.Group controlId="formNumGamesTournament">
-                                <Form.Label >Number of Games per Tournament</Form.Label>
-                                <Form.Control type="text" placeholder="Enter Number" />
+                                <Form.Label >Number of Games per Tournament (maximum 19)</Form.Label>
+                                <Form.Control name= "games" type="text" placeholder="Enter Number" />
                             </Form.Group>
 
                             <Form.Group controlId="formTournamentName">
                                 <Form.Label>Tournament Name (optional)</Form.Label>
-                                <Form.Control type="text" placeholder="Enter Name" />
+                                <Form.Control name= "title" type="text" placeholder="Enter Name" />
                             </Form.Group>
 
                             <br></br>
-
+                            <Button variant="primary" size="sm" type="submit">
+                                Generate Link
+                            </Button>
+                            </Form>
                             <Button variant="primary" size="sm" className="d-block mb-3" onClick={() => this.handleModalShowHide()}>
                                 Adjust Game Settings
                             </Button>
@@ -66,34 +116,68 @@ class NewTournament extends Component {
 
                                     <p>Scorecard - Choose weight of different stats.</p>
                                     
-                                    <Form>
+                                    <Form onSubmit = {this.getSettings}>
                                         <Form.Group controlId="formKills">
                                             <Form.Label>Kills</Form.Label>
-                                            <Form.Control type="text" placeholder="e.g. +50" />
+                                            <Form.Control  name="kills"  type="text" defaultValue={this.state.kills} />
+                                            
                                         </Form.Group>
-
+                                        {/* <Typography id="discrete-slider-small-steps" gutterBottom>
+                                            Kills
+                                        </Typography>
+                                        <Slider
+                                                defaultValue={this.state.kills}
+                                                getAriaValueText={valuetext}
+                                                aria-labelledby="discrete-slider-small-steps"
+                                                step={1}
+                                                marks
+                                                min={0}
+                                                max={100}
+                                                valueLabelDisplay="auto"
+                                                name = "kills"
+                                            /> */}
                                         <Form.Group controlId="formDeath">
                                             <Form.Label>Death</Form.Label>
-                                            <Form.Control type="text" placeholder="e.g. -25" />
+                                            <Form.Control  name= "deaths" type="text" defaultValue={this.state.deaths} />
                                         </Form.Group>
 
                                         <Form.Group controlId="formDamage">
                                             <Form.Label>Damage</Form.Label>
-                                            <Form.Control type="text" placeholder="e.g. +1" />
+                                            <Form.Control  name= "damage" type="text" defaultValue={this.state.damage} />
                                         </Form.Group>
 
                                         <Form.Group controlId="formGulagWin">
                                             <Form.Label>Gulag Win</Form.Label>
-                                            <Form.Control type="text" placeholder="e.g. +75" />
+                                            <Form.Control  name= "gkills" type="text" defaultValue={this.state.gkills} />
                                         </Form.Group>
 
                                         <Form.Group controlId="formGulagLoss">
                                             <Form.Label>Gulag Loss</Form.Label>
-                                            <Form.Control type="text" placeholder="e.g. -100" />
+                                            <Form.Control  name= "gdeaths"  type="text" defaultValue={this.state.gdeaths} />
                                         </Form.Group>
 
-                                        <Button variant="primary" type="submit">
-                                            Submit
+                                        <Form.Group controlId="formRevives">
+                                            <Form.Label>Revives</Form.Label>
+                                            <Form.Control  name= "revives" type="text" defaultValue={this.state.revives} />
+                                        </Form.Group>
+
+                                        <Form.Group controlId="formLastStandingKills">
+                                            <Form.Label>Last Standing Kills</Form.Label>
+                                            <Form.Control  name= "lastStandingKills" type="text" defaultValue={this.state.lastStandingKills} />
+                                        </Form.Group>
+
+                                        <Form.Group controlId="formDamageToKills">
+                                            <Form.Label>Damage to Kills</Form.Label>
+                                            <Form.Control name= "damageToKills" type="text" defaultValue={this.state.damageToKills} />
+                                        </Form.Group>
+
+                                        <Form.Group controlId="formLastStandingKills">
+                                            <Form.Label>Placement</Form.Label>
+                                            <Form.Control name = "placement" type="text" defaultValue={this.state.placement} />
+                                        </Form.Group>
+
+                                        <Button variant="primary" type ="submit">
+                                            Save
                                         </Button>
                                     </Form>
 
@@ -102,9 +186,7 @@ class NewTournament extends Component {
                                 <Button variant="secondary" onClick={() => this.handleModalShowHide()}>
                                     Close
                                 </Button>
-                                <Button variant="primary" onClick={() => this.handleModalShowHide()}>
-                                    Save Changes
-                                </Button>
+                                
                                 </Modal.Footer>
                             </Modal>
 
@@ -123,10 +205,8 @@ class NewTournament extends Component {
                                 </Modal.Footer>
                             </Modal.Dialog> */}
 
-                            <Button variant="primary" size="sm" type="submit">
-                                Generate Link
-                            </Button>
-                            </Form>
+                            
+                            
                         </Card.Body>
                     </Card>
                    
