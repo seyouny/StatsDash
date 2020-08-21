@@ -12,6 +12,10 @@ module.exports = function (sequelize, DataTypes) {
         revivesMultiplier: DataTypes.INTEGER,
         clutchKillsMultiplier: DataTypes.INTEGER,
         damageToKillsMultiplier:DataTypes.INTEGER,
+        startDate: DataTypes.DATE,
+        endDate: DataTypes.DATE,
+        status: DataTypes.STRING
+
     });
 
     Tournaments.associate = function (models) {

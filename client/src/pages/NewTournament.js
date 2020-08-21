@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import { AuthContext } from "../Auth";
-
+import API from "../utils/API"
 
 // const classes = useStyles();
 
@@ -94,7 +94,7 @@ const NewTournament= () =>{
         console.log(currentUser);
         const tournament = {
             name: title.value,
-            games: games.value,
+            games: parseInt(games.value),
             gulagKillsMultiplier: state.gkills,
             gulagDeathsMultiplier: state.gdeaths,
             killsMultiplier: state.kills,
@@ -104,9 +104,11 @@ const NewTournament= () =>{
             revivesMultiplier: state.revives,
             clutchKillsMultiplier: state.lastStandingKills,
             damageToKillsMultiplier: state.damageToKills,
-            UserId: currentUser.uid
+            UserId: currentUser.uid,
+            status: "pending"
         }
         console.log(tournament)
+        API.createTournament(tournament)
     }
     // render() {
         

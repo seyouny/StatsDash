@@ -75,10 +75,10 @@ const NewPlayer = ({history}) =>{
                             <Form.Group controlId="exampleForm.ControlSelect1">
                                 <Form.Label>Choose a platform</Form.Label>
                                 <Form.Control name ="platform" as="select">
-                                <option>Playstation - (psn)</option>
-                                <option>Steam - (steam)</option>
-                                <option>XBox - (xbl)</option>
-                                <option>Activision - (battle) Include your Activision ID#</option>
+                                <option defaultValue = "psn">Playstation - (psn)</option>
+                                <option defaultValue = "steam">Steam - (steam)</option>
+                                <option defaultValue = "xbox">XBox - (xbl)</option>
+                                <option defaultValue = "act">Activision - (battle) Include your Activision ID#</option>
                                 </Form.Control>
                             </Form.Group>
 
