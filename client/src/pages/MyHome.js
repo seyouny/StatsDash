@@ -14,7 +14,7 @@ import Card from '@material-ui/core/Card';
 import Navigation from "../components/Navigation";
 import { Container } from '@material-ui/core';
 import { AuthContext } from "../Auth";
-
+import API from "../utils/API"
 
 
 const useStyles = makeStyles({
@@ -27,18 +27,24 @@ function createData(tournName, startDate, endDate, tournStatus) {
   return { tournName, startDate, endDate, tournStatus };
 }
 
-const rows = [
-  createData('Gio Is Dope Tournament', "8/1/20", "8/2/2020", "complete"),
-  createData('Alex Is My Homey Tournament', "8/15/2020", "8/16/2020", "complete"),
-  createData('Stacey Is Queen Yaaas Tournament', "8/24/2020", "8/24/2020", "scheduled"),
-  createData("Royce's This MY Brainchild Y'all Grand Tournament", "8/19/2020", "8/20/2020", "active"),
-  createData('Jen Rocks Up On the Mic Tourney', "8/20/2020", "8/20/2020", "active"),
-];
+// const rows = [
+//   createData('Gio Is Dope Tournament', "8/1/20", "8/2/2020", "complete"),
+//   createData('Alex Is My Homey Tournament', "8/15/2020", "8/16/2020", "complete"),
+//   createData('Stacey Is Queen Yaaas Tournament', "8/24/2020", "8/24/2020", "scheduled"),
+//   createData("Royce's This MY Brainchild Y'all Grand Tournament", "8/19/2020", "8/20/2020", "active"),
+//   createData('Jen Rocks Up On the Mic Tourney', "8/20/2020", "8/20/2020", "active"),
+// ];
+
 
 function MyHome() {
   const classes = useStyles();
   const { currentUser } = useContext(AuthContext)
+  const data = API.getTournaments(currentUser.uid);
   console.log(currentUser);
+  console.log(data);
+  const rows = data.map((item)=>{
+    item.dataValues.id
+  })
   return (
     <Box>
     <Navigation />

@@ -21,5 +21,11 @@ export default {
     },
     createTournament: function(tournament){
         axios.post("/api/tournament",tournament)
+    },
+    getTournaments: function(userId){
+        axios.get("/api/user/"+userId+"/tournament").then((results)=>{
+            console.log(results);
+            return results
+        })
     }
 }
