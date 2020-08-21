@@ -8,9 +8,11 @@ import NewTournament from "./pages/NewTournament"
 import Start from "./components/Start"
 import {AuthProvider} from "./Auth";
 import PrivateRoute from "./PrivateRoute";
-import "./App.scss";
+// import "./App.scss";
 import Splash from "./pages/Splash";
 import MyHome from "./pages/MyHome";
+import Dashboard from "./pages/TournamentDash";
+
 
 function App() {
   return (
@@ -25,6 +27,8 @@ function App() {
             <Route exact path="/myhome" component={MyHome}/>
             <Route exact path="/newplayer" component={NewPlayer}/>
             <Route exact path="/newtournament" component={NewTournament}/>
+            <Route exact path="/dashboard" component={Dashboard}/>
+
 
           </Switch>
      
