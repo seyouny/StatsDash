@@ -9,7 +9,7 @@ function Navigation() {
     
     return (
         
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar width={100} collapseOnSelect expand="lg" bg="dark" variant="dark">
         <div className="container">
         <Navbar.Brand href="#home">Home</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
