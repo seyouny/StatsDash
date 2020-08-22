@@ -14,7 +14,8 @@ import Card from '@material-ui/core/Card';
 import Navigation from "../components/Navigation";
 import { Container } from '@material-ui/core';
 import { AuthContext } from "../Auth";
-import API from "../utils/API"
+import API from "../utils/API";
+import NewChoose from "./NewChoose";
 
 
 const useStyles = makeStyles({
@@ -39,21 +40,24 @@ const rows = [
 function MyHome() {
   const classes = useStyles();
   const { currentUser } = useContext(AuthContext)
-  // const data = API.getTournaments(currentUser.uid);
-  console.log(currentUser);
-  // console.log(data);
+
+// Working on getting real data from MySQL
+  // const data = API.getTournaments(currentUser.uid).then(
+  //   console.log("Data: " + data, "Current User: " + currentUser));
+
   // rows.map((row)=>{
   //   rows.dataValues.id
   // })
+
+
   return (
     <Box>
     <Navigation />
     <Container>
-        <h3>Something here maybe</h3>
+        <h3>Container for content here maybe</h3>
         <Fab color="primary" aria-label="add">
             <AddCircleIcon />
         </Fab>
-    </Container>
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
@@ -83,8 +87,9 @@ function MyHome() {
         </TableBody>
       </Table>
     </TableContainer>
+    </Container>
     <Container>
-      <p>Space for something here</p>
+      <h5>Container for more content here</h5>
     </Container>
     </Box>
   );
