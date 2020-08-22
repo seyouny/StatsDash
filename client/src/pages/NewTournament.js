@@ -10,7 +10,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import { AuthContext } from "../Auth";
-import API from "../utils/API"
+import API from "../utils/API";
+import Navigation from "../components/Navigation";
 
 // const classes = useStyles();
 
@@ -114,6 +115,7 @@ const NewTournament= () =>{
         
         return (
             <Container>
+                <Navigation />
 
             <Row>
                 <Col><h3 className="my-5 text-center">Create a Tournament</h3></Col>

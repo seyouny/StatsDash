@@ -7,7 +7,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
 import app from "../firebase";
 import {withRouter} from "react-router";
-import API from "../utils/API"
+import API from "../utils/API";
+import Navigation from "../components/Navigation";
 
 
 
@@ -49,6 +50,7 @@ const NewPlayer = ({history}) =>{
 
     return (
             <Container>
+                <Navigation />
 
             <Row>
                 <Col><h3 className="my-5 text-center">New Player</h3></Col>

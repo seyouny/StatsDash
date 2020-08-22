@@ -36,6 +36,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  background-image: url(/components/NewChoose/smokey-background.svg);
 }
 
 .header{
@@ -170,17 +171,34 @@
 // ====JENS STYLE SECTION====
 
 .newChoose {
-  display: block;
-  float: left;
   width: auto;
   height: fit-content;
   margin: 2em;
   position: relative;
+  background-color: rgba(38, 50, 56, .5);
+  color: white;
 }
 
 .Container {
   border: #3498db;
 }
 
+.myHomeCont {
+  position: center;
+  width: 100%;
+  margin-top: 10%;
+  margin-left: 20%;
+  height: 35em;
+  size: contain;
+}
+
+.homeButtonDiv {
+  padding-top: 2em;
+  margin-right: 1em;
+}
+
+.smokeyBkg {
+  background-image: url("./components/NewChoose/smokey-background.svg");
+}
 
 // ==========================
