@@ -103,7 +103,7 @@
       right: -10%;
       align-items: flex-end;
       &:hover {
-        right: -30%;
+        right: -27%;
       }
     }
     // &.left {
@@ -113,36 +113,19 @@
     //     right: 45%;
     //   }
     // }
-    .rotate {
-
-      transform: rotate(-90deg);
-    
-    
-      /* Legacy vendor prefixes that you probably don't need... */
-    
-      /* Safari */
-      -webkit-transform: rotate(90deg);
-    
-      /* Firefox */
-      -moz-transform: rotate(90deg);
-    
-      /* IE */
-      -ms-transform: rotate(90deg);
-    
-      /* Opera */
-      -o-transform: rotate(90deg);
-    
-      /* Internet Explorer */
-      filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-    
-    }
+ .text:hover{
+  transform: rotate(-0deg);
+  margin-right: 1em;
+  margin-left: 3em;
+ }
     .text {
+      transform: rotate(90deg);
       font-size: 21px;
       font-weight: 500;
       color: #fff;
-      margin-right: 2em;
+      margin-right: -1em;
       margin-left: 3em;
-      rotate: 90deg;
+      
       
     }
   }
