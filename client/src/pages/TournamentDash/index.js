@@ -4,7 +4,7 @@ import Middle from "../../components/Dashboard/tournament"
 import Bot from "../../components/Dashboard/playercard"
 import Box from '@material-ui/core/Box';
 import Navigation from "../../components/Navigation"
-// import "./dashstyle.css"
+import "./dashstyle.css"
 import Grid from '@material-ui/core/Grid';
 
 
