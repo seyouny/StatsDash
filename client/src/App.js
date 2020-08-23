@@ -13,6 +13,7 @@ import Splash from "./pages/Splash";
 import MyHome from "./pages/MyHome";
 import NewChoose from './pages/NewChoose';
 import TDashboard1 from './pages/TDashboard';
+import Chart from './pages/Chart';
 
 function App() {
   return (
@@ -31,6 +32,8 @@ function App() {
             <Route exact path="/new" component={NewChoose}/>
             <Route exact path="/tournament/dash" component={TDashboard1}/>
 
+            <Route exact path="/newtournament" component={NewTournament}/>
+            <Route exact path="/chart" component={Chart} />
           </Switch>
      
        
