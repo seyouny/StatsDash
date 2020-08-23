@@ -12,7 +12,7 @@ import "./App.scss";
 import Splash from "./pages/Splash";
 import MyHome from "./pages/MyHome";
 import NewChoose from './pages/NewChoose';
-import TDashboard1 from './pages/TDashboard';
+import TDashboard1 from './pages/TournamentDash';
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
             <Route exact path="/newplayer" component={NewPlayer}/>
             <Route exact path="/new/tournament" component={NewTournament}/>
             <Route exact path="/new" component={NewChoose}/>
-            <Route exact path="/tournament/dash" component={TDashboard1}/>
+            <Route exact path="/dashboard" component={TDashboard1}/>
 
           </Switch>
      
