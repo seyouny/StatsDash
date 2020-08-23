@@ -7,34 +7,41 @@ import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 import logo from '../Navigation/br-logo-horizontal.png';
 import { AuthContext } from "../../Auth";
+import { withRouter, Redirect } from "react-router";
+
+import app from "../../firebase";
 
 
 function Navigation() {
     const { currentUser } = useContext(AuthContext);
-    
+    // function handleOnclick(event){
+    //     event.preventDefault();
+    //     app.auth().signOut();
+    //     return <Redirect to="/" />;
+    // }
     return (
         
             <Navbar width={100} collapseOnSelect expand="lg" bg="dark" variant="dark">
-        <div className="container">
-        <Navbar.Brand href="/"><img src={logo} width="140px"></img> </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mr-auto">
-                <Nav.Link href="/myhome">My Home</Nav.Link>
-            </Nav>
-            <Nav>
-                {/* <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                    <Button variant="outline-primary">Search</Button>
-                </Form> */}
+                <div className="container">
+                <Navbar.Brand href="/"><img src={logo} width="140px"></img> </Navbar.Brand>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id="responsive-navbar-nav">
+                    <Nav className="mr-auto">
+                        <Nav.Link href="/myhome">My Home</Nav.Link>
+                    </Nav>
+                    <Nav>
+                        {/* <Form inline>
+                            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                            <Button variant="outline-primary">Search</Button>
+                        </Form> */}
 
-                <Nav.Link href="/new">New</Nav.Link>
-                {/* <Nav.Link href="/new/player">New Player</Nav.Link> */}
-                <Nav.Link href="/signin">Sign Out</Nav.Link>
-            </Nav>
-        </Navbar.Collapse>
-        </div>
-        </Navbar>
+                        <Nav.Link href="/new">New</Nav.Link>
+                        {/* <Nav.Link href="/new/player">New Player</Nav.Link> */}
+                        <Nav.Link href= "/">Sign Out</Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+                </div>
+            </Navbar>
         
     )
 }

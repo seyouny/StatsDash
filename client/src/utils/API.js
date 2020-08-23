@@ -27,5 +27,11 @@ export default {
             console.log(results);
             return results
         })
+    },
+    getUsers: function(userId,callback){
+        axios.get("/api/user/"+userId).then((results)=>{
+            console.log(results);
+            return callback(results)
+        })
     }
 }

@@ -11,7 +11,7 @@ const Login = ({history},props)=>{
   // constructor(props) {
   //   super(props);
   // }
-  // app.auth().signOut()
+  const { currentUser } = useContext(AuthContext);
   const handleLogin = useCallback(
     async event => {
       console.log("hello");
@@ -22,16 +22,15 @@ const Login = ({history},props)=>{
           .auth()
           .signInWithEmailAndPassword(email.value, password.value).then((user)=>{
               console.log(user);
-              return <Redirect to="/myhome" />;
+             
+
           });
         // history.push("/");
       } catch (error) {
         alert(error);
       }
-    },
-    [history]
+    }
   );
-  const { currentUser } = useContext(AuthContext);
   if (currentUser) {
     console.log(currentUser)
     return <Redirect to="/myhome" />;
@@ -47,16 +46,16 @@ const Login = ({history},props)=>{
           <form onSubmit ={handleLogin}>
             <div className="form" >
               <div className="form-group">
-                <label class="col-lg-2 col-md-3 col-sm-4 col-xs-4 control-label" htmlFor="email">Email</label>
+                <label className="col-lg-2 col-md-3 col-sm-4 col-xs-4 control-label" htmlFor="email">Email</label>
                 <input type="text" name="email" placeholder="Email" />
               </div>
               <div className="form-group">
-                <label class="col-lg-2 col-md-3 col-sm-4 col-xs-4 control-label" htmlFor="password">Password</label>
+                <label className="col-lg-2 col-md-3 col-sm-4 col-xs-4 control-label" htmlFor="password">Password</label>
                 <input type="password" name="password" placeholder="password" />
               </div>
             </div>
             <div className="footer">
-            <button type="button" class="login-button" id="login-button" className="btn" type = "submit">
+            <button type="button" className="login-button" id="login-button" className="btn" type = "submit">
               Login
             </button>
           </div>
