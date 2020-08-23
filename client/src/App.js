@@ -11,6 +11,8 @@ import PrivateRoute from "./PrivateRoute";
 import "./App.scss";
 import Splash from "./pages/Splash";
 import MyHome from "./pages/MyHome";
+import NewChoose from './pages/NewChoose';
+import TDashboard1 from './pages/TDashboard';
 
 function App() {
   return (
@@ -23,8 +25,10 @@ function App() {
             {/* <Route exact path="/login" component={Splash}/> */}
             <Route exact path="/" component={Splash}/>
             <Route exact path="/myhome" component={MyHome}/>
-            <Route exact path="/newplayer" component={NewPlayer}/>
-            <Route exact path="/newtournament" component={NewTournament}/>
+            <Route exact path="/new/player" component={NewPlayer}/>
+            <Route exact path="/new/tournament" component={NewTournament}/>
+            <Route exact path="/new" component={NewChoose}/>
+            <Route exact path="/tournament/dash" component={TDashboard1}/>
 
           </Switch>
      

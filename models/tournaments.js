@@ -1,7 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
     var Tournaments = sequelize.define("Tournaments", {
        
-        name: DataTypes.STRING,
+        tName: DataTypes.STRING,
         games: DataTypes.INTEGER,
         gulagKillsMultiplier: DataTypes.INTEGER,
         gulagDeathsMultiplier: DataTypes.INTEGER,
