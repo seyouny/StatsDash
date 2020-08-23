@@ -1,6 +1,6 @@
 //MY HOME
 
-import React, { Component, useContext } from "react";
+import React, { Component, useContext,useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -28,11 +28,39 @@ const useStyles = makeStyles({
   },
 });
 
-function MyHome() {
 
-  const classes = useStyles();
+function MyHome() {
   const { currentUser } = useContext(AuthContext);
 
+  const [state,setState] = useState({
+        firstName:"",
+        lastName:"",
+        gamerTag:"",
+        userId:currentUser.uid,
+    })
+  const classes = useStyles();
+  // if(!currentUser){
+  //   console.log("no user found")
+  // }
+  function userData(){
+
+    API.getUsers(currentUser.uid,(results)=>{
+    console.log(results.data[0]);
+    const newState ={
+      firstName: results.data[0].firstName,
+      userId: results.data[0].id,
+      lastName: results.data[0].lastName,
+      gamerTag: results.data[0].gamerTag
+    }
+    setState(newState) 
+      
+  })
+  // console.log(userInfo)
+}
+
+  
+  userData();
+  console.log(currentUser)
 // Working on getting real data from MySQL but getting error uid not defined
   // const data = API.getTournaments(currentUser.uid).then(
   //   console.log("Data: " + data, "Current User: " + currentUser));
@@ -52,7 +80,7 @@ function MyHome() {
 
   {/* GAMER GREETING */}
 
-        <h3>Choose Your Battle, (gamerTag)</h3>
+  <h3>Choose Your Battle, {state.gamerTag}</h3>
 
           {/* MY TOURNAMENTS TABLE */}
 
@@ -68,7 +96,7 @@ function MyHome() {
                   </TableRow>
                 </TableHead>
 
-                <TableBody>
+                {/* <TableBody>
                   {TourneySeeds.map((row) => (
                     <TableRow key={row.tournName}>
                       <TableCell component="th" scope="row">
@@ -80,7 +108,7 @@ function MyHome() {
                       <TableCell>{row.tournStatus}</TableCell>
                     </TableRow>
                   ))}
-                </TableBody>
+                </TableBody> */}
               </Table>
             </TableContainer>
 

@@ -16,6 +16,16 @@ router.get("/api/user/:id/tournament",(req,res)=>{
       res.json(tournament);
     })
   })
+  router.get("/api/user/:id",(req,res)=>{
+    db.Users.findAll({
+      where:{
+        id: req.params.id
+      }
+    }).then((user)=>{
+      console.log(user)
+      res.json(user)
+    })
+  })
 
 
 
