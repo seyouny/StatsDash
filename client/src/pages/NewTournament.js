@@ -60,6 +60,7 @@ const NewTournament= () =>{
             gkills: parseInt(gkills.value),
             gdeaths: parseInt(gdeaths.value),
             damage: parseInt(damage.value),
+            revives:parseInt(revives.value),
             lastStandingKills: parseInt(lastStandingKills.value),
             damageToKills: parseInt(damageToKills.value),
             placement: parseInt(placement.value)
@@ -81,7 +82,7 @@ const NewTournament= () =>{
         var randomNum = Math.floor(Math.random()*1000)
         const tournamentCode = title.value+"#"+randomNum
         const tournament = {
-            name: title.value,
+            tName: title.value,
             games: parseInt(games.value),
             gulagKillsMultiplier: state.gkills,
             gulagDeathsMultiplier: state.gdeaths,
@@ -92,7 +93,7 @@ const NewTournament= () =>{
             revivesMultiplier: state.revives,
             clutchKillsMultiplier: state.lastStandingKills,
             damageToKillsMultiplier: state.damageToKills,
-            UserId: currentUser.uid,
+            UserId: currentUser.userId,
             status: "pending",
             joinCode: tournamentCode
         }
