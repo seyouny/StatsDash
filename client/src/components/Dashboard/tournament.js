@@ -5,6 +5,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
+import Chart from "../../pages/Chart"
 
 const useStyles = makeStyles({
   root: {
@@ -15,7 +16,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Middle() {
+export default function Middle(props) {
   const classes = useStyles();
 
   return (
@@ -36,11 +37,8 @@ export default function Middle() {
 
       </CardActions>
       <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
-        />
+        <Chart/>
+
       </CardActionArea>
     </Card>
   );
