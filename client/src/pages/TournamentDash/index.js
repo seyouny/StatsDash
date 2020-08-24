@@ -1,18 +1,18 @@
 import React from "react";
-import Top from "../../components/Dashboard/mainImage"
-import Middle from "../../components/Dashboard/tournament"
-import Bot from "../../components/Dashboard/playercard"
+import Top from "../../components/Dashboard/mainImage";
+import Middle from "../../components/Dashboard/tournament";
+import Bot from "../../components/Dashboard/playercard";
 import Box from '@material-ui/core/Box';
-import Navigation from "../../components/Navigation"
-import "./dashstyle.css"
+import Navigation from "../../components/Navigation";
+import "./dashstyle.css";
 import Grid from '@material-ui/core/Grid';
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
-import AddFriends from '../../components/AddFriends';
+import InviteFriend from '../../components/InviteFriend';
 
-import API from "../../utils/API"
-import Chart from "../../pages/Chart"
-// import Users from "../../../../models/user"
+import API from "../../utils/API";
+import Chart from "../../pages/Chart";
+// import Users from "../../../../models/user";
 
 
 export default function Dashboard(){
@@ -54,7 +54,7 @@ export default function Dashboard(){
         <Top></Top>
         <br></br>
         <hr></hr>
-        <AddFriends />
+        <InviteFriend />
         <Middle> 
             <Chart/>
         </Middle>
