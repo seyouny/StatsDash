@@ -6,6 +6,9 @@ import Box from '@material-ui/core/Box';
 import Navigation from "../../components/Navigation"
 import "./dashstyle.css"
 import Grid from '@material-ui/core/Grid';
+import Container from "@material-ui/core/Container";
+import Button from "@material-ui/core/Button";
+import AddFriends from '../../components/AddFriends';
 
 import API from "../../utils/API"
 import Chart from "../../pages/Chart"
@@ -51,6 +54,7 @@ export default function Dashboard(){
         <Top></Top>
         <br></br>
         <hr></hr>
+        <AddFriends />
         <Middle> 
             <Chart/>
         </Middle>
