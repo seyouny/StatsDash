@@ -51,6 +51,7 @@ const NewTournament= () =>{
         setState({ ...state ,showHide: !state.showHide })
         console.log(state);
     }
+
     const getSettings =(event)=>{
         event.preventDefault();
         const {kills, deaths, gkills, gdeaths, damage, damageToKills, revives, lastStandingKills, placement } = event.target.elements;
@@ -97,10 +98,10 @@ const NewTournament= () =>{
             status: "pending",
             joinCode: tournamentCode
         }
-        console.log(tournament)
-        API.createTournament(tournament)
-        alert("Your tournament, "+ tournament.name + " has been created, to have your friends join,"
-        +"send them this invite code: "+ tournamentCode);
+        API.createTournament(tournament);
+        console.log(tournament);
+        alert("Your tournament, "+ tournament.tName + " has been created, to have your friends join,"
+        +"send them this invite code: \n"+ tournamentCode);
     }
     // render() {
         
