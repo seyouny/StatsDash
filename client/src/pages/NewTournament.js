@@ -28,26 +28,11 @@ import Navigation from "../components/Navigation";
 
 // class NewTournament extends Component {
 const NewTournament= () =>{
-    // constructor(){
-        // super();
-    //     this.state = {
-    //         showHide : false,
-    //         kills: 50,
-    //         deaths: -25,
-    //         gkills: 75,
-    //         gdeaths:100,
-    //         revives:10,
-    //         damage:1,
-    //         lastStandingKills:10,
-    //         damageToKills:25,
-    //         placement:50,
-    //     }
-    //     this.getSettings = this.getSettings.bind(this);
-    //     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+  
 
-    // }
     const { currentUser } = useContext(AuthContext)
     //   const [show, setShow] = useState(false);
+    console.log(currentUser);
 
     const [state,setState] = useState({
         showHide : false,
