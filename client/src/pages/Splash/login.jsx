@@ -22,8 +22,6 @@ const Login = ({history},props)=>{
           .auth()
           .signInWithEmailAndPassword(email.value, password.value).then((user)=>{
               console.log(user);
-             
-
           });
         // history.push("/");
       } catch (error) {

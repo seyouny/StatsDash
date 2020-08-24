@@ -8,17 +8,25 @@ import FormControl from 'react-bootstrap/FormControl';
 import logo from '../Navigation/br-logo-horizontal.png';
 import { AuthContext } from "../../Auth";
 import { withRouter, Redirect } from "react-router";
+import { useHistory } from "react-router-dom";
 
 import app from "../../firebase";
 
 
 function Navigation() {
     const { currentUser } = useContext(AuthContext);
-    // function handleOnclick(event){
-    //     event.preventDefault();
-    //     app.auth().signOut();
-    //     return <Redirect to="/" />;
-    // }
+    const history = useHistory();
+    function handleOnclick(event){
+        event.preventDefault();
+        return app.auth().signOut().then(()=>{
+            console.log("HELLO")
+            console.log(currentUser);
+            history.push("/");
+        });
+
+     
+       
+    }
     return (
         
             <Navbar width={100} collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -37,7 +45,7 @@ function Navigation() {
 
                         <Nav.Link href="/new">New</Nav.Link>
                         {/* <Nav.Link href="/new/player">New Player</Nav.Link> */}
-                        <Nav.Link href= "/">Sign Out</Nav.Link>
+                        <Nav.Link onClick = {handleOnclick}>Sign Out</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 </div>
