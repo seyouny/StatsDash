@@ -7,8 +7,29 @@ import Navigation from "../../components/Navigation"
 import "./dashstyle.css"
 import Grid from '@material-ui/core/Grid';
 
+import API from "../../utils/API"
+import Chart from "../../pages/Chart"
+// import Users from "../../../../models/user"
+
 
 export default function Dashboard(){
+    // state = {
+    //     var tournamentID = 0
+    // }
+
+    // API.getAllUsers()
+    // .then(results => {
+        // console.log(results)
+        // if (tournamentID === results){
+        //     console.log(results)
+        // }
+
+    // })
+    // API.getUsers(user, (results) => {
+    //     players.push(results)
+    //     return players
+        
+    // })
     var players = [
         {"user":"bob",
          "player":1},
@@ -30,7 +51,9 @@ export default function Dashboard(){
         <Top></Top>
         <br></br>
         <hr></hr>
-        <Middle></Middle>
+        <Middle> 
+            <Chart/>
+        </Middle>
         <br></br>
         <hr></hr>
         <Grid container spacing={3}>
