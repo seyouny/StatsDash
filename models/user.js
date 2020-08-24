@@ -21,6 +21,9 @@ module.exports = function (sequelize, DataTypes) {
         Users.hasMany(models.Tournaments,{
             onDelete: "cascade"
         });
+        Users.belongsToMany(models.Users, 
+            {as: 'Friends', through: models.Friendship
+        });
     };
     return Users;
 };

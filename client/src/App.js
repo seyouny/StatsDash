@@ -25,7 +25,7 @@ function App() {
 
             {/* <Route exact path="/login" component={Splash}/> */}
             <Route exact path="/" component={Splash}/>
-            <Route exact path="/myhome" component={MyHome}/>
+            <PrivateRoute exact path="/myhome" component={MyHome}/>
             <Route exact path="/new/player" component={NewPlayer}/>
             <Route exact path="/newplayer" component={NewPlayer}/>
             <Route exact path="/new/tournament" component={NewTournament}/>
