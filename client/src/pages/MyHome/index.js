@@ -1,4 +1,4 @@
-//MY HOME
+//MY HOME PAGE
 
 import React, { Component, useContext,useState, useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';

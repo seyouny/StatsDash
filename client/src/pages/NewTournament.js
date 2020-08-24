@@ -1,3 +1,5 @@
+//CREATE NEW TOURNAMENT PAGE
+
 import React, { Component, useContext, useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
