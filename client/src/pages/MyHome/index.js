@@ -32,34 +32,11 @@ const useStyles = makeStyles({
 function MyHome() {
   const { currentUser } = useContext(AuthContext);
 
-  const [state,setState] = useState({
-        firstName:"",
-        lastName:"",
-        gamerTag:"",
-        userId:currentUser.uid,
-    })
   const classes = useStyles();
-  // if(!currentUser){
-  //   console.log("no user found")
-  // }
-  function userData(){
-
-    API.getUsers(currentUser.uid,(results)=>{
-    console.log(results.data[0]);
-    const newState ={
-      firstName: results.data[0].firstName,
-      userId: results.data[0].id,
-      lastName: results.data[0].lastName,
-      gamerTag: results.data[0].gamerTag
-    }
-    setState(newState) 
-      
-  })
-  // console.log(userInfo)
-}
+ 
 
   
-  userData();
+  // userData();
   console.log(currentUser)
 // Working on getting real data from MySQL but getting error uid not defined
   // const data = API.getTournaments(currentUser.uid).then(
@@ -80,7 +57,7 @@ function MyHome() {
 
   {/* GAMER GREETING */}
 
-  <h3>Choose Your Battle, {state.gamerTag}</h3>
+  <h3>Choose Your Battle, {currentUser.gamerTag}</h3>
 
           {/* MY TOURNAMENTS TABLE */}
 
