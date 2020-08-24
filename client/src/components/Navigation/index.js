@@ -19,7 +19,8 @@ function Navigation() {
     function handleOnclick(event){
         event.preventDefault();
         return app.auth().signOut().then(()=>{
-            console.log("HELLO")
+            alert("OK we're signing you out.");
+            console.log("HELLO");
             console.log(currentUser);
             history.push("/");
         });
