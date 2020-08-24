@@ -14,7 +14,8 @@ module.exports = function (sequelize, DataTypes) {
         damageToKillsMultiplier:DataTypes.INTEGER,
         startDate: DataTypes.DATE,
         endDate: DataTypes.DATE,
-        status: DataTypes.STRING
+        status: DataTypes.STRING,
+        joinCode: DataTypes.STRING
 
     });
 
