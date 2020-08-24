@@ -78,6 +78,8 @@ const NewTournament= () =>{
         console.log(title.value);
         console.log(state);
         console.log(currentUser);
+        var randomNum = Math.floor(Math.random()*1000)
+        const tournamentCode = title.value+"#"+randomNum
         const tournament = {
             name: title.value,
             games: parseInt(games.value),
@@ -91,10 +93,13 @@ const NewTournament= () =>{
             clutchKillsMultiplier: state.lastStandingKills,
             damageToKillsMultiplier: state.damageToKills,
             UserId: currentUser.uid,
-            status: "pending"
+            status: "pending",
+            joinCode: tournamentCode
         }
         console.log(tournament)
         API.createTournament(tournament)
+        alert("Your tournament, "+ tournament.name + " has been created, to have your friends join,"
+        +"send them this invite code: "+ tournamentCode);
     }
     // render() {
         
