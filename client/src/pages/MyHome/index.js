@@ -1,6 +1,6 @@
 //MY HOME
 
-import React, { Component, useContext,useState } from "react";
+import React, { Component, useContext,useState, useEffect } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -31,16 +31,30 @@ const useStyles = makeStyles({
 
 function MyHome() {
   const { currentUser } = useContext(AuthContext);
-
+  const [state, setState] = useState([])
   const classes = useStyles();
- 
-
   
-  // userData();
+  useEffect(()=>{
+    console.log(state)
+    if(state.length===0){
+      getTable()
+    }
+  })
+  function getTable(){
+    API.getTournaments(currentUser.userId,(results)=>{
+      console.log(results.data);
+      setState(results.data)
+      return results.data
+    })
+  }
+  function joinTournament(event){
+    event.preventDefault()
+    const {tournamentJoiner} = event.target.elements;
+    console.log(tournamentJoiner.value);
+
+  }
   console.log(currentUser)
 // Working on getting real data from MySQL but getting error uid not defined
-  // const data = API.getTournaments(currentUser.uid).then(
-  //   console.log("Data: " + data, "Current User: " + currentUser));
 
   return (
     <Box>
@@ -67,25 +81,30 @@ function MyHome() {
                 <TableHead>
                   <TableRow>
                     <TableCell>Tournament Name</TableCell>
+                    <TableCell>Games</TableCell>
                     <TableCell>Start Date</TableCell>
                     <TableCell>End Date</TableCell>
                     <TableCell>Status</TableCell>
                   </TableRow>
                 </TableHead>
 
-                {/* <TableBody>
-                  {TourneySeeds.map((row) => (
-                    <TableRow key={row.tournName}>
+                <TableBody>
+                  {state.map((row)=>{
+                      return(
+                      <TableRow key={row.tName}>
                       <TableCell component="th" scope="row">
-                        <a href="/tournament/dash">
-                        {row.tournName}</a>
+                        <a href={"api/tournament/"+row.id+"/dash"}>
+                        {row.tName}</a>
                       </TableCell>
+                      <TableCell>{row.games}</TableCell>
                       <TableCell>{row.startDate}</TableCell>
                       <TableCell>{row.endDate}</TableCell>
-                      <TableCell>{row.tournStatus}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody> */}
+                      <TableCell>{row.status}</TableCell>
+                      </TableRow>
+                      )
+                    })
+                  }
+                </TableBody>
               </Table>
             </TableContainer>
 
@@ -105,9 +124,10 @@ function MyHome() {
 
           <h5>Join a Tournament</h5>
 
-          <form className={classes.root} noValidate autoComplete="off">
+          <form  className={classes.root} noValidate autoComplete="off" onSubmit ={joinTournament} >
 
-          <TextField id="joinTournByCode" label="Enter Tournament Code" variant="outlined" />
+          <TextField id="joinTournByCode" name= "tournamentJoiner" label="Enter Tournament Code" variant="outlined" />
+          <Button variant="contained" color="primary" type ="submit">Join</Button>
         </form>
 
     </Grid>

@@ -22,10 +22,10 @@ export default {
     createTournament: function(tournament){
         axios.post("/api/tournament",tournament)
     },
-    getTournaments: function(userId){
+    getTournaments: function(userId,callback){
         axios.get("/api/user/"+userId+"/tournament").then((results)=>{
             console.log(results);
-            return results
+            return callback(results);
         })
     },
     getUsers: function(userId,callback){
