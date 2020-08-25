@@ -25,15 +25,15 @@ function InviteFriend () {
     };
   
     return (
-      <div className="addFriendsDiv">
-        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-          Add A Player
+      <div className="adminPanel">
+        <Button id="inviteFriendBtn" variant="outlined" color="primary" onClick={handleClickOpen}>
+          Invite A Friend
         </Button>
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-          <DialogTitle id="form-dialog-title">Add A Player</DialogTitle>
+          <DialogTitle id="form-dialog-title">Invite A Friend</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              To add a player to this tournament, enter their name and email here.
+              To invite a friend to join Bragging Rights and participate in a tournament, enter their name and email here.
             </DialogContentText>
             <TextField
             //   autoFocus
