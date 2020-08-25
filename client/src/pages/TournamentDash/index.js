@@ -8,10 +8,11 @@ import "./dashstyle.css";
 import Grid from '@material-ui/core/Grid';
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
-import InviteFriend from '../../components/InviteFriend';
 
 import API from "../../utils/API";
 import Chart from "../../pages/Chart";
+import AdminPanel from '../../components/AdminPanel';
+
 // import Users from "../../../../models/user";
 
 
@@ -54,7 +55,7 @@ export default function Dashboard(){
         <Top></Top>
         <br></br>
         <hr></hr>
-        <InviteFriend />
+        <AdminPanel />
         <Middle> 
             <Chart/>
         </Middle>
