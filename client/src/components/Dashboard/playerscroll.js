@@ -6,6 +6,7 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import Bot from "./playercard";
+import performance from "../../utils/performanceSeeds.json";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -29,7 +30,17 @@ const useStyles = makeStyles((theme) => ({
       'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
 }));
-
+var players = []
+performance.matches.map((stats)=>{
+    var play = 
+    {
+        kills:stats.playerStats.kills,
+        headshots:stats.playerStats.headshots,
+        assists:stats.playerStats.assists,
+        rank:stats.playerStats.rank
+    }
+    players.push(play)
+})
 /**
  * The example data is structured as follows:
  *
@@ -47,40 +58,40 @@ const useStyles = makeStyles((theme) => ({
  *   },
  * ];
  */
-var players = [
-    {"user":"bob",
-     "player":1},
-     {"user":"bob",
-     "player":1},
-     {"user":"bob",
-     "player":1},
-     {"user":"bob",
-     "player":1},
-     {"user":"bob",
-     "player":1},
-     {"user":"bob",
-     "player":1},
-     {"user":"bob",
-     "player":1},
-     {"user":"bob",
-     "player":1},
-     {"user":"bob",
-     "player":1},
-     {"user":"bob",
-     "player":1},
-     {"user":"bob",
-     "player":1},
-     {"user":"bob",
-     "player":1},
-     {"user":"bob",
-     "player":1},
-     {"user":"bob",
-     "player":1},
-     {"user":"bob",
-     "player":1},
-     {"user":"bob",
-     "player":1}
- ]
+// var players = [
+//     {"user":"bob",
+//      "player":1},
+//      {"user":"bob",
+//      "player":1},
+//      {"user":"bob",
+//      "player":1},
+//      {"user":"bob",
+//      "player":1},
+//      {"user":"bob",
+//      "player":1},
+//      {"user":"bob",
+//      "player":1},
+//      {"user":"bob",
+//      "player":1},
+//      {"user":"bob",
+//      "player":1},
+//      {"user":"bob",
+//      "player":1},
+//      {"user":"bob",
+//      "player":1},
+//      {"user":"bob",
+//      "player":1},
+//      {"user":"bob",
+//      "player":1},
+//      {"user":"bob",
+//      "player":1},
+//      {"user":"bob",
+//      "player":1},
+//      {"user":"bob",
+//      "player":1},
+//      {"user":"bob",
+//      "player":1}
+//  ]
 export default function SingleLineGridList() {
   const classes = useStyles();
 
@@ -89,8 +100,9 @@ export default function SingleLineGridList() {
       <GridList className={classes.gridList} cols={5}>
         {players.map((play)=>{
             return <Bot
-            user = {play.user}
-            title = {play.player}
+            headshots = {play.headshots}
+            rank = {play.rank}
+            assists = {play.assists}
             />
         })}
       </GridList>
