@@ -97,6 +97,7 @@ const NewTournament= () =>{
             clutchKillsMultiplier: state.lastStandingKills,
             damageToKillsMultiplier: state.damageToKills,
             status: "pending",
+            adminId: currentUser.userId,
             joinCode: tournamentCode
         }
         API.createTournament(tournament, currentUser.userId);

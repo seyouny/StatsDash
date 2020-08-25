@@ -22,6 +22,15 @@ router.get("/api/user/:id/tournament",(req,res)=>{
       res.json(user)
     })
   })
+  router.get("/api/tournament/:id", (req,res)=>{
+    db.Tournaments.findOne({
+      where:{id:req.params.id},
+      include: [db.Users]
+    }).then((results)=>{
+      console.log(results);
+      res.json(results);
+    })
+  })
 
 
 
