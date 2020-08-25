@@ -39,18 +39,16 @@ export default function Bot(props) {
     <Grid>
     <Card className={classes.root}>
       <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            R
-          </Avatar>
-        }
 
-        title={props.user}
-        subheader= {"Player: "+ props.player}
+        title="Bob"
+        subheader = " "
+        subheader={"Rank: " + props.rank}
+
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-        Stats Here
+        <p>{"Assists: "+ props.assists + "\n"}</p>
+       <p>{"Headshots: "+props.headshots + "\n"}</p>   
         </Typography>
       </CardContent>
     </Card>
