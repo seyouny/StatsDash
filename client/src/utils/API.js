@@ -16,18 +16,29 @@ export default {
             return response.matches;
         });
     },
+
     createUser: function(user){
         axios.post("/api/user",user);
     },
+
     createTournament: function(tournament){
         axios.post("/api/tournament",tournament)
     },
+
+    //rough start to put/change added by Jen - not tested, may not work as is.  Needed for start tournament function to set start date in UTC.
+    updateTournament: function(tournament) {
+        axios.put("/api/tournament/:id",tournament.Id)
+    },
+
+
     getTournaments: function(userId,callback){
         axios.get("/api/user/"+userId+"/tournament").then((results)=>{
             console.log(results);
             return callback(results);
         })
     },
+
+
     getUsers: function(userId,callback){
         axios.get("/api/user/"+userId).then((results)=>{
             console.log(results);
