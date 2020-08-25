@@ -8,7 +8,7 @@ import "./dashstyle.css";
 import Grid from '@material-ui/core/Grid';
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
-
+import PlayerList from "../../components/Dashboard/playerscroll";
 import API from "../../utils/API";
 import Chart from "../../pages/Chart";
 import AdminPanel from '../../components/AdminPanel';
@@ -61,15 +61,10 @@ export default function Dashboard(){
         </Middle>
         <br></br>
         <hr></hr>
-        <Grid container spacing={3}>
-        {players.map((play)=>{
-            return <Bot
-            user = {play.user}
-            title = {play.player}
-            />
-        })}
+        {/* <Grid container spacing={3}> */}
+        <PlayerList/>
 
-        </Grid>
+        {/* </Grid> */}
         </Box>
         </div>
     )
