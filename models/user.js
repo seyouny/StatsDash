@@ -18,9 +18,7 @@ module.exports = function (sequelize, DataTypes) {
         Users.hasMany(models.Performances, {
             onDelete: "cascade"
         });
-        Users.hasMany(models.Tournaments,{
-            onDelete: "cascade"
-        });
+        Users.belongsToMany(models.Tournaments,{ through: models.TournamentList });
         Users.belongsToMany(models.Users, 
             {as: 'Friends', through: models.Friendship
         });

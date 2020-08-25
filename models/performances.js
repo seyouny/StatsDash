@@ -10,7 +10,8 @@ module.exports = function (sequelize, DataTypes) {
         revives: DataTypes.INTEGER,
         clutchKills: DataTypes.INTEGER,
         damageToKills:DataTypes.INTEGER,
-        overallScore: DataTypes.INTEGER
+        overallScore: DataTypes.INTEGER,
+        startMatch: DataTypes.STRING
 
     });
 

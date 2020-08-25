@@ -11,16 +11,16 @@ export default {
             }
         }
         
-        axios.get(settings).then(function (response) {
-            console.log(response);
-            return response.matches;
+        axios.get(settings.url,settings).then(function (response) {
+            console.log(response.data.matches);
+            return response.data.matches;
         });
     },
     createUser: function(user){
         axios.post("/api/user",user);
     },
-    createTournament: function(tournament){
-        axios.post("/api/tournament",tournament)
+    createTournament: function(tournament,id){
+        axios.post("/api/tournament/"+id,tournament)
     },
     getTournaments: function(userId,callback){
         axios.get("/api/user/"+userId+"/tournament").then((results)=>{

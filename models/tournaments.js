@@ -23,7 +23,7 @@ module.exports = function (sequelize, DataTypes) {
         Tournaments.hasMany(models.Performances, {
             onDelete: "cascade"
         });
-        
+        Tournaments.belongsToMany(models.Users,{ through: models.TournamentList })
     };
     return Tournaments;
 };
