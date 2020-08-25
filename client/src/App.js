@@ -12,7 +12,7 @@ import "./App.scss";
 import Splash from "./pages/Splash";
 import MyHome from "./pages/MyHome";
 import NewChoose from './pages/NewChoose';
-import TDashboard1 from './pages/TournamentDash';
+import Dashboard from './pages/TournamentDash';
 import Chart from "./pages/Chart";
 
 function App() {
@@ -30,7 +30,8 @@ function App() {
             <Route exact path="/newplayer" component={NewPlayer}/>
             <Route exact path="/new/tournament" component={NewTournament}/>
             <Route exact path="/new" component={NewChoose}/>
-            <Route exact path="/tournament/:tid/dashboard/:userid" component={TDashboard1}/>
+            <Route exact path="/dashboard" component={Dashboard}/>
+            <Route exact path="/tournament/:tid/dashboard/:userid" component={Dashboard}/>
             <Route exact path="/chart" component={Chart} />
 
           </Switch>

@@ -13,22 +13,22 @@ export const AuthProvider = ({children}) => {
                 alert("Hello! We don't find you signed in. Please sign in or sign up as a new player.")
             }
 
-            // if(user){
-            //     console.log(user)
-            //     var id =user.uid
-            //     API.getUsers(id,(results)=>{
-            //         const newState ={
-            //             firstName: results.data[0].firstName,
-            //             userId: results.data[0].id,
-            //             lastName: results.data[0].lastName,
-            //             gamerTag: results.data[0].gamerTag,
-            //             platform: results.data[0].platform,
-            //             email: results.data[0].email
+            if(user){
+                console.log(user)
+                var id =user.uid
+                API.getUsers(id,(results)=>{
+                    const newState ={
+                        firstName: results.data[0].firstName,
+                        userId: results.data[0].id,
+                        lastName: results.data[0].lastName,
+                        gamerTag: results.data[0].gamerTag,
+                        platform: results.data[0].platform,
+                        email: results.data[0].email
 
-            //         }
-            //         setCurrentUser(newState);
-            //     })
-            // }
+                    }
+                    setCurrentUser(newState);
+                })
+            }
         });
     },[]);
     return(<AuthContext.Provider 
