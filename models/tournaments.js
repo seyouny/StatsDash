@@ -15,7 +15,8 @@ module.exports = function (sequelize, DataTypes) {
         startDate: DataTypes.DATE,
         endDate: DataTypes.DATE,
         status: DataTypes.STRING,
-        joinCode: DataTypes.STRING
+        joinCode: DataTypes.STRING,
+        adminId: DataTypes.STRING
 
     });
 

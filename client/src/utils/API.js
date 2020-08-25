@@ -38,7 +38,11 @@ export default {
             return callback(results);
         })
     },
-
+    getOneTournament:function(id,callback){
+        axios.get("/api/tournament/"+id).then((results)=>{
+            return callback(results);
+        })
+    },
 
     getUsers: function(userId,callback){
         axios.get("/api/user/"+userId).then((results)=>{

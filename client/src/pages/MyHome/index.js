@@ -93,7 +93,7 @@ function MyHome() {
                       return(
                       <TableRow key={row.tName}>
                       <TableCell component="th" scope="row">
-                        <a href={"api/tournament/"+row.id+"/dash"}>
+                        <a href={"tournament/"+row.id+"/dashboard/"+currentUser.userId}>
                         {row.tName}</a>
                       </TableCell>
                       <TableCell>{row.games}</TableCell>

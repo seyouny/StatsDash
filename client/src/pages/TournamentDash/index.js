@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component} from "react";
 import Top from "../../components/Dashboard/mainImage";
 import Middle from "../../components/Dashboard/tournament";
 import Bot from "../../components/Dashboard/playercard";
@@ -12,14 +12,20 @@ import PlayerList from "../../components/Dashboard/playerscroll";
 import API from "../../utils/API";
 import Chart from "../../pages/Chart";
 import AdminPanel from '../../components/AdminPanel';
+import { AuthContext } from "../../Auth";
+
 
 // import Users from "../../../../models/user";
 
 
-export default function Dashboard(){
-    // state = {
-    //     var tournamentID = 0
-    // }
+// export default function Dashboard(){
+class Dashboard extends Component {
+    // const { currentUser } = 
+    state = {
+        tournamentData:{},
+        currentUser:{},
+        admin:false
+    }
 
     // API.getAllUsers()
     // .then(results => {
@@ -34,23 +40,54 @@ export default function Dashboard(){
     //     return players
         
     // })
-    var players = [
-        {"user":"bob",
-         "player":1},
-         {"user":"bob",
-         "player":1},
-         {"user":"bob",
-         "player":1},
-         {"user":"bob",
-         "player":1},
-         {"user":"bob",
-         "player":1},
-     ]
+    async componentDidMount() {
+        if (this.props.match.params) {
+            try {
+                var userId =this.props.match.params.userid
+                var tId = this.props.match.params.tid
+                API.getOneTournament(tId, (results)=>{
+                    console.log("TOURNAMENT FOUND");
+                 
+                    console.log(results);
+                    const tournamentData = {
+                        adminId: results.data.adminId,
+                        tName:results.data.tName,
+                        games:results.data.games,
+                        users:results.data.Users
+                    }
+                    console.log("TOURNAMENT DATA:");
+                    console.log(tournamentData);
+                    this.setState({...this.state, tournamentData:tournamentData});
+                    console.log(this.state);
+                })
+                console.log(this.state)
+                API.getUsers(userId,(results)=>{
+                    console.log("user found");
+                    console.log(results);
+                    const newState ={
+                        firstName: results.data[0].firstName,
+                        userId: results.data[0].id,
+                        lastName: results.data[0].lastName,
+                        gamerTag: results.data[0].gamerTag,
+                        platform: results.data[0].platform,
+                        email: results.data[0].email
+                    }
+                    console.log("NEW STATE:")
+                    console.log(newState)
+                    this.setState({...this.state, currentUser:newState});
+                    console.log(this.state);
+                })
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    }
 
-    return(
+
+    render(){
+        return(
         <div>
         <Navigation/>
-
         <Box className = "body">
         <Top></Top>
         <br></br>
@@ -67,5 +104,8 @@ export default function Dashboard(){
         {/* </Grid> */}
         </Box>
         </div>
-    )
-} 
+        )
+    }
+}
+
+export default Dashboard

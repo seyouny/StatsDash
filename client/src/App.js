@@ -30,7 +30,7 @@ function App() {
             <Route exact path="/newplayer" component={NewPlayer}/>
             <Route exact path="/new/tournament" component={NewTournament}/>
             <Route exact path="/new" component={NewChoose}/>
-            <Route exact path="/dashboard" component={TDashboard1}/>
+            <Route exact path="/tournament/:tid/dashboard/:userid" component={TDashboard1}/>
             <Route exact path="/chart" component={Chart} />
 
           </Switch>
