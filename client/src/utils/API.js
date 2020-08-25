@@ -11,9 +11,9 @@ export default {
             }
         }
         
-        axios.get(settings).then(function (response) {
-            console.log(response);
-            return response.matches;
+        axios.get(settings.url,settings).then(function (response) {
+            console.log(response.data.matches);
+            return response.data.matches;
         });
     },
 
@@ -21,8 +21,9 @@ export default {
         axios.post("/api/user",user);
     },
 
-    createTournament: function(tournament){
-        axios.post("/api/tournament",tournament)
+    createTournament: function(tournament,id){
+        axios.post("/api/tournament/"+id,tournament)
+
     },
 
     //rough start to put/change added by Jen - not tested, may not work as is.  Needed for start tournament function to set start date in UTC.

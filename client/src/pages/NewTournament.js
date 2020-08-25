@@ -96,11 +96,10 @@ const NewTournament= () =>{
             revivesMultiplier: state.revives,
             clutchKillsMultiplier: state.lastStandingKills,
             damageToKillsMultiplier: state.damageToKills,
-            UserId: currentUser.userId,
             status: "pending",
             joinCode: tournamentCode
         }
-        API.createTournament(tournament);
+        API.createTournament(tournament, currentUser.userId);
         console.log(tournament);
         alert("Your tournament, "+ tournament.tName + " has been created, to have your friends join,"
         +"send them this invite code: \n"+ tournamentCode);

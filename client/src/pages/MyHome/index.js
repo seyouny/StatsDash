@@ -42,9 +42,9 @@ function MyHome() {
   })
   function getTable(){
     API.getTournaments(currentUser.userId,(results)=>{
-      console.log(results.data);
-      setState(results.data)
-      return results.data
+      console.log(results.data.Tournaments);
+      setState(results.data.Tournaments)
+      return results.data.Tournaments
     })
   }
   function joinTournament(event){
