@@ -2,6 +2,8 @@
 
 import React from 'react';
 import Button from '@material-ui/core/Button';
+import Styles from './adminpanelstyle.css';
+
 
 
 function StartTournButton () {
@@ -23,7 +25,7 @@ function StartTournButton () {
   
     return (
       <div className="adminPanel">
-        <Button id="startTournBtn" variant="outlined" color="primary" onClick={startTournament}>
+        <Button id="startTournBtn" className="adminBtn" variant="outlined" color="secondary" onClick={startTournament}>
           Start Tournament
         </Button>
       </div>

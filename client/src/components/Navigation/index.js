@@ -37,6 +37,9 @@ function Navigation() {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link href="/myhome">My Home</Nav.Link>
+                        <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+                        <Nav.Link href="/newplayer">New Player</Nav.Link>
+                        <Nav.Link href="/newplayer">New Tournament</Nav.Link>
                     </Nav>
                     <Nav>
                         {/* <Form inline>
@@ -44,7 +47,7 @@ function Navigation() {
                             <Button variant="outline-primary">Search</Button>
                         </Form> */}
 
-                        <Nav.Link href="/new">New</Nav.Link>
+                        {/* <Nav.Link href="/new">New</Nav.Link> */}
                         {/* <Nav.Link href="/new/player">New Player</Nav.Link> */}
                         <Nav.Link onClick = {handleOnclick}>Sign Out</Nav.Link>
                     </Nav>

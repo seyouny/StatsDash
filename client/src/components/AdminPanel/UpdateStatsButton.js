@@ -3,6 +3,7 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import API from '../../utils/API';
+import Styles from './adminpanelstyle.css';
 
 
 function UpdateStatsButton () {
@@ -28,7 +29,7 @@ function UpdateStatsButton () {
   
     return (
       <div className="adminPanel">
-        <Button id="updateStatsBtn" variant="outlined" color="primary" onClick={UpdateStats}>
+        <Button id="updateStatsBtn" variant="outlined" color="secondary" onClick={UpdateStats}>
           Update Stats
         </Button>
       </div>

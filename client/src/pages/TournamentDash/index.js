@@ -45,6 +45,7 @@ class Dashboard extends Component {
             try {
                 var userId =this.props.match.params.userid
                 var tId = this.props.match.params.tid
+
                 API.getOneTournament(tId, (results)=>{
                     console.log("TOURNAMENT FOUND");
                  
@@ -89,6 +90,9 @@ class Dashboard extends Component {
         <div>
         <Navigation/>
         <Box className = "body">
+        <Container>
+        <h1 className="tournamentNameHead">{this.state.tournamentData.tName}</h1>
+        </Container>
         <Top></Top>
         <br></br>
         <hr></hr>

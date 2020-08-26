@@ -27,23 +27,23 @@
   font-family: "Open Sans", sans-serif;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
+// .App-logo {
+//   animation: App-logo-spin infinite 20s linear;
+//   height: 40vmin;
+//   pointer-events: none;
+// }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  background-image: url(/components/NewChoose/smokey-background.svg);
-}
+// .App-header {
+//   background-color: #282c34;
+//   min-height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   font-size: calc(10px + 2vmin);
+//   color: white;
+//   background-image: url(/components/NewChoose/smokey-background.svg);
+// }
 
 .header{
   margin-top: 20px;
@@ -136,6 +136,7 @@
     }
   }
 }
+
 #login-button{
   color: white;
 }
@@ -159,6 +160,12 @@
 
 // ====JENS STYLE SECTION====
 
+.adminBtn {
+  margin: 1em;
+  padding: 2em;
+  background-color: linear-gradient(45deg, #FE6B8B 30% #FF8E53 90%);
+}
+
 .newChoose {
   width: auto;
   height: fit-content;
@@ -166,10 +173,6 @@
   position: relative;
   background-color: rgba(38, 50, 56, .5);
   color: white;
-}
-
-.Container {
-  border: #3498db;
 }
 
 .myHomeCont {
