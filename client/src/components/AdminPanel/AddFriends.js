@@ -8,6 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Paper from '@material-ui/core/Paper';
 import Dialog from '@material-ui/core/Dialog';
@@ -20,6 +21,9 @@ import friends from '../../utils/friendSeeds';
 import Styles from './adminpanelstyle.css';
 import { keys } from '@material-ui/core/styles/createBreakpoints';
 
+=======
+import Paper from '@material-ui/core/Paper';
+>>>>>>> Stashed changes
 =======
 import Paper from '@material-ui/core/Paper';
 >>>>>>> Stashed changes
@@ -47,6 +51,7 @@ function intersection(a, b) {
 }
 
 export default function AddFriends() {
+<<<<<<< Updated upstream
 
     const [open, setOpen] = React.useState(false);
 
@@ -102,6 +107,17 @@ export default function AddFriends() {
     const rightChecked = intersection(checked, right);
 
     const handleToggle = (value) => () => {
+=======
+  const classes = useStyles();
+  const [checked, setChecked] = React.useState([]);
+  const [left, setLeft] = React.useState([0, 1, 2, 3]);
+  const [right, setRight] = React.useState([4, 5, 6, 7]);
+
+  const leftChecked = intersection(checked, left);
+  const rightChecked = intersection(checked, right);
+
+  const handleToggle = (value) => () => {
+>>>>>>> Stashed changes
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
 
@@ -112,6 +128,7 @@ export default function AddFriends() {
     }
 
     setChecked(newChecked);
+<<<<<<< Updated upstream
     };
 
     const handleAllRight = () => {
@@ -146,6 +163,40 @@ export default function AddFriends() {
           
           return (
             <ListItem key={value.userId} role="listitem" button onClick={handleToggle(value)}>
+=======
+  };
+
+  const handleAllRight = () => {
+    setRight(right.concat(left));
+    setLeft([]);
+  };
+
+  const handleCheckedRight = () => {
+    setRight(right.concat(leftChecked));
+    setLeft(not(left, leftChecked));
+    setChecked(not(checked, leftChecked));
+  };
+
+  const handleCheckedLeft = () => {
+    setLeft(left.concat(rightChecked));
+    setRight(not(right, rightChecked));
+    setChecked(not(checked, rightChecked));
+  };
+
+  const handleAllLeft = () => {
+    setLeft(left.concat(right));
+    setRight([]);
+  };
+
+  const customList = (items) => (
+    <Paper className={classes.paper}>
+      <List dense component="div" role="list">
+        {items.map((value) => {
+          const labelId = `transfer-list-item-${value}-label`;
+
+          return (
+            <ListItem key={value} role="listitem" button onClick={handleToggle(value)}>
+>>>>>>> Stashed changes
               <ListItemIcon>
                 <Checkbox
                   checked={checked.indexOf(value) !== -1}
@@ -154,8 +205,12 @@ export default function AddFriends() {
                   inputProps={{ 'aria-labelledby': labelId }}
                 />
               </ListItemIcon>
+<<<<<<< Updated upstream
               <ListItemText id={labelId} primary={`${value.firstName}`} />
               {/* <ListItemText id={labelId} primary={users} /> */}
+=======
+              <ListItemText id={labelId} primary={`Gamer ${value + 1}`} />
+>>>>>>> Stashed changes
             </ListItem>
           );
         })}
@@ -165,6 +220,7 @@ export default function AddFriends() {
   );
 
   return (
+<<<<<<< Updated upstream
     <div className="adminPanel">
 
         <Button id="inviteFriendBtn" variant="outlined" className="adminBtn" color="secondary" onClick={handleClickOpen}>
@@ -242,5 +298,55 @@ export default function AddFriends() {
           </DialogActions>
         </Dialog>
     </div>
+=======
+    <Grid container spacing={2} justify="center" alignItems="center" className={classes.root}>
+      <Grid item>{customList(left)}</Grid>
+      <Grid item>
+        <Grid container direction="column" alignItems="center">
+          <Button
+            variant="outlined"
+            size="small"
+            className={classes.button}
+            onClick={handleAllRight}
+            disabled={left.length === 0}
+            aria-label="move all right"
+          >
+            ≫
+          </Button>
+          <Button
+            variant="outlined"
+            size="small"
+            className={classes.button}
+            onClick={handleCheckedRight}
+            disabled={leftChecked.length === 0}
+            aria-label="move selected right"
+          >
+            &gt;
+          </Button>
+          <Button
+            variant="outlined"
+            size="small"
+            className={classes.button}
+            onClick={handleCheckedLeft}
+            disabled={rightChecked.length === 0}
+            aria-label="move selected left"
+          >
+            &lt;
+          </Button>
+          <Button
+            variant="outlined"
+            size="small"
+            className={classes.button}
+            onClick={handleAllLeft}
+            disabled={right.length === 0}
+            aria-label="move all left"
+          >
+            ≪
+          </Button>
+        </Grid>
+      </Grid>
+      <Grid item>{customList(right)}</Grid>
+    </Grid>
+>>>>>>> Stashed changes
   );
 }

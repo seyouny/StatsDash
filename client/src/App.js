@@ -13,8 +13,13 @@ import "./App.scss";
 import Splash from "./pages/Splash";
 import MyHome from "./pages/MyHome";
 import NewChoose from './pages/NewChoose';
+<<<<<<< Updated upstream
 import Dashboard from './pages/TournamentDash';
 import SampleDash from './pages/jensample';
+=======
+import TournamentDash from './pages/TournamentDash';
+import SampleDash from './pages/TDashboard';
+>>>>>>> Stashed changes
 import Chart from "./pages/Chart";
 import { blueGrey, deepOrange } from '@material-ui/core/colors';
 
@@ -41,6 +46,7 @@ function App() {
           {/* <Navigation /> */}
           <Switch>
 
+<<<<<<< Updated upstream
               {/* <Route exact path="/login" component={Splash}/> */}
               <Route exact path="/" component={Splash}/>
               <PrivateRoute exact path="/myhome" component={MyHome}/>
@@ -52,6 +58,19 @@ function App() {
               <Route exact path="/tournament/:tid/dashboard/:userid" component={Dashboard}/>
               <Route exact path="/sampledash" component={SampleDash}/>
               <Route exact path="/chart" component={Chart} />
+=======
+            {/* <Route exact path="/login" component={Splash}/> */}
+            <Route exact path="/" component={Splash}/>
+            <PrivateRoute exact path="/myhome" component={MyHome}/>
+            <Route exact path="/new/player" component={NewPlayer}/>
+            <Route exact path="/newplayer" component={NewPlayer}/>
+            <Route exact path="/new/tournament" component={NewTournament}/>
+            <Route exact path="/new" component={NewChoose}/>
+            <Route exact path="/tournament/:tid/dashboard/:userid" component={TournamentDash}/>
+            <Route exact path="/dashboard" component={TournamentDash}/>
+            <Route exact path="/sampledash" component={SampleDash}/>
+            <Route exact path="/chart" component={Chart} />
+>>>>>>> Stashed changes
 
             </Switch>
       
