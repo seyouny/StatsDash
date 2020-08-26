@@ -7,6 +7,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
+<<<<<<< Updated upstream
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Paper from '@material-ui/core/Paper';
 import Dialog from '@material-ui/core/Dialog';
@@ -19,6 +20,9 @@ import friends from '../../utils/friendSeeds';
 import Styles from './adminpanelstyle.css';
 import { keys } from '@material-ui/core/styles/createBreakpoints';
 
+=======
+import Paper from '@material-ui/core/Paper';
+>>>>>>> Stashed changes
 
 const useStyles = makeStyles((theme) => ({
   root: {

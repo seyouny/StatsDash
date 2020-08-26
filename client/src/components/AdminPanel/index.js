@@ -16,7 +16,10 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+<<<<<<< Updated upstream
 import Styles from './adminpanelstyle.css';
+=======
+>>>>>>> Stashed changes
 import API from '../../utils/API';
 import { purple } from '@material-ui/core/colors';
 
@@ -30,6 +33,16 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+      width: '100%',
+    },
+    heading: {
+      fontSize: theme.typography.pxToRem(15),
+      fontWeight: theme.typography.fontWeightRegular,
+    },
+  }));
 
 export default function AdminPanel () {
     const classes = useStyles();
