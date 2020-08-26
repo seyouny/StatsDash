@@ -1,4 +1,4 @@
-//CREATE NEW TOURNAMENT PAGE
+//CREATE NEW TOURNAMENT PAGE - BOOSTRAP-BASED
 
 import React, { Component, useContext, useState } from "react";
 import Container from 'react-bootstrap/Container';
@@ -102,6 +102,7 @@ const NewTournament= () =>{
         }
         API.createTournament(tournament, currentUser.userId);
         console.log(tournament);
+
         alert("Your tournament, "+ tournament.tName + " has been created, to have your friends join,"
         +"send them this invite code: \n"+ tournamentCode);
     }

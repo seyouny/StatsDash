@@ -8,6 +8,8 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Styles from './adminpanelstyle.css';
+
 
 
 
@@ -19,14 +21,19 @@ function InviteFriend () {
       setOpen(true);
     };
   
+    //Handles cancel/close modal without action  
     const handleClose = () => {
       setOpen(false);
-      alert("(Name) has been added to this tournament as a player, but we'll need their Gamer Tag to include their performance stats.  They will now receive an invitation to update us with their Gamer Tag.")
     };
-  
+
+    //Handles OK/invite  
+    const handleOK = (Name) => {
+      alert(Name + "has been added to this tournament as a player, but we'll need their Gamer Tag to include their performance stats.  They will now receive an invitation to update us with their Gamer Tag.")
+    }
+
     return (
       <div className="adminPanel">
-        <Button id="inviteFriendBtn" variant="outlined" color="primary" onClick={handleClickOpen}>
+        <Button id="inviteFriendBtn" className="adminBtn" variant="outlined" color="secondary" onClick={handleClickOpen}>
           Invite A Friend
         </Button>
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
@@ -54,11 +61,11 @@ function InviteFriend () {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose} color="primary">
+            <Button variant="outlined" color="secondary" className="adminBtn" onClick={handleClose}>
               Cancel
             </Button>
-            <Button id="addFriendBtn" type="submit" onClick={handleClose} color="primary">
-              Add
+            <Button id="addFriendBtn" color="secondary" className="adminBtn" variant="outlined" type="submit" onClick={handleOK}>
+              Invite
             </Button>
           </DialogActions>
         </Dialog>

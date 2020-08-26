@@ -13,7 +13,7 @@ import { AuthContext } from "../../Auth";
 import API from "../../utils/API";
 import banner from "../../components/NewChoose/soldier1.jpg";
 import { Card } from "@material-ui/core";
-import Styles from "../TDashboard/style.css";
+import Styles from "../jensample/style.css";
 
 class TDashboard1 extends React.Component {
     render() {
