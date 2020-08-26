@@ -76,17 +76,10 @@ export default function AdminPanel () {
                 <AccordionDetails>
 
                     <Container>
-<<<<<<< Updated upstream
                         <p>These buttons need work on back-end functions. Styling should be done via Materialize UI theme - see Jen for details.</p>
                             <ButtonGroup color="primary" aria-label="admin button group">
-                                <InviteFriend className={classes.button}/>
-                                <StartTournButton className={classes.button}/>
-=======
-                        <p>These buttons need more styling and work on back-end functions</p>
-                            <ButtonGroup color="primary" aria-label="outlined primary button group">
                                 <InviteFriend />
                                 <StartTournButton />
->>>>>>> Stashed changes
                                 <StopTournButton />
                                 <UpdateStatsButton />
                                 <AddFriends />
