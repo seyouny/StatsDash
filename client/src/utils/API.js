@@ -1,17 +1,27 @@
 import axios from "axios";
 export default {
-   getMatches: function (userName,platform){
+   getMatches: async function (userName,platform){
+       var formattedPlat = ""
+       if(platform==="Playstation - (psn)"){
+            formattedPlat = "psn";
+       }
+       if(platform=== "Steam - (steam)"){
+        formattedPlat = "steam";
+       }
+       if(platform=== "XBox - (xbl)"){
+        formattedPlat = "xbl";
+       }
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://call-of-duty-modern-warfare.p.rapidapi.com/warzone-matches/"+userName+"/"+platform,
+            "url": "https://call-of-duty-modern-warfare.p.rapidapi.com/warzone-matches/"+userName+"/"+formattedPlat,
             "headers": {
                 "x-rapidapi-host": "call-of-duty-modern-warfare.p.rapidapi.com",
                 "x-rapidapi-key": "401c08f482msha8f3fc31e872911p10a56cjsn9db42713d2d4"
             }
         }
         
-        axios.get(settings.url,settings).then(function (response) {
+        return axios.get(settings.url,settings).then(function (response) {
             console.log(response.data.matches);
             return response.data.matches;
         });
@@ -27,8 +37,8 @@ export default {
     },
 
     //rough start to put/change added by Jen - not tested, may not work as is.  Needed for start tournament function to set start date in UTC.
-    updateTournament: function(tournament) {
-        axios.put("/api/tournament/:id",tournament.Id)
+    startTournament: function(tournament) {
+        axios.put("/api/tournament/"+tournament.id,tournament)
     },
 
 

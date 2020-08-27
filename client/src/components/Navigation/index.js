@@ -36,7 +36,10 @@ function Navigation() {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link style={{color: "white"}}href="/myhome">My Home</Nav.Link>
+                        <Nav.Link href="/myhome">My Home</Nav.Link>
+                        <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+                        <Nav.Link href="/newplayer">New Player</Nav.Link>
+                        <Nav.Link href="/newtournament">New Tournament</Nav.Link>
                     </Nav>
                     <Nav>
                         {/* <Form inline>

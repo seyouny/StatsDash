@@ -29,7 +29,7 @@ function UpdateStatsButton () {
   
     return (
       <div className="adminPanel">
-        <Button id="updateStatsBtn" variant="outlined" color="secondary" onClick={UpdateStats}>
+        <Button id="updateStatsBtn" variant="contained" color="secondary" onClick={UpdateStats}>
           Update Stats
         </Button>
       </div>

@@ -33,7 +33,7 @@ function InviteFriend () {
 
     return (
       <div className="adminPanel">
-        <Button id="inviteFriendBtn" className="adminBtn" variant="outlined" color="secondary" onClick={handleClickOpen}>
+        <Button id="inviteFriendBtn" variant="contained" color="secondary" className="adminBtn" onClick={handleClickOpen}>
           Invite A Friend
         </Button>
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">

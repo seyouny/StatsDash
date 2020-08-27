@@ -20,12 +20,18 @@ import { AuthContext } from "../../Auth";
 import API from "../../utils/API";
 import NewChoose from "../NewChoose";
 import TourneySeeds from "../../utils/tourneySeeds";
+import Smoke from "./homeVidBanner";
+import Banner from "./homeBanner";
+import Styles from './style.css';
 
 
 const useStyles = makeStyles({
   table: {
     minWidth: 450,
   },
+  header: {
+    color: 'white',
+  }
 });
 
 
@@ -58,7 +64,9 @@ function MyHome() {
 
   return (
     <Box>
+      <Smoke className={classes.video} />
       <Navigation />
+      {/* <Banner /> */}
       <Grid container spacing={3}
                 direction="row"
                 justify="center"
@@ -71,7 +79,7 @@ function MyHome() {
 
   {/* GAMER GREETING */}
 
-  <h3>Choose Your Battle, {currentUser.gamerTag}</h3>
+  <h3 className={classes.header}>Choose Your Battle, {currentUser.gamerTag}</h3>
 
           {/* MY TOURNAMENTS TABLE */}
 
@@ -122,7 +130,7 @@ function MyHome() {
     
     <Grid item xs={4}>
 
-          <h5>Join a Tournament</h5>
+          <h5 className={classes.header}>Join a Tournament</h5>
 
           <form  className={classes.root} noValidate autoComplete="off" onSubmit ={joinTournament} >
 
