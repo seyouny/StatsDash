@@ -9,10 +9,6 @@ export const AuthProvider = ({children}) => {
 
     useEffect(()=>{
         app.auth().onAuthStateChanged(function(user){
-            if (!user) {
-                alert("Hello! We don't find you signed in. Please sign in or sign up as a new player.")
-            }
-
             if(user){
                 console.log(user)
                 var id =user.uid

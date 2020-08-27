@@ -58,6 +58,12 @@ export default {
             console.log(results);
             return callback(results)
         })
-    }
+    },
+    // getPerformances: function(userId, callback){
+    //     axios.get("/api/user/"+userId+"/performances").then((results) =>{
+    //         console.log(results);
+    //         return callback(results.data)
+    //     })
+    // }
 
 }
