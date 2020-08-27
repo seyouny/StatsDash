@@ -21,6 +21,7 @@ import { AuthContext } from "../Auth";
 import API from "../utils/API";
 import Navigation from "../components/Navigation";
 import SendEmailInvite from "./CreateNewTournament/SendEmailInvite";
+import * as emailjs from 'emailjs-com';
 import { render } from "react-dom";
 
 // const classes = useStyles();

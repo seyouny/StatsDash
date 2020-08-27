@@ -43,8 +43,7 @@
     "react-dom": "^16.13.1",
     "react-player": "^2.6.1",
     "react-router-dom": "^5.2.0",
-    "sequelize": "6.3.4",
-    "emailjs-com": "latest",
-    "react-player": "latest"
+    "react-tilt": "^0.1.4",
+    "sequelize": "6.3.4"
   }
 }
