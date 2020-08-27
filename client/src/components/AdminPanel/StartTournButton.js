@@ -23,7 +23,7 @@ function StartTournButton (props) {
         console.log(tournament);
         for(var i =0; i<tournament.users.length; i++){
           await API.getMatches(tournament.users[i].gamerTag,tournament.users[i].platform).then((results)=>{
-            console.log(results[0].matchID);
+            console.log(results);
             console.log(tournament.users);
             console.log(i)
             tournament.users[i].startMatch = results[0].matchID

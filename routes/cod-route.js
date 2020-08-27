@@ -72,7 +72,7 @@ router.post("/api/user", (req, res) => {
 router.put("/api/tournament/:id",(req,res)=>{
   console.log(req.params.id);
 
-  var users = req.body.users
+  var users = req.body.users;
   console.log(users);
   res.json(users);
 
@@ -84,5 +84,26 @@ router.put("/api/tournament/:id",(req,res)=>{
       startDate: req.body.startTime
     })
   })
+  for(var i=0; i<users.length; i++){
+    db.Performances.create({
+      UserId:users[i].id,
+      TournamentId: req.params.id,
+      startMatch: users[i].startMatch,
+      gulagKills: 0,
+      gulagDeaths: 0,
+      kills: 0,
+      deaths: 0,
+      damage: 0,
+      placement: 0,
+      revives: 0,
+      clutchKills: 0,
+      damageToKills:0,
+      overallScore: 0,
+    }).then((performance)=>{
+      console.log(performance);
+    })
+  }
 })
+
+
 module.exports = router
