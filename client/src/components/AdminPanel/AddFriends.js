@@ -55,6 +55,7 @@ export default function AddFriends() {
 
   
     //SEEDS FOR TESTING, REPRESENTS PLAYERS ADDED TO TOURNAMENT
+    //TODO: ONCE PLAYERS ARE SELECTED IN FRONT-END, NEED TO RETURN THE ARRAY OF SELECTED PLAYERS AND SEND THOSE TO BE ADDED TO THIS TOURNAMENT.  (REPLACE addedFriends seeds with an empty array of objects, and do some kind of insert in tournaments or performances table.)
     const addedFriends = [
       { 
         userId: 9,
@@ -162,7 +163,7 @@ export default function AddFriends() {
   return (
     <div className="adminPanel">
 
-        <Button id="inviteFriendBtn" variant="outlined" className="adminBtn" color="secondary" onClick={handleClickOpen}>
+        <Button id="inviteFriendBtn" variant="contained" className="adminBtn" color="secondary" onClick={handleClickOpen}>
         Add Friends
         </Button>
 
