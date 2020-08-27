@@ -1,3 +1,30 @@
 .placeholder {
     background-color: rgba(0, 0, 0, 0.5);
 }
+
+.myVideo {
+    float: none;
+    position: fixed;
+    display: block;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translate(-50%, -50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    /* background: url("./components/milky-way.jpg");  */
+    background-repeat: no-repeat;
+    background-size: cover; 
+    padding-bottom: 20px;
+  }
+  
+  .homeBackground {
+    display: -webkit-flex;
+    float: none;
+  }

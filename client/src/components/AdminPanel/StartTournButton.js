@@ -25,7 +25,7 @@ function StartTournButton () {
   
     return (
       <div className="adminPanel">
-        <Button id="startTournBtn" className="adminBtn" variant="outlined" color="secondary" onClick={startTournament}>
+        <Button id="startTournBtn" className="adminBtn" variant="contained" color="secondary" onClick={startTournament}>
           Start Tournament
         </Button>
       </div>

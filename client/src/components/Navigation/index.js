@@ -39,7 +39,7 @@ function Navigation() {
                         <Nav.Link href="/myhome">My Home</Nav.Link>
                         <Nav.Link href="/dashboard">Dashboard</Nav.Link>
                         <Nav.Link href="/newplayer">New Player</Nav.Link>
-                        <Nav.Link href="/newplayer">New Tournament</Nav.Link>
+                        <Nav.Link href="/newtournament">New Tournament</Nav.Link>
                     </Nav>
                     <Nav>
                         {/* <Form inline>

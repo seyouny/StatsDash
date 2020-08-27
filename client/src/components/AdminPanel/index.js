@@ -18,7 +18,7 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Styles from './adminpanelstyle.css';
 import API from '../../utils/API';
-import { purple } from '@material-ui/core/colors';
+import { blueGrey } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,6 +27,10 @@ const useStyles = makeStyles((theme) => ({
     heading: {
       fontSize: theme.typography.pxToRem(15),
       fontWeight: theme.typography.fontWeightRegular,
+    },
+    button: {
+        background: blueGrey[500],
+        color: blueGrey[500],
     }
   }));
 
@@ -49,8 +53,7 @@ export default function AdminPanel () {
                 <AccordionDetails>
 
                     <Container>
-                        <p>These buttons need work on back-end functions. Styling should be done via Materialize UI theme - see Jen for details.</p>
-                            <ButtonGroup color="primary" aria-label="admin button group">
+                            <ButtonGroup aria-label="admin button group">
                                 <InviteFriend />
                                 <StartTournButton />
                                 <StopTournButton />

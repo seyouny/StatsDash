@@ -1,6 +1,8 @@
 //CREATE NEW TOURNAMENT PAGE - BOOSTRAP-BASED
 
 import React, { Component, useContext, useState } from "react";
+
+//REACT BOOTSTRAP ELEMENTS
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -8,12 +10,18 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Modal from 'react-bootstrap/Modal';
+
+//MATERIAL UI ELEMENTS
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
+
+//OTHER DEPENDENCIES
 import { AuthContext } from "../Auth";
 import API from "../utils/API";
 import Navigation from "../components/Navigation";
+import SendEmailInvite from "./CreateNewTournament/SendEmailInvite";
+import { render } from "react-dom";
 
 // const classes = useStyles();
 
@@ -75,6 +83,13 @@ const NewTournament= () =>{
 
     }
 
+    const TournCodeSend = (message) => {
+
+        alert(message);
+        //TODO: GO TO SENDEMAILINVITE PAGE
+            // <SendEmailInvite {...tournament} />
+    }
+
     const handleFormSubmit =(event)=>{
         event.preventDefault();
         const {games, title } = event.target.elements;
@@ -100,11 +115,17 @@ const NewTournament= () =>{
             adminId: currentUser.userId,
             joinCode: tournamentCode
         }
+
         API.createTournament(tournament, currentUser.userId);
         console.log(tournament);
-
-        alert("Your tournament, "+ tournament.tName + " has been created, to have your friends join,"
+        TournCodeSend("Your tournament, "+ tournament.tName + " has been created, to have your friends join,"
         +"send them this invite code: \n"+ tournamentCode);
+
+        // these go with tournCodeSend
+        // const [show, setShow] = useState(false);
+        // const handleClose = () => setShow(false);
+        // const handleShow = () => setShow(true);
+        
     }
     // render() {
         
@@ -217,29 +238,13 @@ const NewTournament= () =>{
 
                                 </Modal.Body> 
                                 <Modal.Footer>
+
                                 <Button variant="secondary" onClick={() => handleModalShowHide()}>
                                     Close
                                 </Button>
                                 
                                 </Modal.Footer>
                             </Modal>
-
-                            {/* <Modal.Dialog>
-                                <Modal.Header closeButton>
-                                    <Modal.Title>Modal title</Modal.Title>
-                                </Modal.Header>
-
-                                <Modal.Body>
-                                    <p>Modal body text goes here.</p>
-                                </Modal.Body>
-
-                                <Modal.Footer>
-                                    <Button variant="secondary">Close</Button>
-                                    <Button variant="primary">Save changes</Button>
-                                </Modal.Footer>
-                            </Modal.Dialog> */}
-
-                            
                             
                         </Card.Body>
                     </Card>
