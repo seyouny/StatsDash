@@ -86,7 +86,8 @@ const NewTournament= () =>{
     const TournCodeSend = (message) => {
 
         alert(message);
-        //TODO: GO TO SENDEMAILINVITE PAGE
+
+        //TODO: GO TO SENDEMAILINVITE PAGE AND PASS TOURNAMENT NAME & CODE TO THAT
             // <SendEmailInvite {...tournament} />
     }
 

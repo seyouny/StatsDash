@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
+import ReactDom from 'react-dom';
 import * as emailjs from 'emailjs-com';
-// import Layout from '../components/layout'
-import { Button, FormFeedback, Form, FormGroup, Label, Input } from 'react-bootstrap';
+import { Button, Container, Table, Row, Col, FormFeedback, Form, FormGroup, Label, Input } from 'react-bootstrap';
+import Navigation from '../../components/Navigation';
+import Banner from '../banner1.jpg';
 
-//npm install emailjs
+//npm install emailjs-com
 
 class SendEmailInvite extends Component {
   state = {
     name: '',
     email: '',
-    subject: '',
+    subject: "You're Invited - Join My Call of Duty Tournament",
     message: '',
   }
+
 handleSubmit(e) {
     e.preventDefault()
     const { name, email, subject, message } = this.state
     let templateParams = {
-      from_name: email,
-      to_name: '<YOUR_EMAIL_ID>',
-      subject: subject,
+      from_name: 'Bragging Rights',
+      to_name: email,
+      subject: "You're Invited - Join My Call of Duty Tournament",
       message_html: message,
      }
      emailjs.send(
@@ -29,6 +32,7 @@ handleSubmit(e) {
      )
      this.resetForm()
  }
+
 resetForm() {
     this.setState({
       name: '',
@@ -37,14 +41,20 @@ resetForm() {
       message: '',
     })
   }
+
 handleChange = (param, e) => {
     this.setState({ [param]: e.target.value })
   }
+
 render() {
     return (
       <>
-        {/* <Layout> */}
-          <h1 className="p-heading1">Get in Touch</h1>
+      <Navigation />
+      <Container>
+        <Banner />
+      </Container>
+        <Container>
+          <h1 className="p-heading1">Invite A Friend to Join This Tournament</h1>
           <Form onSubmit={this.handleSubmit.bind(this)}>
             <Form.Group controlId="formBasicEmail">
               <Form.Label className="text-muted">Email address</Form.Label>
@@ -93,7 +103,7 @@ render() {
               Submit
             </Button>
           </Form>
-        {/* </Layout> */}
+        </Container>
       </>
     )
   }
