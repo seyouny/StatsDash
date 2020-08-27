@@ -12,7 +12,6 @@ module.exports = function (sequelize, DataTypes) {
         damageToKills:DataTypes.INTEGER,
         overallScore: DataTypes.INTEGER,
         startMatch: DataTypes.STRING
-
     });
 
     // Performances.associate = function (models) {
