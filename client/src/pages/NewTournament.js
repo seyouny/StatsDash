@@ -97,7 +97,6 @@ const NewTournament= () =>{
         console.log(title.value);
         console.log(state);
         console.log(currentUser);
-        
         var randomNum = Math.floor(Math.random()*1000)
         const tournamentCode = title.value+"#"+randomNum
         const newTournamentCode = tournamentCode.replace(/ /g, "")
