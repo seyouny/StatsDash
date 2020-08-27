@@ -23,6 +23,8 @@ import TourneySeeds from "../../utils/tourneySeeds";
 import Smoke from "./homeVidBanner";
 import Banner from "./homeBanner";
 import Styles from './style.css';
+import ReactPlayer from 'react-player'
+
 
 
 const useStyles = makeStyles({
