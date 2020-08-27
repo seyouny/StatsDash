@@ -18,7 +18,7 @@ import InviteFriend from './InviteFriend';
 import friends from '../../utils/friendSeeds';
 import Styles from './adminpanelstyle.css';
 import { keys } from '@material-ui/core/styles/createBreakpoints';
-import Paper from '@material-ui/core/Paper';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: 'auto',

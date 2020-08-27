@@ -13,13 +13,8 @@ import "./App.scss";
 import Splash from "./pages/Splash";
 import MyHome from "./pages/MyHome";
 import NewChoose from './pages/NewChoose';
-<<<<<<< Updated upstream
 import Dashboard from './pages/TournamentDash';
 import SampleDash from './pages/jensample';
-=======
-import TournamentDash from './pages/TournamentDash';
-import SampleDash from './pages/TDashboard';
->>>>>>> Stashed changes
 import Chart from "./pages/Chart";
 import { blueGrey, deepOrange } from '@material-ui/core/colors';
 
