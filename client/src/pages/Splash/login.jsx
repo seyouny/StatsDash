@@ -11,7 +11,7 @@ const Login = ({history},props)=>{
   // constructor(props) {
   //   super(props);
   // }
-  app.auth().signOut();
+  // app.auth().signOut();
   const { currentUser } = useContext(AuthContext);
   const handleLogin = useCallback(
     async event => {

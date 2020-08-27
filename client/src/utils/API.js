@@ -58,6 +58,20 @@ export default {
             console.log(results);
             return callback(results)
         })
+    },
+    joinTournament:function(user){
+        axios.put("/api/join/tournament",user)
+    },
+    findFriend:function(search,callback){
+        console.log(search)
+        axios.get("/api/find/friends/"+search.query+"/"+search.title).then((results)=>{
+            return callback(results);
+        })
+    },
+    getAllUsers:function(callback){
+        axios.get("/api/all/users").then((results)=>{
+            return callback(results);
+        })
     }
 
 }

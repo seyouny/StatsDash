@@ -7,6 +7,7 @@ import NewPlayer from "./pages/NewPlayer"
 import NewTournament from "./pages/NewTournament"
 import Start from "./components/Start"
 import {AuthProvider} from "./Auth";
+import Friends from "./pages/addFriends"
 import PrivateRoute from "./PrivateRoute";
 import "./App.scss";
 import Splash from "./pages/Splash";
@@ -48,6 +49,8 @@ function App() {
               <Route exact path="/new/tournament" component={NewTournament}/>
               <Route exact path="/newtournament" component={NewTournament}/>
               <Route exact path="/new" component={NewChoose}/>
+              <Route exact path="/new/friends" component={Friends}/>
+
               <Route exact path="/dashboard" component={Dashboard}/>
               <Route exact path="/tournament/:tid/dashboard/:userid" component={Dashboard}/>
               <Route exact path="/sampledash" component={SampleDash}/>
