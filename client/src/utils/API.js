@@ -59,6 +59,7 @@ export default {
             return callback(results)
         })
     },
+
     joinTournament:function(user){
         axios.put("/api/join/tournament",user)
     },
@@ -73,5 +74,13 @@ export default {
             return callback(results);
         })
     }
+
+    // getPerformances: function(userId, callback){
+    //     axios.get("/api/user/"+userId+"/performances").then((results) =>{
+    //         console.log(results);
+    //         return callback(results.data)
+    //     })
+    // }
+
 
 }

@@ -40,6 +40,7 @@ function Navigation() {
                         <Nav.Link href="/dashboard">Dashboard</Nav.Link>
                         <Nav.Link href="/newplayer">New Player</Nav.Link>
                         <Nav.Link href="/newtournament">New Tournament</Nav.Link>
+                        <Nav.Link href="/emailinvite">Email Invite</Nav.Link>
                     </Nav>
                     <Nav>
                         {/* <Form inline>

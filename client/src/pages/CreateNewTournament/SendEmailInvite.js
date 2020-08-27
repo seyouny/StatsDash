@@ -1,24 +1,28 @@
-import React, { Component } from 'react';
+import React, { Component, useContext, useState } from "react";
+import ReactDom from 'react-dom';
 import * as emailjs from 'emailjs-com';
-// import Layout from '../components/layout'
-import { Button, FormFeedback, Form, FormGroup, Label, Input } from 'react-bootstrap';
+import { Button, Container, Image, Table, Row, Col, FormFeedback, Form, FormGroup, Label, Input } from 'react-bootstrap';
+import Navigation from '../../components/Navigation';
+import Banner from './banner1.jpg';
+import Styles from './style.css';
 
-//npm install emailjs
+//Be sure to npm install emailjs-com for this component to work
 
 class SendEmailInvite extends Component {
   state = {
     name: '',
     email: '',
-    subject: '',
+    subject: "You're Invited - Join My Call of Duty Tournament",
     message: '',
   }
+
 handleSubmit(e) {
     e.preventDefault()
     const { name, email, subject, message } = this.state
     let templateParams = {
-      from_name: email,
-      to_name: '<YOUR_EMAIL_ID>',
-      subject: subject,
+      from_name: 'Bragging Rights',
+      to_name: email,
+      subject: "You're Invited - Join My Call of Duty Tournament",
       message_html: message,
      }
      emailjs.send(
@@ -29,6 +33,7 @@ handleSubmit(e) {
      )
      this.resetForm()
  }
+
 resetForm() {
     this.setState({
       name: '',
@@ -37,26 +42,28 @@ resetForm() {
       message: '',
     })
   }
+
 handleChange = (param, e) => {
     this.setState({ [param]: e.target.value })
   }
+
 render() {
     return (
       <>
-        {/* <Layout> */}
-          <h1 className="p-heading1">Get in Touch</h1>
+      <Navigation />
+      <Container className="bannerImg">
+        <Image src={Banner} className="bannerImg" alt="Banner Image"></Image>
+      </Container>
+        <Container>
+          <Row>
+            <Col>
+          <h2 className="headerDiv">Invite A Friend to Join This Tournament</h2>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col>
           <Form onSubmit={this.handleSubmit.bind(this)}>
-            <Form.Group controlId="formBasicEmail">
-              <Form.Label className="text-muted">Email address</Form.Label>
-              <Form.Control
-                type="email"
-                name="email"
-                value={this.state.email}
-                className="text-primary"
-                onChange={this.handleChange.bind(this, 'email')}
-                placeholder="Enter email"
-              />
-            </Form.Group>
             <Form.Group controlId="formBasicName">
               <Form.Label className="text-muted">Name</Form.Label>
               <Form.Control
@@ -68,6 +75,19 @@ render() {
                 placeholder="Name"
               />
             </Form.Group>
+
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label className="text-muted">Email address</Form.Label>
+              <Form.Control
+                type="email"
+                name="email"
+                value={this.state.email}
+                className="text-primary"
+                onChange={this.handleChange.bind(this, 'email')}
+                placeholder="Enter email"
+              />
+            </Form.Group>
+
             <Form.Group controlId="formBasicSubject">
               <Form.Label className="text-muted">Subject</Form.Label>
               <Form.Control
@@ -89,11 +109,13 @@ render() {
                 onChange={this.handleChange.bind(this, 'message')}
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" id="sendEmailBtn">
               Submit
             </Button>
           </Form>
-        {/* </Layout> */}
+          </Col>
+          </Row>
+        </Container>
       </>
     )
   }

@@ -17,6 +17,7 @@ import Dashboard from './pages/TournamentDash';
 import SampleDash from './pages/jensample';
 import Chart from "./pages/Chart";
 import { blueGrey, deepOrange, blue, red } from '@material-ui/core/colors';
+import SendEmailInvite from './pages/CreateNewTournament/SendEmailInvite';
 
 //These colors can be changed and will affect colors on any Material UI components. See Jen for details.
 const theme = createMuiTheme({
@@ -27,7 +28,7 @@ const theme = createMuiTheme({
     secondary: {
       main: red[500],
     },
-    type: 'dark'
+    type: 'light'
   },
 });
 
@@ -55,6 +56,7 @@ function App() {
               <Route exact path="/tournament/:tid/dashboard/:userid" component={Dashboard}/>
               <Route exact path="/sampledash" component={SampleDash}/>
               <Route exact path="/chart" component={Chart} />
+              <Route exact path="/emailinvite" component={SendEmailInvite} />
 
             </Switch>
       

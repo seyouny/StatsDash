@@ -37,6 +37,19 @@ router.get("/api/user/:id/tournament",(req,res)=>{
       res.json(results);
     })
   })
+  router.get("/api/user/:id/performances",(req,res)=>{
+    db.Performances.findAll({
+      order: [
+          ["createdAt", "DESC"]
+        ],
+        where: {
+          userId: req.params.id
+        }
+      }).then((performance) =>{
+        console.log(performance);
+        res.json(performance);
+      })
+    })
 
   // Getting all users
   router.get("/api/all/users", (req,res)=>{
