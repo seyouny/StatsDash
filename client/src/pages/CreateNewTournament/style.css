@@ -1,0 +1,19 @@
+.bannerImg {
+    width: 100%;
+    display: block;
+    size: cover;
+    overflow: hidden;
+    position: relative;
+    align-content: center;
+}
+
+.headerDiv {
+    background-color: rgb(80,99,126);
+    color: rgba(255, 255, 255, .6);
+    padding: .5em;
+    margin-bottom: 1em;
+}
+
+#sendEmailBtn {
+    background-color: rgb(80,99,126);
+}
