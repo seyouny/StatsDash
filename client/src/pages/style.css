@@ -1,0 +1,14 @@
+
+.Container-NT{
+background-image: url(../components/NewChoose/MW_newtournamentimg.png);
+background-repeat: no-repeat;
+background-size: cover;
+
+}
+.card-contentNT:hover{
+/* opacity: 0.5; */
+transition-duration: 0.5s;
+background-color: black;
+color: white;
+
+} 

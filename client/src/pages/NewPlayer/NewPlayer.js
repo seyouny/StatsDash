@@ -5,11 +5,11 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
-import app from "../firebase";
+import app from "../../firebase";
 import {withRouter} from "react-router";
-import API from "../utils/API";
-import Navigation from "../components/Navigation";
-
+import API from "../../utils/API";
+import Navigation from "../../components/Navigation";
+import "./style.css"
 
 
 
@@ -49,33 +49,34 @@ const NewPlayer = ({history}) =>{
 
 
     return (
-            <Container>
+            <Container><div class="Np-Page">
                 <Navigation />
 
-            <Row>
-                <Col><h3 className="my-5 text-center">New Player</h3></Col>
-            </Row>
+            {/* <Row>
+                <Col><h3 aria-controls="responsive-col"className="my-5 text-center">New Player</h3></Col>
+            </Row> */}
 
             <Row>
-                <Col md={2}></Col>
-                <Col md={8}>
-                    <Card>
+                {/* <Col md={2}></Col> */}
+                <Col className="col-form" md={6}>
+                    <br></br><br></br>
+                    <Card className= "card-body">
+                        
                         <Card.Body>
+                            <h3 style={{color: "white"}}> New Player</h3>
                             <Form onSubmit = {handleSignUp}>
                             <Form.Group controlId="formGamerTag">
-                                <Form.Label >Gamer Tag</Form.Label>
+                                <Form.Label style={{color: "white"}} >Gamer Tag</Form.Label>
                                 <Form.Control name ="gamerTag" type="text" placeholder="Enter Gamer Tag" />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicPassword">
-                                <Form.Label>Password</Form.Label>
+                                <Form.Label  style={{color: "white"}}>Password</Form.Label>
                                 <Form.Control  name ="password"type="password" placeholder="Password" />
                             </Form.Group>
 
-                            <br></br>
-
                             <Form.Group controlId="exampleForm.ControlSelect1">
-                                <Form.Label>Choose a platform</Form.Label>
+                                <Form.Label  style={{color: "white"}}>Choose a platform</Form.Label>
                                 <Form.Control name ="platform" as="select">
                                 <option defaultValue = "psn">Playstation - (psn)</option>
                                 <option defaultValue = "steam">Steam - (steam)</option>
@@ -85,24 +86,22 @@ const NewPlayer = ({history}) =>{
                             </Form.Group>
 
                             <Form.Group controlId="formActivisionId">
-                                <Form.Label>Activision ID (optional)</Form.Label>
+                                <Form.Label  style={{color: "white"}}>Activision ID (optional)</Form.Label>
                                 <Form.Control  name ="activisionId"type="text" placeholder="Enter ID" />
                             </Form.Group>
 
-                            <br></br>
-
                             <Form.Group controlId="formFirstName">
-                                <Form.Label>First Name</Form.Label>
+                                <Form.Label  style={{color: "white"}}>First Name</Form.Label>
                                 <Form.Control name ="firstName" type="text" placeholder="Enter First Name" />
                             </Form.Group>
 
                             <Form.Group controlId="formLastName">
-                                <Form.Label>Last Name</Form.Label>
+                                <Form.Label  style={{color: "white"}}>Last Name</Form.Label>
                                 <Form.Control  name ="lastName" type="text" placeholder="Enter Last Name" />
                             </Form.Group>
 
                             <Form.Group controlId="formBasicEmail">
-                                <Form.Label>Email address</Form.Label>
+                                <Form.Label  style={{color: "white"}}>Email address</Form.Label>
                                 <Form.Control  name ="email" type="email" placeholder="Enter email" />
                             </Form.Group>
 
@@ -114,9 +113,9 @@ const NewPlayer = ({history}) =>{
                     </Card>
                    
                 </Col>
-                <Col md={2}></Col>
+                <Col md={6}></Col>
             </Row>
-            </Container>
+            </div></Container>
         )
 }
 
