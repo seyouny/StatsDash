@@ -54,7 +54,8 @@ class Dashboard extends Component {
                         adminId: results.data.adminId,
                         tName:results.data.tName,
                         games:results.data.games,
-                        users:results.data.Users
+                        users:results.data.Users,
+                        id: tId
                     }
                     console.log("TOURNAMENT DATA:");
                     console.log(tournamentData);
@@ -96,7 +97,10 @@ class Dashboard extends Component {
         <Top></Top>
         <br></br>
         <hr></hr>
-        <AdminPanel />
+        <AdminPanel
+        tournamentData= {this.state.tournamentData}
+        currentUser = {this.state.currentUser} 
+        />
         <Middle> 
             <Chart/>
         </Middle>

@@ -65,4 +65,24 @@ router.post("/api/user", (req, res) => {
 
 
 
+
+//======================PUTS====================== 
+
+
+router.put("/api/tournament/:id",(req,res)=>{
+  console.log(req.params.id);
+
+  var users = req.body.users
+  console.log(users);
+  res.json(users);
+
+  db.Tournaments.findOne({
+    where:{id:req.params.id}
+  }).then((tournament)=>{
+    tournament.update({
+      status:"active",
+      startDate: req.body.startTime
+    })
+  })
+})
 module.exports = router

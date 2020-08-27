@@ -1,6 +1,6 @@
 //ADMIN PANEL FOR TOURNAMENT DASHBOARD
 
-import React from 'react';
+import React, { useContext } from "react";
 import { makeStyles } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
@@ -19,6 +19,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Styles from './adminpanelstyle.css';
 import API from '../../utils/API';
 import { blueGrey } from '@material-ui/core/colors';
+import { AuthContext } from "../../Auth";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -34,8 +35,12 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-export default function AdminPanel () {
+export default function AdminPanel (props) {
     const classes = useStyles();
+    console.log("TOURNAMENT DATA IN ADMIN PANNEL");
+    console.log(props.tournamentData);
+    const { currentUser } = useContext(AuthContext)
+    console.log(currentUser)
 
     return (
 
@@ -55,7 +60,8 @@ export default function AdminPanel () {
                     <Container>
                             <ButtonGroup aria-label="admin button group">
                                 <InviteFriend />
-                                <StartTournButton />
+                                <StartTournButton 
+                                tournamentData = {props.tournamentData}/>
                                 <StopTournButton />
                                 <UpdateStatsButton />
                                 <AddFriends />
