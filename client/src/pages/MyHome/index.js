@@ -57,6 +57,9 @@ function MyHome() {
     event.preventDefault()
     const {tournamentJoiner} = event.target.elements;
     console.log(tournamentJoiner.value);
+    var user = currentUser;
+    user.joinCode = tournamentJoiner.value
+    API.joinTournament(user);
 
   }
   console.log(currentUser)
@@ -123,8 +126,7 @@ function MyHome() {
 
     <Grid item xs={4} className="homeButtonDiv">
 
-
-          <Button variant="contained" align="left" color="primary" href="/new/tournament">Create New Tournament</Button>
+          <Button variant="contained" align="left" color="primary" href="/new/friends">Add friends</Button>
 
     </Grid>
     
