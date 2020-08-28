@@ -23,6 +23,7 @@ import Navigation from "../components/Navigation";
 import SendEmailInvite from "./CreateNewTournament/SendEmailInvite";
 import * as emailjs from 'emailjs-com';
 import { render } from "react-dom";
+import styles from './CreateNewTournament/style.css';
 
 // const classes = useStyles();
 
@@ -133,9 +134,9 @@ const NewTournament= () =>{
     // render() {
         
         return (
-            <Container>
+            <div>
+            <Container className="background">
                 <Navigation />
-
             <Row>
                 <Col><h3 className="my-5 text-center">Create a Tournament</h3></Col>
             </Row>
@@ -157,10 +158,10 @@ const NewTournament= () =>{
                             </Form.Group>
 
                             <br></br>
-                            <Button variant="primary" size="sm" className="d-block mb-3" onClick={handleModalShowHide}>
+                            <Button variant="dark" size="sm" className="d-block mb-3" onClick={handleModalShowHide}>
                                 Adjust Game Settings
                             </Button>
-                            <Button variant="primary" size="sm" type="submit">
+                            <Button variant="dark" size="sm" type="submit">
                                 Generate Link
                             </Button>
                             </Form>
@@ -170,79 +171,99 @@ const NewTournament= () =>{
                                 <Modal.Header closeButton onClick={handleModalShowHide}>
                                 <Modal.Title>Adjust Game Settings</Modal.Title>
                                 </Modal.Header>
-                                <Modal.Body>
+                                <Modal.Body className="modalBkg">
+                                    <Row>
+                                        <Col>
 
                                     <p>Scorecard - Choose weight of different stats.</p>
                                     
+                                        </Col>
+                                    </Row>
                                     <Form onSubmit = {getSettings}>
-                                        <Form.Group controlId="formKills">
+
+                                    <Form.Row>
+                                        <Col>
+
+                                            <Form.Group controlId="formKills">
                                             <Form.Label>Kills</Form.Label>
                                             <Form.Control  name="kills"  type="text" defaultValue={state.kills} />
-                                            
-                                        </Form.Group>
-                                        {/* <Typography id="discrete-slider-small-steps" gutterBottom>
-                                            Kills
-                                        </Typography>
-                                        <Slider
-                                                defaultValue={this.state.kills}
-                                                getAriaValueText={valuetext}
-                                                aria-labelledby="discrete-slider-small-steps"
-                                                step={1}
-                                                marks
-                                                min={0}
-                                                max={100}
-                                                valueLabelDisplay="auto"
-                                                name = "kills"
-                                            /> */}
-                                        <Form.Group controlId="formDeath">
-                                            <Form.Label>Death</Form.Label>
-                                            <Form.Control  name= "deaths" type="text" defaultValue={state.deaths} />
-                                        </Form.Group>
+                                                    
+                                            </Form.Group>
+                                            {/* <Typography id="discrete-slider-small-steps" gutterBottom>
+                                                Kills
+                                            </Typography>
+                                            <Slider
+                                                    defaultValue={this.state.kills}
+                                                    getAriaValueText={valuetext}
+                                                    aria-labelledby="discrete-slider-small-steps"
+                                                    step={1}
+                                                    marks
+                                                    min={0}
+                                                    max={100}
+                                                    valueLabelDisplay="auto"
+                                                    name = "kills"
+                                                /> */}
+                                            <Form.Group controlId="formDeath">
+                                                <Form.Label>Death</Form.Label>
+                                                <Form.Control  name= "deaths" type="text" defaultValue={state.deaths} />
+                                            </Form.Group>
 
-                                        <Form.Group controlId="formDamage">
-                                            <Form.Label>Damage</Form.Label>
-                                            <Form.Control  name= "damage" type="text" defaultValue={state.damage} />
-                                        </Form.Group>
+                                            <Form.Group controlId="formDamage">
+                                                <Form.Label>Damage</Form.Label>
+                                                <Form.Control  name= "damage" type="text" defaultValue={state.damage} />
+                                            </Form.Group>
 
-                                        <Form.Group controlId="formGulagWin">
-                                            <Form.Label>Gulag Win</Form.Label>
-                                            <Form.Control  name= "gkills" type="text" defaultValue={state.gkills} />
-                                        </Form.Group>
+                                        </Col>
+                                        <Col>
 
-                                        <Form.Group controlId="formGulagLoss">
-                                            <Form.Label>Gulag Loss</Form.Label>
-                                            <Form.Control  name= "gdeaths"  type="text" defaultValue={state.gdeaths} />
-                                        </Form.Group>
+                                            <Form.Group controlId="formGulagWin">
+                                                <Form.Label>Gulag Win</Form.Label>
+                                                <Form.Control  name= "gkills" type="text" defaultValue={state.gkills} />
+                                            </Form.Group>
 
-                                        <Form.Group controlId="formRevives">
-                                            <Form.Label>Revives</Form.Label>
-                                            <Form.Control  name= "revives" type="text" defaultValue={state.revives} />
-                                        </Form.Group>
+                                            <Form.Group controlId="formGulagLoss">
+                                                <Form.Label>Gulag Loss</Form.Label>
+                                                <Form.Control  name= "gdeaths"  type="text" defaultValue={state.gdeaths} />
+                                            </Form.Group>
 
-                                        <Form.Group controlId="formLastStandingKills">
-                                            <Form.Label>Last Standing Kills</Form.Label>
-                                            <Form.Control  name= "lastStandingKills" type="text" defaultValue={state.lastStandingKills} />
-                                        </Form.Group>
+                                            <Form.Group controlId="formRevives">
+                                                <Form.Label>Revives</Form.Label>
+                                                <Form.Control  name= "revives" type="text" defaultValue={state.revives} />
+                                            </Form.Group>
 
-                                        <Form.Group controlId="formDamageToKills">
-                                            <Form.Label>Damage to Kills</Form.Label>
-                                            <Form.Control name= "damageToKills" type="text" defaultValue={state.damageToKills} />
-                                        </Form.Group>
+                                        </Col>
+                                        <Col>
 
-                                        <Form.Group controlId="formLastStandingKills">
-                                            <Form.Label>Placement</Form.Label>
-                                            <Form.Control name = "placement" type="text" defaultValue={state.placement} />
-                                        </Form.Group>
+                                            <Form.Group controlId="formLastStandingKills">
+                                                <Form.Label>Last Standing Kills</Form.Label>
+                                                <Form.Control  name= "lastStandingKills" type="text" defaultValue={state.lastStandingKills} />
+                                            </Form.Group>
 
-                                        <Button variant="primary" type ="submit">
-                                            Save
-                                        </Button>
-                                    </Form>
+                                            <Form.Group controlId="formDamageToKills">
+                                                <Form.Label>Damage to Kills</Form.Label>
+                                                <Form.Control name= "damageToKills" type="text" defaultValue={state.damageToKills} />
+                                            </Form.Group>
+
+                                            <Form.Group controlId="formLastStandingKills">
+                                                <Form.Label>Placement</Form.Label>
+                                                <Form.Control name = "placement" type="text" defaultValue={state.placement} />
+                                            </Form.Group>
+
+                                            </Col>
+                                        </Form.Row>
+                                        <Form.Row>
+
+                                            <Button variant="dark" type ="submit" className="brButton">
+                                                Save
+                                            </Button>
+
+                                    </Form.Row>
+                                </Form>
 
                                 </Modal.Body> 
                                 <Modal.Footer>
 
-                                <Button variant="secondary" onClick={() => handleModalShowHide()}>
+                                <Button variant="dark" onClick={() => handleModalShowHide()}>
                                     Close
                                 </Button>
                                 
@@ -254,8 +275,12 @@ const NewTournament= () =>{
                    
                 </Col>
                 <Col md={2}></Col>
+
             </Row>
+
+            <Row></Row>
             </Container>
+            </div>
         )
 }
 

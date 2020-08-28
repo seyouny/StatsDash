@@ -3,13 +3,14 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
 import app from "../firebase";
 import {withRouter} from "react-router";
 import API from "../utils/API";
 import Navigation from "../components/Navigation";
-
+import styles from './CreateNewTournament/style.css';
 
 
 
@@ -49,8 +50,9 @@ const NewPlayer = ({history}) =>{
 
 
     return (
-            <Container>
-                <Navigation />
+        <div>
+            <Container className="background">
+            <Navigation />
 
             <Row>
                 <Col><h3 className="my-5 text-center">New Player</h3></Col>
@@ -60,55 +62,86 @@ const NewPlayer = ({history}) =>{
                 <Col md={2}></Col>
                 <Col md={8}>
                     <Card>
-                        <Card.Body>
+                        <Card.Body className="modalBkgLight">
                             <Form onSubmit = {handleSignUp}>
-                            <Form.Group controlId="formGamerTag">
-                                <Form.Label >Gamer Tag</Form.Label>
-                                <Form.Control name ="gamerTag" type="text" placeholder="Enter Gamer Tag" />
-                            </Form.Group>
-
-                            <Form.Group controlId="formBasicPassword">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control  name ="password"type="password" placeholder="Password" />
-                            </Form.Group>
-
-                            <br></br>
-
-                            <Form.Group controlId="exampleForm.ControlSelect1">
-                                <Form.Label>Choose a platform</Form.Label>
-                                <Form.Control name ="platform" as="select">
-                                <option defaultValue = "psn">Playstation - (psn)</option>
-                                <option defaultValue = "steam">Steam - (steam)</option>
-                                <option defaultValue = "xbox">XBox - (xbl)</option>
-                                <option defaultValue = "act">Activision - (battle) Include your Activision ID#</option>
-                                </Form.Control>
-                            </Form.Group>
-
-                            <Form.Group controlId="formActivisionId">
-                                <Form.Label>Activision ID (optional)</Form.Label>
-                                <Form.Control  name ="activisionId"type="text" placeholder="Enter ID" />
-                            </Form.Group>
+                                <Form.Row>
+                                    <Col>
+                                        <Form.Group controlId="formGamerTag">
+                                            <Form.Label >Gamer Tag</Form.Label>
+                                            <Form.Control name ="gamerTag" type="text" placeholder="Enter Gamer Tag" />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col>
+                                        <Form.Group controlId="formBasicPassword">
+                                            <Form.Label>Password</Form.Label>
+                                            <Form.Control  name ="password"type="password" placeholder="Password" />
+                                        </Form.Group>
+                                    </Col>
+                                </Form.Row>
 
                             <br></br>
 
-                            <Form.Group controlId="formFirstName">
-                                <Form.Label>First Name</Form.Label>
-                                <Form.Control name ="firstName" type="text" placeholder="Enter First Name" />
-                            </Form.Group>
+                                <Form.Row>
+                                    <Col>
+                                        <Form.Group controlId="exampleForm.ControlSelect1">
+                                            <Form.Label>Choose a platform</Form.Label>
+                                            <Form.Control name ="platform" as="select">
+                                            <option defaultValue = "psn">Playstation - (psn)</option>
+                                            <option defaultValue = "steam">Steam - (steam)</option>
+                                            <option defaultValue = "xbox">XBox - (xbl)</option>
+                                            <option defaultValue = "act">Activision - (battle) Include your Activision ID#</option>
+                                            </Form.Control>
+                                        </Form.Group>
+                                    </Col>
 
-                            <Form.Group controlId="formLastName">
-                                <Form.Label>Last Name</Form.Label>
-                                <Form.Control  name ="lastName" type="text" placeholder="Enter Last Name" />
-                            </Form.Group>
+                                    <Col>
+                                        <Form.Group controlId="formActivisionId">
+                                            <Form.Label>Activision ID (optional)</Form.Label>
+                                            <Form.Control  name ="activisionId"type="text" placeholder="Enter ID" inactive />
+                                        </Form.Group>
+                                    </Col>
+                                </Form.Row>
 
-                            <Form.Group controlId="formBasicEmail">
-                                <Form.Label>Email address</Form.Label>
-                                <Form.Control  name ="email" type="email" placeholder="Enter email" />
-                            </Form.Group>
+                            <br></br>
 
-                            <Button variant="primary" type="submit">
-                                Submit
-                            </Button>
+                            <Form.Row>
+                                    <Col>
+
+                                    <Form.Group controlId="formFirstName">
+                                        <Form.Label>First Name</Form.Label>
+                                        <Form.Control name ="firstName" type="text" placeholder="Enter First Name" />
+                                    </Form.Group>
+
+                                    </Col>
+                                    <Col>
+
+                                    <Form.Group controlId="formLastName">
+                                        <Form.Label>Last Name</Form.Label>
+                                        <Form.Control  name ="lastName" type="text" placeholder="Enter Last Name" />
+                                    </Form.Group>
+
+                                    </Col>
+                            </Form.Row>
+                            <Form.Row>
+
+                                    <Col>
+
+                                        <Form.Group controlId="formBasicEmail">
+                                            <Form.Label>Email address</Form.Label>
+                                            <Form.Control  name ="email" type="email" placeholder="Enter email" />
+                                        </Form.Group>
+
+                                    </Col>
+                            </Form.Row>
+
+                            <Form.Row>
+
+                                <Button variant="dark" type="submit" size="sm" block>
+                                    Submit
+                                </Button>
+
+                            </Form.Row>
+
                             </Form>
                         </Card.Body>
                     </Card>
@@ -117,6 +150,8 @@ const NewPlayer = ({history}) =>{
                 <Col md={2}></Col>
             </Row>
             </Container>
+            </div>
+
         )
 }
 
