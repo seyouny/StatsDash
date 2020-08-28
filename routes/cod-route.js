@@ -8,7 +8,10 @@ var db = require("../models");
 router.get("/api/user/:id/tournament",(req,res)=>{
     db.Users.findOne({
       where:{id:req.params.id},
-      include: [db.Tournaments]
+      include: [db.Tournaments,{
+        model: db.Users,
+        as: 'Friends'
+      }]
     }).then((results)=>{
       console.log(results);
       res.json(results);
@@ -90,6 +93,21 @@ router.get("/api/user/:id/tournament",(req,res)=>{
     }
   })
 
+  // Getting friends
+  router.get("/api/friends/:id",(req,res)=>{
+    console.log(req.params.id);
+    db.Users.findOne({
+      where:{id: req.params.id},
+      include: [{
+        model: db.Users,
+        as: 'Friends'
+      }]
+    }).then((user)=>{
+      console.log(user);
+      res.json(user);
+    })
+  })
+
 //======================POSTS====================== 
 
 // Create New User
@@ -123,6 +141,38 @@ router.post("/api/user", (req, res) => {
     })
 })
 
+router.post("/api/friends",(req,res)=>{
+  console.log("ROUTE HIT");
+  console.log(req.body.userId);
+  if(req.body.friendId=== req.body.userId){
+    res.json("You cannot add yourself as a friend.");
+  }
+  db.Users.findOne({
+    where:{id:req.body.userId},
+    include: [{
+      model: db.Users,
+      as: 'Friends'
+    }]
+  }).then((user)=>{
+    console.log(user.dataValues.Friends)
+    var exists = false
+    for(var i =0; i<user.dataValues.Friends.length; i++){
+      if(user.dataValues.Friends[i].id ===req.body.friendId){
+        exists = true;
+        res.json("You are already friends with this user.")
+      }
+    }
+    console.log(exists);
+    if(exists===false){
+      db.Users.findOne({
+        where:{id:req.body.friendId}
+      }).then((friend)=>{
+        user.addFriend(friend);
+        res.json(friend);
+      })
+    }
+  })
+})
 
 
 

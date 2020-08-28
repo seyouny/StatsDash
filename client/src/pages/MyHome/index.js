@@ -40,6 +40,7 @@ const useStyles = makeStyles({
 function MyHome() {
   const { currentUser } = useContext(AuthContext);
   const [state, setState] = useState([])
+  const [friends, setFriends] = useState([])
   const classes = useStyles();
   
   useEffect(()=>{
@@ -51,7 +52,9 @@ function MyHome() {
   function getTable(){
     API.getTournaments(currentUser.userId,(results)=>{
       console.log(results.data.Tournaments);
-      setState(results.data.Tournaments)
+      setState(results.data.Tournaments);
+      setFriends(results.data.Friends);
+      console.log("friends",friends);
       return results.data.Tournaments
     })
   }
