@@ -28,6 +28,7 @@ class Dashboard extends Component {
     state = {
         tournamentData: {},
         currentUser: {},
+        friends:[],
         userstats: [{
             userId:"Stacey",
             deaths:5,
@@ -61,9 +62,15 @@ class Dashboard extends Component {
                 var userId = this.props.match.params.userid
                 var tId = this.props.match.params.tid
                 // console.log(userId, tI)
+                var friends =[]
+                await API.getFriends(userId,(results)=>{
+                    console.log(results.data.Friends);
+                    friends = results.data.Friends;
+
+                })
                 await API.getOneTournament(tId, (results) => {
                     console.log("TOURNAMENT FOUND");
-
+                    console.log(friends)
                     console.log("here", results);
                     const tournamentData = {
                         adminId: results.data.adminId,
@@ -82,15 +89,25 @@ class Dashboard extends Component {
                             revivesMultiplier: results.data.Users.revivesMultiplier
                         }
                     }
+                    
                     console.log("TOURNAMENT DATA:");
                     console.log(tournamentData);
                     var user = {}
+                    var friendsNotInTournament =[];
                     for(var i =0; i<tournamentData.users.length; i++){
                         if(tournamentData.users[i].id === userId){
                             user = tournamentData.users[i];
                         }
+                        
                     }
-                    this.setState({ ...this.state, tournamentData: tournamentData, currentUser:user });
+                    for(var i =0; i<friends.length; i++){
+                        console.log(tournamentData.users)
+                        console.log(friends[i]);
+                        if(tournamentData.users.indexOf(friends[i])!==0){
+                            friendsNotInTournament.push(friends[i])
+                        }
+                    }
+                    this.setState({ ...this.state, tournamentData: tournamentData, currentUser:user,friends:friendsNotInTournament });
                     console.log("check userID", this.state);
 
                     console.log("checking for COD API")
