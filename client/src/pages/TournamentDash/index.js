@@ -28,6 +28,7 @@ class Dashboard extends Component {
     state = {
         tournamentData: {},
         currentUser: {},
+        friends:[],
         userstats: [{
             userId:"Stacey",
             deaths:5,
@@ -61,9 +62,15 @@ class Dashboard extends Component {
                 var userId = this.props.match.params.userid
                 var tId = this.props.match.params.tid
                 // console.log(userId, tI)
+                var friends =[]
+                await API.getFriends(userId,(results)=>{
+                    console.log(results.data.Friends);
+                    friends = results.data.Friends;
+
+                })
                 await API.getOneTournament(tId, (results) => {
                     console.log("TOURNAMENT FOUND");
-
+                    console.log(friends)
                     console.log("here", results);
                     const tournamentData = {
                         adminId: results.data.adminId,
@@ -82,54 +89,71 @@ class Dashboard extends Component {
                             revivesMultiplier: results.data.Users.revivesMultiplier
                         }
                     }
+                    
                     console.log("TOURNAMENT DATA:");
                     console.log(tournamentData);
-                    this.setState({ ...this.state, tournamentData: tournamentData });
-                    console.log("check userID", this.state);
-                })
-                console.log(this.state)
-                await API.getUsers(userId, (results) => {
-                    console.log("user found");
-                    console.log(results);
-                    const currentUser = {
-                        firstName: results.data[0].firstName,
-                        userId: results.data[0].id,
-                        lastName: results.data[0].lastName,
-                        gamerTag: results.data[0].gamerTag,
-                        platform: results.data[0].platform,
-                        email: results.data[0].email
+                    var user = {}
+                    var friendsNotInTournament =[];
+                    for(var i =0; i<tournamentData.users.length; i++){
+                        if(tournamentData.users[i].id === userId){
+                            user = tournamentData.users[i];
+                        }
+                        
                     }
-                    console.log("NEW STATE:")
-                    // console.log(newState)
-                    this.setState({ ...this.state, currentUser: currentUser });
-                    console.log("here", this.state);
+                    for(var i =0; i<friends.length; i++){
+                        console.log(tournamentData.users)
+                        console.log(friends[i]);
+                        if(tournamentData.users.indexOf(friends[i])!==0){
+                            friendsNotInTournament.push(friends[i])
+                        }
+                    }
+                    this.setState({ ...this.state, tournamentData: tournamentData, currentUser:user,friends:friendsNotInTournament });
+                    console.log("check userID", this.state);
 
                     console.log("checking for COD API")
                     //map out user and fill in Get latest match for each user
-                    const userstats = []
-                    var user;
-                    for (user of this.state.tournamentData.users){
-                    // this.state.tournamentData.users.map (async user => {
-                        API.getMatches(user.gamerTag,user.platform)
-                        .then(res => {
-                            console.log("matches data",res)
-                            userstats.push({
-                                userId:"user.gamerTag",
-                                deaths:res[0].playerStats.deaths,
-                                gulagdeaths:res[0].playerStats.gulagDeaths,
-                                gulagkills:res[0].playerStats.gulagKills,
-                                damage:res[0].playerStats.damageDone,
-                                kills:res[0].playerStats.kills
-                            })
-                        })
-                        // this.setState({ ...this.state, userstats: userstats });
-                        console.log(this.state)
-                    }
-                    if (this.state.currentUser.gamerTag === this.state.tournamentData.users[0].gamerTag){
-                        this.setState({...this.state, admin: true})
-                    }
-                })
+                    const userstats = [];
+                    // const getMatch = async (user)=>{
+                    //     await API.getMatches(user.gamerTag,user.platform)
+                    //     .then(res => {
+                    //         console.log("matches data",res)
+                    //         setTimeout( async () => {
+                    //             console.log('waiting...')
+                                
+                    //             userstats.push({
+                    //                 userId:user.gamerTag,
+                    //                 deaths:res[0].playerStats.deaths,
+                    //                 gulagdeaths:res[0].playerStats.gulagDeaths,
+                    //                 gulagkills:res[0].playerStats.gulagKills,
+                    //                 damage:res[0].playerStats.damageDone,
+                    //                 kills:res[0].playerStats.kills
+                    //             })
+                    //             this.setState({ ...this.state, userstats: userstats }); 
+                    //             console.log(userstats); 
 
+                    //         }, 3000);
+
+                    //     })
+                    // }
+                    var users = this.state.tournamentData.users;
+                    for(var i = 0; i<users.length; i++) {
+                        userstats.push({
+                            userId:users[i].gamerTag,
+                            deaths:0,
+                            gulagdeaths:0,
+                            gulagkills:0,
+                            damage:0,
+                            kills:0,
+                            score:0
+                        })
+                    }
+                    this.setState({ ...this.state, userstats: userstats });
+                       
+                    console.log(this.state)   
+                    
+                      
+                })
+           
             } catch (err) {
                 console.log(err)
             }
@@ -177,7 +201,9 @@ class Dashboard extends Component {
                     />
                     <br></br>
                     <hr></hr>
-                    <AdminPanel />
+                    <AdminPanel 
+                        tournamentData ={this.state.tournamentData}
+                    />
                     <Middle>
                         <Chart />
                     </Middle>
@@ -191,7 +217,7 @@ class Dashboard extends Component {
                     />
     
                        
-                        {/* })}  */}
+x                        {/* })}  */}
                     {/* </GridList> */}
                     {/* </div> */}
                 </Box>

@@ -117,6 +117,16 @@ function Friends() {
 
     const addFriend =(event)=>{
         console.log(event);
+        var id = event.target.value;
+        console.log(event.target);
+        if(!event.target.value){
+            console.log(event.target.parentNode.value);
+            id = event.target.parentNode.value;
+        }
+        var user = currentUser;
+        user.friendId = id;
+        console.log(user);
+        API.addFriend(user);
     }
     return(
         <div>
@@ -183,7 +193,7 @@ function Friends() {
             <TableCell>{row.email}</TableCell>
             <TableCell>{row.platform}</TableCell>
             <TableCell>   
-                <Button variant="contained" color="primary" onClick ={addFriend(row)} >Add</Button>
+                <Button variant="contained" color="primary" onClick ={addFriend} value = {row.id} >Add</Button>
             </TableCell>
 
             </TableRow>
