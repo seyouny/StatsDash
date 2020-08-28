@@ -61,10 +61,15 @@ export default function AdminPanel (props) {
                             <ButtonGroup aria-label="admin button group">
                                 <InviteFriend />
                                 <StartTournButton 
-                                tournamentData = {props.tournamentData}/>
+                                tournamentData = {props.tournamentData}
+                                
+                                />
                                 <StopTournButton />
                                 <UpdateStatsButton />
-                                <AddFriends />
+                                <AddFriends 
+                                    friends = {props.friends}
+                                    joinCode = {props.tournamentData.joinCode}
+                                />
                             </ButtonGroup>
                     </Container>
 
