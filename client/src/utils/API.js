@@ -14,7 +14,8 @@ export default {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://call-of-duty-modern-warfare.p.rapidapi.com/warzone-matches/"+userName+"/"+formattedPlat,
+            // "url": "https://call-of-duty-modern-warfare.p.rapidapi.com/warzone-matches/"+userName+"/"+formattedPlat,
+            "url": "https://cors-anywhere.herokuapp.com/https://call-of-duty-modern-warfare.p.rapidapi.com/warzone-matches/"+userName+"/"+formattedPlat,
             "headers": {
                 "x-rapidapi-host": "call-of-duty-modern-warfare.p.rapidapi.com",
                 "x-rapidapi-key": "401c08f482msha8f3fc31e872911p10a56cjsn9db42713d2d4"

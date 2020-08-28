@@ -138,7 +138,7 @@ export default function AddFriends() {
         {userArray.map((value) => {
 
           const labelId = `transfer-list-item-${value}-label`;
-          console.log("Value.FirstName :", value.firstName)
+          // console.log("Value.FirstName :", value.firstName)
           
           return (
             <ListItem key={value.userId} role="listitem" button onClick={handleToggle(value)}>
