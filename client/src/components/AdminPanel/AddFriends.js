@@ -18,6 +18,7 @@ import InviteFriend from './InviteFriend';
 import friends from '../../utils/friendSeeds';
 import Styles from './adminpanelstyle.css';
 import { keys } from '@material-ui/core/styles/createBreakpoints';
+import API from "../../utils/API"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,17 +42,36 @@ function intersection(a, b) {
   return a.filter((value) => b.indexOf(value) !== -1);
 }
 
-export default function AddFriends() {
+export default function AddFriends(props) {
 
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
+      setLeft(props.friends);
+      setRight([]);
       setOpen(true);
     };
 
     const handleClose = () => {
       setOpen(false);
+      
     };
+    const handleSubmit = async()=>{
+      console.log("HANDLE SUBMIT")
+      console.log(right);
+      console.log(props.joinCode);
+      setOpen(false);
+      var users = right
+      for(var i =0; i<users.length; i++){
+        users[i].userId =users[i].id;
+        users[i].joinCode =props.joinCode
+        console.log(users[i]);
+        await API.joinTournament(users[i])
+        
+      }
+      window.location.reload(false);
+
+    }
 
   
     //SEEDS FOR TESTING, REPRESENTS PLAYERS ADDED TO TOURNAMENT
@@ -90,24 +110,25 @@ export default function AddFriends() {
 
     const classes = useStyles();
     const [checked, setChecked] = React.useState([]);
-    const [left, setLeft] = React.useState(friends);
-    const [right, setRight] = React.useState(addedFriends);
+    const [myFriends, setFriends] = React.useState(props.friends);
+    const [left, setLeft] = React.useState(props.friends);
+    const [right, setRight] = React.useState([]);
     //TODO: CHANGE USESTATE TO APPLY TO FRIENDS ADDED TO TOURNAMENT. RIGHT SHOULD BE FRIENDS ADDED TO TOURNAMENT, LEFT SHOULD BE ALL FRIENDS IN THE USERT TABLE.
 
     const leftChecked = intersection(checked, left);
     const rightChecked = intersection(checked, right);
 
     const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
+      const currentIndex = checked.indexOf(value);
+      const newChecked = [...checked];
 
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
+      if (currentIndex === -1) {
+        newChecked.push(value);
+      } else {
+        newChecked.splice(currentIndex, 1);
+      }
 
-    setChecked(newChecked);
+      setChecked(newChecked);
     };
 
     const handleAllRight = () => {
@@ -138,8 +159,8 @@ export default function AddFriends() {
         {userArray.map((value) => {
 
           const labelId = `transfer-list-item-${value}-label`;
-          // console.log("Value.FirstName :", value.firstName)
-          
+          console.log("Value.FirstName :", value.firstName)
+          console.log(value);
           return (
             <ListItem key={value.userId} role="listitem" button onClick={handleToggle(value)}>
               <ListItemIcon>
@@ -231,7 +252,7 @@ export default function AddFriends() {
                     <Button variant="outlined" onClick={handleClose} color="secondary">
                     Cancel
                     </Button>
-                    <Button id="addFriendBtn" className="adminBtn" variant="outlined" color="secondary" type="submit" onClick={handleClose}>
+                    <Button id="addFriendBtn" className="adminBtn" variant="outlined" color="secondary" type="submit" onClick={handleSubmit}>
                     Add
                     </Button>
                 </ButtonGroup>
