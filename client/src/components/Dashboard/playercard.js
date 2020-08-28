@@ -42,7 +42,7 @@ export default function Bot(props) {
 
         title={props.userId}
         subheader = " "
-        subheader={"Rank: " + props.rank}
+        // subheader={"Rank: " + props.rank}
 
       />
       <CardContent>

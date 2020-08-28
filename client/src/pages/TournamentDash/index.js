@@ -28,7 +28,30 @@ class Dashboard extends Component {
     state = {
         tournamentData: {},
         currentUser: {},
-        userstats: [],
+        userstats: [{
+            userId:"Stacey",
+            deaths:5,
+            gulagdeaths:6,
+            gulagkills:3,
+            damage:2,
+            kills:4
+        },
+        {
+            userId:"Bob",
+            deaths:3,
+            gulagdeaths:3,
+            gulagkills:2,
+            damage:4,
+            kills:6
+        },
+        {
+            userId:"Sam",
+            deaths:5,
+            gulagdeaths:3,
+            gulagkills:2,
+            damage:8,
+            kills:6
+        }],
         admin: false
     }
 
@@ -152,9 +175,11 @@ class Dashboard extends Component {
                     <hr></hr>
                     <Stats
                         currentuser={this.state.currentUser.firstName}
-                        // rank={this.state.userstats[0].rank}
-                        // kills={this.state.userstats[0].kills}
-                        // gulagdeaths={this.state.userstats[0].gulagdeaths}
+                        rank= "--"
+                        kills= "--"
+                        gulagkills = "--"
+                        gulagdeaths= "--"
+                        damage = "--"
 
                     />
                     <br></br>
@@ -173,12 +198,9 @@ class Dashboard extends Component {
                     <PlayerList
                     list = {this.state.userstats}
                     />
-                        {/* <Bot
-                        // userId = {this.state.tournamentData.users[0].firstName}
-                        deaths = {play.deaths}
-                        // damage = {play.damage}
-                        /> */}
-                        {/* })}  */}
+    
+                       
+x                        {/* })}  */}
                     {/* </GridList> */}
                     {/* </div> */}
                 </Box>
