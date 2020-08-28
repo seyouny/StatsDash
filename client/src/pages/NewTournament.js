@@ -1,6 +1,7 @@
 //CREATE NEW TOURNAMENT PAGE - BOOSTRAP-BASED
 
 import React, { Component, useContext, useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 //REACT BOOTSTRAP ELEMENTS
 import Container from 'react-bootstrap/Container';
@@ -122,9 +123,12 @@ const NewTournament= () =>{
 
         API.createTournament(tournament, currentUser.userId);
         console.log(tournament);
+
+
         TournCodeSend("Your tournament, "+ tournament.tName + " has been created, to have your friends join,"
         +"send them this invite code: \n"+ newTournamentCode);
 
+        window.location.href = "/myhome";
         // these go with tournCodeSend
         // const [show, setShow] = useState(false);
         // const handleClose = () => setShow(false);
