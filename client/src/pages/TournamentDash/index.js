@@ -64,53 +64,51 @@ class Dashboard extends Component {
                 // console.log(userId, tI)
                 var friends =[]
                 await API.getFriends(userId,(results)=>{
-                    console.log(results.data.Friends);
                     friends = results.data.Friends;
 
                 })
                 await API.getOneTournament(tId, (results) => {
                     console.log("TOURNAMENT FOUND");
                     console.log(friends)
-                    console.log("here", results);
                     const tournamentData = {
                         adminId: results.data.adminId,
                         tName: results.data.tName,
                         games: results.data.games,
                         users: results.data.Users,
+                        joinCode: results.data.joinCode,
                         multiplier: {
-                            clutchKillsMultiplier: results.data.Users.clutchKillsMultiplier,
-                            damageMultiplier: results.data.Users.damageMultiplier,
-                            damageToKillsMultiplier: results.data.Users.damageToKillsMultiplier,
-                            deathsMultiplier: results.data.Users.deathsMultiplier,
-                            gulagDeathsMultiplier: results.data.Users.gulagDeathsMultiplier,
-                            gulagKillsMultiplier: results.data.Users.gulagKillsMultiplier,
-                            killsMultiplier: results.data.Users.killsMultiplier,
-                            placementMultiplier: results.data.Users.placementMultiplier,
-                            revivesMultiplier: results.data.Users.revivesMultiplier
+                            clutchKillsMultiplier: results.data.clutchKillsMultiplier,
+                            damageMultiplier: results.data.damageMultiplier,
+                            damageToKillsMultiplier: results.data.damageToKillsMultiplier,
+                            deathsMultiplier: results.data.deathsMultiplier,
+                            gulagDeathsMultiplier: results.data.gulagDeathsMultiplier,
+                            gulagKillsMultiplier: results.data.gulagKillsMultiplier,
+                            killsMultiplier: results.data.killsMultiplier,
+                            placementMultiplier: results.data.placementMultiplier,
+                            revivesMultiplier: results.data.revivesMultiplier
                         }
                     }
                     
-                    console.log("TOURNAMENT DATA:");
-                    console.log(tournamentData);
+                    
                     var user = {}
                     var friendsNotInTournament =[];
+                    var tester = []
                     for(var i =0; i<tournamentData.users.length; i++){
                         if(tournamentData.users[i].id === userId){
                             user = tournamentData.users[i];
                         }
+                        tester.push(tournamentData.users[i].id);
                         
                     }
                     for(var i =0; i<friends.length; i++){
-                        console.log(tournamentData.users)
-                        console.log(friends[i]);
-                        if(tournamentData.users.indexOf(friends[i])!==0){
+                        
+                        if(tester.indexOf(friends[i].id)===-1){
                             friendsNotInTournament.push(friends[i])
                         }
                     }
                     this.setState({ ...this.state, tournamentData: tournamentData, currentUser:user,friends:friendsNotInTournament });
-                    console.log("check userID", this.state);
+                    
 
-                    console.log("checking for COD API")
                     //map out user and fill in Get latest match for each user
                     const userstats = [];
                     // const getMatch = async (user)=>{
@@ -203,6 +201,7 @@ class Dashboard extends Component {
                     <hr></hr>
                     <AdminPanel 
                         tournamentData ={this.state.tournamentData}
+                        friends = {this.state.friends}
                     />
                     <Middle>
                         <Chart />
@@ -217,7 +216,7 @@ class Dashboard extends Component {
                     />
     
                        
-x                        {/* })}  */}
+                        {/* })}  */}
                     {/* </GridList> */}
                     {/* </div> */}
                 </Box>

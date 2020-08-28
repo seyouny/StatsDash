@@ -224,9 +224,15 @@ router.put("/api/join/tournament",(req,res)=>{
   console.log("USER")
   console.log(user)
   db.Tournaments.findOne({
-    where:{joinCode: joinCode}
+    where:{joinCode: joinCode},
+    include:[db.Users]
   }).then((tournament)=>{
     console.log(tournament);
+    for(var i =0; i<tournament.Users.length; i++){
+      if(tournament.Users[i].id===req.body.userId){
+        res.json("USER ALREADY IS IN TOURNAMENT")
+      }
+    }
     db.Users.findOne({
       where:{id:user.userId}
     }).then((user)=>{
