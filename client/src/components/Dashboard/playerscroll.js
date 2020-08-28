@@ -41,68 +41,20 @@ performance.matches.map((stats)=>{
     }
     players.push(play)
 })
-/**
- * The example data is structured as follows:
- *
- * import image from 'path/to/image.jpg';
- * [etc...]
- *
- * const tileData = [
- *   {
- *     img: image,
- *     title: 'Image',
- *     author: 'author',
- *   },
- *   {
- *     [etc...]
- *   },
- * ];
- */
-// var players = [
-//     {"user":"bob",
-//      "player":1},
-//      {"user":"bob",
-//      "player":1},
-//      {"user":"bob",
-//      "player":1},
-//      {"user":"bob",
-//      "player":1},
-//      {"user":"bob",
-//      "player":1},
-//      {"user":"bob",
-//      "player":1},
-//      {"user":"bob",
-//      "player":1},
-//      {"user":"bob",
-//      "player":1},
-//      {"user":"bob",
-//      "player":1},
-//      {"user":"bob",
-//      "player":1},
-//      {"user":"bob",
-//      "player":1},
-//      {"user":"bob",
-//      "player":1},
-//      {"user":"bob",
-//      "player":1},
-//      {"user":"bob",
-//      "player":1},
-//      {"user":"bob",
-//      "player":1},
-//      {"user":"bob",
-//      "player":1}
-//  ]
-export default function SingleLineGridList() {
+
+export default function SingleLineGridList(props) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <GridList className={classes.gridList} cols={5}>
-        {players.map((play)=>{
+        {props.list.map((play)=>{
             return <Bot
-            headshots = {play.headshots}
-            rank = {play.rank}
-            assists = {play.assists}
+            userId = {play.userId}
+            deaths = {play.deaths}
+            damage = {play.damage}
+            gulagdeaths = {play.gulagdeaths}
+            gulagkills = {play.gulagkills}
             />
         })}
       </GridList>
