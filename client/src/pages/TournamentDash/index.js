@@ -28,7 +28,30 @@ class Dashboard extends Component {
     state = {
         tournamentData: {},
         currentUser: {},
-        userstats: [],
+        userstats: [{
+            userId:"Stacey",
+            deaths:5,
+            gulagdeaths:6,
+            gulagkills:3,
+            damage:2,
+            kills:4
+        },
+        {
+            userId:"Bob",
+            deaths:3,
+            gulagdeaths:3,
+            gulagkills:2,
+            damage:4,
+            kills:6
+        },
+        {
+            userId:"Sam",
+            deaths:5,
+            gulagdeaths:3,
+            gulagkills:2,
+            damage:8,
+            kills:6
+        }],
         admin: false
     }
 
@@ -83,13 +106,15 @@ class Dashboard extends Component {
 
                     console.log("checking for COD API")
                     //map out user and fill in Get latest match for each user
-                    this.state.tournamentData.users.map (async user => {
-                        const userstats = []
-                        await API.getMatches(user.gamerTag,user.platform)
+                    const userstats = []
+                    var user;
+                    for (user of this.state.tournamentData.users){
+                    // this.state.tournamentData.users.map (async user => {
+                        API.getMatches(user.gamerTag,user.platform)
                         .then(res => {
                             console.log("matches data",res)
                             userstats.push({
-                                userId:user.gamerTag,
+                                userId:"user.gamerTag",
                                 deaths:res[0].playerStats.deaths,
                                 gulagdeaths:res[0].playerStats.gulagDeaths,
                                 gulagkills:res[0].playerStats.gulagKills,
@@ -97,27 +122,12 @@ class Dashboard extends Component {
                                 kills:res[0].playerStats.kills
                             })
                         })
-                        this.setState({ ...this.state, userstats: userstats });
+                        // this.setState({ ...this.state, userstats: userstats });
                         console.log(this.state)
-                    })
-                    // API.getMatches(this.state.currentUser.gamerTag, this.state.currentUser.platform)
-                    //     .then(res => {
-                    //         console.log("results of matches", res)
-                    //         const userstats = []
-                            
-                    //         res.map(stats => {
-                    //             userstats.push({
-                    //             userid:this.state.currentUser.gamerTag,
-                    //             deaths:stats.playerStats.deaths,
-                    //             gulagdeaths:stats.playerStats.gulagDeaths,
-                    //             gulagkills:stats.playerStats.gulagKills,
-                    //             damage:stats.playerStats.damageDone,
-                    //             kills:stats.playerStats.kills
-                    //         })
-                    //     })
-                    // this.setState({ ...this.state, userstats: userstats });
-
-                        // })
+                    }
+                    if (this.state.currentUser.gamerTag === this.state.tournamentData.users[0].gamerTag){
+                        this.setState({...this.state, admin: true})
+                    }
                 })
 
             } catch (err) {
@@ -158,9 +168,11 @@ class Dashboard extends Component {
                     <hr></hr>
                     <Stats
                         currentuser={this.state.currentUser.firstName}
-                        // rank={this.state.userstats[0].rank}
-                        // kills={this.state.userstats[0].kills}
-                        // gulagdeaths={this.state.userstats[0].gulagdeaths}
+                        rank= "--"
+                        kills= "--"
+                        gulagkills = "--"
+                        gulagdeaths= "--"
+                        damage = "--"
 
                     />
                     <br></br>
@@ -177,11 +189,8 @@ class Dashboard extends Component {
                     <PlayerList
                     list = {this.state.userstats}
                     />
-                        {/* <Bot
-                        // userId = {this.state.tournamentData.users[0].firstName}
-                        deaths = {play.deaths}
-                        // damage = {play.damage}
-                        /> */}
+    
+                       
                         {/* })}  */}
                     {/* </GridList> */}
                     {/* </div> */}
