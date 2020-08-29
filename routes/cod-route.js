@@ -268,7 +268,15 @@ router.put("/api/end/tournament",(req,res)=>{
       status: "completed",
       endDate: req.body.endDate
     })
-    res.json(tournament.Performances)
+    for(var i =0; i<tournament.Performances.length; i ++){
+      console.log("attempting to update");
+      console.log(req.body.performances[i]);
+      console.log(tournament.Performances[i])
+      tournament.Performances[i].update(req.body.performances[i]).then((results)=>{
+        console.log(results);
+      })
+    }
+    res.json("success");
    
   })
 })
