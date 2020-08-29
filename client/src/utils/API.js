@@ -37,7 +37,7 @@ export default {
     },
 
     startTournament: function(tournament) {
-        axios.put("/api/tournament/"+tournament.id,tournament)
+        axios.put("/api/tournament/"+tournament.tournamentId,tournament)
     },
 
 
@@ -91,6 +91,11 @@ export default {
     },
     endTournament: function(tournament){
         axios.put("/api/end/tournament",tournament)
+    },
+    getPerformances: function(tournamentId,callback){
+        axios.get("/api/performances/"+tournamentId).then((results)=>{
+            return callback(results);
+        })
     }
     
 }
