@@ -129,81 +129,89 @@ function Friends() {
         API.addFriend(user);
     }
     return(
-        <div>
-        <Navigation/>
-        <br></br>
-        <br></br>
+      <div>
+        <Box>
+          <Navigation/>
 
-        <h1 className={classes.header}>Find Friends</h1>
-        <br></br>
-        <form onSubmit = {lookUpFriend}>
-        <FormControl className={classes.margin}>
-        <InputLabel htmlFor="demo-customized-textbox">Search for</InputLabel>
-        <BootstrapInput name= "title" id="demo-customized-textbox" />
-        </FormControl>
-        <FormControl className={classes.margin}>
-            <InputLabel id="demo-customized-select-label">By</InputLabel>
-            <Select
-            labelId="demo-customized-select-label"
-            id="demo-customized-select"
-            value={query}
-            onChange={handleChange}
-            input={<BootstrapInput />}
-            >
-            <MenuItem value="">
-                <em>None</em>
-            </MenuItem>
-            <MenuItem value="gamerTag">Gamer Tag</MenuItem>
-            <MenuItem value="email">Email</MenuItem>
-            <MenuItem value="firstName">First Name </MenuItem>
-            </Select>
-        </FormControl>
-        <FormControl className={classes.margin}>
-            <Button variant="contained" color="primary" type ="submit">Search</Button>
-        </FormControl>
-        </form>
-        <br></br>
-        <br></br>
+          <Container>
+              <h1 className={classes.header}>Find Friends</h1>
+          </Container>
+          
+          <Container className="searchLine">
+              <form onSubmit = {lookUpFriend}>
 
-{/* MY TOURNAMENTS TABLE */}
+              <FormControl className={classes.margin}>
+              <InputLabel htmlFor="demo-customized-textbox">Search for</InputLabel>
+              <BootstrapInput label="Search..." name= "title" id="demo-customized-textbox"></BootstrapInput>
+              </FormControl>
 
-<TableContainer component={Paper}>
-    <Table className={classes.table} 
-    aria-label="simple table">
-      <TableHead>
-        <TableRow>
-          <TableCell>Gamer Tag</TableCell>
-          <TableCell>First Name</TableCell>
-          <TableCell>Last Name</TableCell>
-          <TableCell>Email</TableCell>
-          <TableCell>Platform</TableCell>
-          <TableCell>Add</TableCell>
-        </TableRow>
-      </TableHead>
+              <FormControl className={classes.margin}>
+                  <InputLabel id="demo-customized-select-label">By</InputLabel>
+                  <Select
+                  labelId="demo-customized-select-label"
+                  id="demo-customized-select"
+                  value={query}
+                  onChange={handleChange}
+                  input={<BootstrapInput></BootstrapInput>}
+                  >  
+                  <MenuItem value="">
+                      <em>None</em>
+                  </MenuItem>
+                  <MenuItem value="gamerTag">Gamer Tag</MenuItem>
+                  <MenuItem value="email">Email</MenuItem>
+                  <MenuItem value="firstName">First Name </MenuItem>
+                  </Select>
+              </FormControl>
 
-      <TableBody>
-        {users.map((row)=>{
-            return(
-            <TableRow key={row.id}>
-            <TableCell component="th" scope="row">
-            {row.gamerTag}
-            </TableCell>
-            <TableCell>{row.firstName}</TableCell>
-            <TableCell>{row.lastName}</TableCell>
-            <TableCell>{row.email}</TableCell>
-            <TableCell>{row.platform}</TableCell>
-            <TableCell>   
-                <Button variant="contained" color="primary" onClick ={addFriend} value = {row.id} >Add</Button>
-            </TableCell>
+              <FormControl className={classes.margin}>
+                  <Button className="searchBtn" variant="contained" color="primary" type ="submit">Search</Button>
+              </FormControl>
 
-            </TableRow>
-            )
-          })
-        }
-      </TableBody>
-    </Table>
-  </TableContainer>
-        </div>
+              </form>
+              </Container>
+              <Container>
+
+              {/* MY FRIENDS TABLE */}
+
+            <TableContainer component={Paper}>
+                <Table className={classes.table} 
+                aria-label="simple table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Gamer Tag</TableCell>
+                      <TableCell>First Name</TableCell>
+                      <TableCell>Last Name</TableCell>
+                      <TableCell>Email</TableCell>
+                      <TableCell>Platform</TableCell>
+                      <TableCell>Add</TableCell>
+                    </TableRow>
+                  </TableHead>
+
+                  <TableBody>
+                    {users.map((row)=>{
+                        return(
+                        <TableRow key={row.id}>
+                        <TableCell component="th" scope="row">
+                        {row.gamerTag}
+                        </TableCell>
+                        <TableCell>{row.firstName}</TableCell>
+                        <TableCell>{row.lastName}</TableCell>
+                        <TableCell>{row.email}</TableCell>
+                        <TableCell>{row.platform}</TableCell>
+                        <TableCell>   
+                            <Button variant="contained" color="primary" onClick ={addFriend} value = {row.id} >Add</Button>
+                        </TableCell>
+
+                        </TableRow>
+                        )
+                      })
+                    }
+                  </TableBody>
+                </Table>
+              </TableContainer>
+          </Container>
+        </Box>
+      </div>
     )
 
 }
