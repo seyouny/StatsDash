@@ -16,12 +16,13 @@ if (process.env.NODE_ENV === "production") {
 
 if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL);
+  console.log("App connected to JAWS and listening on PORT " + "http://localhost:" + PORT);
 } else {
   connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'password',
-    database: 'statsdashdb'
+    host: 'dno6xji1n8fm828n.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    user: 'sbbg3zakw7rqxuc7',
+    password: 'upgtoueg3fmejp2b',
+    database: 'zlr8wau3cuiweniv'
   });
 };
 // Define API routes here
