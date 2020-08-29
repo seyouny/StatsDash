@@ -80,7 +80,8 @@ export default {
     //         console.log(results);
     //         return callback(results.data)
     //     })
-    // }
+    // },
+
     addFriend:function(user){
         axios.post("/api/friends",user);
     },

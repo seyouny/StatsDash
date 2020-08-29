@@ -8,10 +8,12 @@ import BarChart from '../components/Chart/BarChart';
 import PieChart from '../components/Chart/PieChart';
 import RadarChart from '../components/Chart/RadarChart';
 import LineChart from '../components/Chart/LineChart';
+import performanceSeeds from "../utils/performanceSeeds.json";
 
 export default class Chart extends React.Component {
     componentDidMount() {
-        
+        console.log(performanceSeeds.matches);
+        console.log("Checking");
     } 
 
     render() {
@@ -21,7 +23,9 @@ export default class Chart extends React.Component {
 
                     <Grid item xs={12} sm={6} md={6} align="center" component={Paper} >
                         
-                        <BarChart />
+                        <BarChart 
+                          performance = {performanceSeeds.matches}
+                        />
                         
                     </Grid>
                     {/* <Grid item xs={12} sm={6} md={6} align="center" >
@@ -31,12 +35,16 @@ export default class Chart extends React.Component {
                     </Grid> */}
                     <Grid item xs={12} sm={6} md={6} align="center" component={Paper} >
                         
-                        <RadarChart />
+                        <RadarChart 
+                            performance = {performanceSeeds.matches}
+                        />
                     
                     </Grid>
                     <Grid item xs={12} sm={6} md={6} align="center" component={Paper}>
                         
-                        <LineChart />
+                        <LineChart 
+                            performance = {performanceSeeds.matches}
+                        />
                     
                     </Grid>
                 </Grid >

@@ -1,18 +1,18 @@
 import React from 'react';
 import Chart from 'chart.js';
-import performance from "../../utils/performanceSeeds.json";
+// import performance from "../../utils/performanceSeeds.json";
 
 export default class BarChart extends React.Component {
-    componentDidMount() {
-        // make async api call to back end
-        // make sure to await on response result
-        // loop thru user data and create dataset objects
-        // labels: ['kills, 'death', 'assists']
+    constructor(props) {
+        super(props);
 
-        //datasets: [{
-            //label: 'player1'
-            //data: [2,4,1]
-        //}...]
+    this.state = {
+        damageDone: props.damageDone,
+        damageTaken: props.damageTaken,
+        performance: props.performance
+    }};
+    componentDidMount() {
+       
         const color = [
             'rgba(184,60,19,.5)',
             'rgba(88,52,33,.5)',
@@ -26,21 +26,25 @@ export default class BarChart extends React.Component {
         const canvas = document.getElementById('canvas#1');
         const ctx = canvas.getContext('2d');
 
+        var fillerArr = []
+        this.state.performance.map((match, i) => {
+            fillerArr.push( {
+                label: 'Player ' + (i + 1),
+                data: [match.playerStats.damageDone, match.playerStats.damageTaken, match.playerStats.score],
+                // fill: false,
+                borderColor: color[i],
+                backgroundColor: color[i],
+                borderWidth: 1
+            })
+        })
+
         const barChart = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: ['Damage', 'Damage To Kills', 'Overall Score'],
-                datasets: performance.matches.map((match, i) => {
-                    return {
-                        label: 'Player ' + (i + 1),
-                        data: [match.playerStats.damageDone, match.playerStats.damageTaken, match.playerStats.score],
-                        fill: false,
-                        borderColor: color[i],
-                        backgroundColor: color[i],
-                        borderWidth: 1
-                    }
-                })
+                datasets: fillerArr
             },
+
             options: {
                 scales: {
                     yAxes: [{
