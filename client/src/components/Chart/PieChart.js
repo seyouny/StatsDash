@@ -58,7 +58,7 @@ export default class PieChart extends React.Component {
     render() {
         return (
             
-            <div >
+            <div style={{ width: '400px', height: '200px', color:"white" }}>
                 <canvas id="pie" />
             </div>
             // <div>
