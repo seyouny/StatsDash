@@ -124,7 +124,6 @@ const NewTournament= () =>{
         API.createTournament(tournament, currentUser.userId);
         console.log(tournament);
 
-
         TournCodeSend("Your tournament, "+ tournament.tName + " has been created, to have your friends join,"
         +"send them this invite code: \n"+ newTournamentCode);
 
