@@ -13,19 +13,20 @@ import Button from '@material-ui/core/Button';
 import Navigation from "../components/Navigation";
 import soldier1 from "../components/NewChoose/soldier1.jpg";
 import soldierTeam from "../components/NewChoose/soldierTeam.jpg";
-
+import Tilt from "react-tilt";
+import "./style.css"
 
 export default function NewChoose () {
 
     return (
-    <Container>
+    <Container class="Container-NC">
         <Navigation></Navigation>
         <Grid container spacing={3}
                 direction="row"
                 justify="center"
                 alignItems="center">
 
-            <Grid item xs={4}>
+            <Grid item xs={4}> <Tilt options={{ max: 25 }}>
                 <Paper className="newChoose">
                     <Card>
                         <CardMedia
@@ -35,18 +36,20 @@ export default function NewChoose () {
                             image={soldier1}
                             title="Contemplative Reptile"
                             />
-                        <CardContent>
+                        <CardContent className="card-contentNC">
                             If you have not yet signed up, here's where to do that.
                             <CardActionArea>
-                                <Button size="small" color="primary" href="/new/player">
+                                <Button style={{color: "blue"}}className="action-button"size="small" color="primary" href="/new/player">
                                 New Player
                                 </Button>
                             </CardActionArea>
                         </CardContent>
                     </Card>
                 </Paper>
-            </Grid>
-            <Grid item xs={4}>
+                </Tilt>
+            </Grid><br></br>
+            <Grid className="NC-card" item xs={4}>
+            <Tilt options={{ max: 25 }}>
                 <Paper className="newChoose">
                     <Card>
                     <CardMedia
@@ -56,19 +59,21 @@ export default function NewChoose () {
                         image={soldierTeam}
                         title="Contemplative Reptile"
                         />
-                        <CardContent>
+                        <CardContent className="card-contentNC">
                             Already signed up and want to start a new Tournament? Click here.
                             <CardActionArea>
-                                <Button size="small" color="primary" href="/new/tournament">
+                                <Button style={{color: "blue"}}className="action-button"size="small" color="primary" href="/new/tournament">
                                 New Tournament
                                 </Button>
                             </CardActionArea>
                         </CardContent>
                     </Card>
                 </Paper>
+                </Tilt>
             </Grid>
         </Grid>                
     </Container>
+    
 
 
     )

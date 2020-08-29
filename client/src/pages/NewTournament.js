@@ -130,26 +130,26 @@ const NewTournament= () =>{
     // render() {
         
         return (
-            <Container>
+            <Container className= "Container-NT">
                 <Navigation />
 
             <Row>
-                <Col><h3 className="my-5 text-center">Create a Tournament</h3></Col>
+                <Col><h3 style={{color: "white"}} className="my-5 text-center">Create a Tournament</h3></Col>
             </Row>
 
             <Row>
                 <Col md={2}></Col>
                 <Col md={8}>
                     <Card>
-                        <Card.Body>
+                        <Card.Body className="card-NT">
                             <Form onSubmit ={handleFormSubmit}>
                             <Form.Group controlId="formNumGamesTournament">
-                                <Form.Label >Number of Games per Tournament (maximum 19)</Form.Label>
+                                <Form.Label style={{color: "white"}}>Number of Games per Tournament (maximum 19)</Form.Label>
                                 <Form.Control name= "games" type="text" placeholder="Enter Number" />
                             </Form.Group>
 
                             <Form.Group controlId="formTournamentName">
-                                <Form.Label>Tournament Name (optional)</Form.Label>
+                                <Form.Label style={{color: "white"}}>Tournament Name (optional)</Form.Label>
                                 <Form.Control name= "title" type="text" placeholder="Enter Name" />
                             </Form.Group>
 
@@ -165,7 +165,7 @@ const NewTournament= () =>{
 
                             <Modal show={state.showHide}>
                                 <Modal.Header closeButton onClick={handleModalShowHide}>
-                                <Modal.Title>Adjust Game Settings</Modal.Title>
+                                <Modal.Title style={{color: "white"}}>Adjust Game Settings</Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>
 
@@ -173,7 +173,7 @@ const NewTournament= () =>{
                                     
                                     <Form onSubmit = {getSettings}>
                                         <Form.Group controlId="formKills">
-                                            <Form.Label>Kills</Form.Label>
+                                            <Form.Label style={{color: "white"}}>Kills</Form.Label>
                                             <Form.Control  name="kills"  type="text" defaultValue={state.kills} />
                                             
                                         </Form.Group>
@@ -192,42 +192,42 @@ const NewTournament= () =>{
                                                 name = "kills"
                                             /> */}
                                         <Form.Group controlId="formDeath">
-                                            <Form.Label>Death</Form.Label>
+                                            <Form.Label style={{color: "white"}}>Death</Form.Label>
                                             <Form.Control  name= "deaths" type="text" defaultValue={state.deaths} />
                                         </Form.Group>
 
                                         <Form.Group controlId="formDamage">
-                                            <Form.Label>Damage</Form.Label>
+                                            <Form.Label style={{color: "white"}}>Damage</Form.Label>
                                             <Form.Control  name= "damage" type="text" defaultValue={state.damage} />
                                         </Form.Group>
 
                                         <Form.Group controlId="formGulagWin">
-                                            <Form.Label>Gulag Win</Form.Label>
+                                            <Form.Label style={{color: "white"}}>Gulag Win</Form.Label>
                                             <Form.Control  name= "gkills" type="text" defaultValue={state.gkills} />
                                         </Form.Group>
 
                                         <Form.Group controlId="formGulagLoss">
-                                            <Form.Label>Gulag Loss</Form.Label>
+                                            <Form.Label style={{color: "white"}}>Gulag Loss</Form.Label>
                                             <Form.Control  name= "gdeaths"  type="text" defaultValue={state.gdeaths} />
                                         </Form.Group>
 
                                         <Form.Group controlId="formRevives">
-                                            <Form.Label>Revives</Form.Label>
+                                            <Form.Label style={{color: "white"}}>Revives</Form.Label>
                                             <Form.Control  name= "revives" type="text" defaultValue={state.revives} />
                                         </Form.Group>
 
                                         <Form.Group controlId="formLastStandingKills">
-                                            <Form.Label>Last Standing Kills</Form.Label>
+                                            <Form.Label style={{color: "white"}}>Last Standing Kills</Form.Label>
                                             <Form.Control  name= "lastStandingKills" type="text" defaultValue={state.lastStandingKills} />
                                         </Form.Group>
 
                                         <Form.Group controlId="formDamageToKills">
-                                            <Form.Label>Damage to Kills</Form.Label>
+                                            <Form.Label style={{color: "white"}}>Damage to Kills</Form.Label>
                                             <Form.Control name= "damageToKills" type="text" defaultValue={state.damageToKills} />
                                         </Form.Group>
 
                                         <Form.Group controlId="formLastStandingKills">
-                                            <Form.Label>Placement</Form.Label>
+                                            <Form.Label style={{color: "white"}}>Placement</Form.Label>
                                             <Form.Control name = "placement" type="text" defaultValue={state.placement} />
                                         </Form.Group>
 

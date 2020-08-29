@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 // import './App.css';
 import Navigation from "./components/Navigation";
-import NewPlayer from "./pages/NewPlayer"
+import NewPlayer from "./pages/NewPlayer/NewPlayer"
 import NewTournament from "./pages/NewTournament"
 import Start from "./components/Start"
 import {AuthProvider} from "./Auth";
