@@ -15,6 +15,11 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import TextField from '@material-ui/core/TextField';
 import { AuthContext } from "../../Auth";
 import API from "../../utils/API";
@@ -24,7 +29,6 @@ import Smoke from "./homeVidBanner";
 import Banner from "./homeBanner";
 import Styles from './style.css';
 import ReactPlayer from 'react-player'
-
 
 
 const useStyles = makeStyles({
@@ -84,22 +88,25 @@ function MyHome() {
                 alignItems="center"
                 className="myHomeCont">
 
-      <Grid item xs={10}>
-
-        <Container>
 
   {/* GAMER GREETING */}
 
-  <h3 className={classes.header}>Choose Your Battle, {currentUser.gamerTag}</h3>
+      <Grid item xs={10}>
 
-          {/* MY TOURNAMENTS TABLE */}
+          <h3 className={classes.header}>Choose Your Battle, {currentUser.gamerTag}</h3>
+
+      </Grid>
+
+      <Grid item xs={10}>
+
+  {/* MY TOURNAMENTS TABLE */}
 
           <TableContainer component={Paper}>
               <Table className={classes.table} 
               aria-label="simple table">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Tournament Name</TableCell>
+                    <TableCell><strong>Tournaments</strong></TableCell>
                     <TableCell>Games</TableCell>
                     <TableCell>Start Date</TableCell>
                     <TableCell>End Date</TableCell>
@@ -127,16 +134,82 @@ function MyHome() {
               </Table>
             </TableContainer>
 
-      </Container>
-    </Grid>
+      </Grid>   
+
+  {/* COLLAPSIBLE MY FRIENDS SECTION */}  
+
+       <Grid item xs={10}>
+ 
+        <Accordion>
+
+        <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="My Friends Panel"
+            id="myFriendsPanelHead"
+            >
+            <Typography className={classes.heading}><strong>My Friends</strong><small><i>&nbsp;&nbsp;click to open panel</i></small></Typography>
+            </AccordionSummary>
+
+          <AccordionDetails>
+
+          <Grid container spacing={3}
+                direction="row"
+                justify="center"
+                alignItems="center"
+                className="myFriendsCont">
+
+            <Grid item xs={8}>
+
+                <TableContainer component={Paper}>
+                  <Table className={classes.table} 
+                  aria-label="Friends Table">
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>ID</TableCell>
+                        <TableCell>Name</TableCell>
+                        <TableCell>GamerTag</TableCell>
+                        <TableCell>Platform</TableCell>
+                        <TableCell>Player Since</TableCell>
+                      </TableRow>
+                    </TableHead>
+
+                    <TableBody>
+                      {friends.map((row)=>{
+                          return(
+                          <TableRow key={row.id}>
+                          <TableCell component="th" scope="row">{row.id}
+                          </TableCell>
+                          <TableCell>{row.firstName} {row.lastName}</TableCell>
+                          <TableCell>{row.gamerTag}</TableCell>
+                          <TableCell>{row.platform}</TableCell>
+                          <TableCell>{row.createdAt}</TableCell>
+                          </TableRow>
+                          )
+                        })
+                      }
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+
+            </Grid>
+
+            <Grid item xs={2}>
+
+              <Button id="addFriendsBtn" variant="contained" align="left" color="primary" href="/new/friends">Add friends</Button>
+
+            </Grid>
+
+          </Grid>
+
+
+          </AccordionDetails>
+
+        </Accordion>
+
+      </Grid>
+
 
   {/* CREATE OR JOIN TOURNAMENT SECTION */}
-
-    <Grid item xs={4} className="homeButtonDiv">
-
-          <Button variant="contained" align="left" color="primary" href="/new/friends">Add friends</Button>
-
-    </Grid>
     
     <Grid item xs={4}>
 
@@ -149,9 +222,8 @@ function MyHome() {
         </form>
 
     </Grid>
+    </Grid>
 
-  
-  </Grid>
   </Box>
   );
 }
