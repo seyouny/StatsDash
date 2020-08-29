@@ -1,12 +1,20 @@
 import React from 'react';
 import Chart from 'chart.js';
-import firebase from 'firebase';
-import API from '../../utils/API';
-import performance from "../../utils/performanceSeeds.json";
+// import firebase from 'firebase';
+// import API from '../../utils/API';
+// import performance from "../../utils/performanceSeeds.json";
 
 export default class RadarChart extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+    this.state = {
+        performance: props.performance
+    }};
+
     componentDidMount() {
-        // const ctx = document.getElementById("myChart").getContext("2d");
+       
         const canvas = document.getElementById('myChart');
         const ctx = canvas.getContext('2d');
 
@@ -20,54 +28,30 @@ export default class RadarChart extends React.Component {
             'rgba(88,98,86,.5)' 
         ];
 
-        console.log(performance);
+        var fillerArr = []
+        this.state.performance.map((match, i) => {
+            fillerArr.push( {
+                label: 'Player ' + (i + 1),
+                data: [match.playerStats.kills, match.playerStats.deaths, match.playerStats.gulagKills, match.playerStats.gulagDeaths, match.playerStats.clutchKills],
+                // fill: false,
+                borderColor: color[i],
+                radius: 1,
+                pointRadius: 2,
+                pointBorderColor: color[i],
+                pointBackgroundColor: color[i],
+                pointBorderWidth: 2,
+                backgroundColor: color[i],
+                borderWidth: 1
+            })
+        })
 
         const myChart = new Chart(ctx, {
             type: "radar",
             data: {
                 labels: ["Kills", "Death", "Gulag Kills", "Gulag Deaths", "Clutch Kills"],
-                datasets: performance.matches.map((match, i) => {
-                    return {
-                        label: 'Player ' + (i + 1),
-                        data: [match.playerStats.kills, match.playerStats.deaths, match.playerStats.gulagKills, match.playerStats.gulagDeaths, match.playerStats.clutchKills],
-                        // fill: false,
-                        borderColor: color[i],
-                        radius: 1,
-                        pointRadius: 2,
-                        pointBorderColor: color[i],
-                        pointBackgroundColor: color[i],
-                        pointBorderWidth: 2,
-                        backgroundColor: color[i],
-                        borderWidth: 1
-                    }
-                })
-                // datasets: performance.matches.map((match, i) => {
-                //     return {
-                //         label: 'Player ' + (i + 1),
-                //         data: [match.playerStats.kills, match.playerStats.deaths, match.playerStats.gulagKills, match.playerStats.gulagDeaths, match.playerStats.damageClutchKills, match.playerStats.damageTaken,],
-                //         borderColor: color[i],
-                //         borderWidth: 1,
-                //         radius: 1,
-                //         pointRadius: 1,
-                //         pointBackgroundColor: color[i],
-                //         pointBorderWidth: 2,
-                //         backgroundColor: color[i],
-                //     }
-                // })
-                // datasets: [
-                // {
-                //     label: "player 1",
-                //     data: [12, 19, 3, 34, 26, 57, 44, 76],
-                //     borderColor: 'rgba(0,140,232,.4)',
-                //     borderWidth: 1,
-                //     radius: 1,
-                //     pointRadius: 1,
-                //     pointBackgroundColor: 'rgba(0,140,232,.4)',
-                //     pointBorderWidth: 2,
-                //     backgroundColor: 'rgba(0,140,232,.4)',
-                // }
-                // ],
+                datasets: fillerArr
             },
+
             options: {
                 legend: {
                     display: true,
@@ -87,9 +71,6 @@ export default class RadarChart extends React.Component {
             }
     
         });
-                
-            
-       
     }
 
     render() {
