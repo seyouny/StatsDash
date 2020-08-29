@@ -64,7 +64,9 @@ export default function AdminPanel (props) {
                                 tournamentData = {props.tournamentData}
                                 
                                 />
-                                <StopTournButton />
+                                <StopTournButton 
+                                tournamentData = {props.tournamentData}
+                                />
                                 <UpdateStatsButton />
                                 <AddFriends 
                                     friends = {props.friends}

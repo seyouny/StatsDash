@@ -88,6 +88,9 @@ export default {
         axios.get("/api/friends/"+userId).then((results)=>{
             return callback(results);
         });
+    },
+    endTournament: function(tournament){
+        axios.put("/api/end/tournament",tournament)
     }
     
 }
