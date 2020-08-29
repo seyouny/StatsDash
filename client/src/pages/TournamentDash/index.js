@@ -76,6 +76,8 @@ class Dashboard extends Component {
                         games: results.data.games,
                         users: results.data.Users,
                         joinCode: results.data.joinCode,
+                        status: results.data.status,
+                        tournamentId:tId,
                         multiplier: {
                             clutchKillsMultiplier: results.data.clutchKillsMultiplier,
                             damageMultiplier: results.data.damageMultiplier,

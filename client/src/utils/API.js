@@ -36,7 +36,6 @@ export default {
 
     },
 
-    //rough start to put/change added by Jen - not tested, may not work as is.  Needed for start tournament function to set start date in UTC.
     startTournament: function(tournament) {
         axios.put("/api/tournament/"+tournament.id,tournament)
     },
@@ -89,6 +88,9 @@ export default {
         axios.get("/api/friends/"+userId).then((results)=>{
             return callback(results);
         });
+    },
+    endTournament: function(tournament){
+        axios.put("/api/end/tournament",tournament)
     }
     
 }

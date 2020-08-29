@@ -1,3 +1,14 @@
+.background {
+    top: 10%;
+    width: 80%;
+    background-image: url('./smokey-background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    height: 60em;
+    color: white;
+}
+
 .bannerImg {
     width: 100%;
     display: block;
@@ -16,4 +27,14 @@
 
 #sendEmailBtn {
     background-color: rgb(80,99,126);
+}
+
+.modalBkg {
+    background-color: rgb(52,58,64);
+    color: white;
+}
+
+.modalBkgLight {
+    background-color: rgba(255,255,255, .4);
+    color: black;
 }

@@ -18,6 +18,7 @@ import SampleDash from './pages/jensample';
 import Chart from "./pages/Chart";
 import { blueGrey, deepOrange, blue, red } from '@material-ui/core/colors';
 import SendEmailInvite from './pages/CreateNewTournament/SendEmailInvite';
+import addFriends from './pages/addFriends';
 
 //These colors can be changed and will affect colors on any Material UI components. See Jen for details.
 const theme = createMuiTheme({
@@ -57,6 +58,7 @@ function App() {
               <Route exact path="/sampledash" component={SampleDash}/>
               <Route exact path="/chart" component={Chart} />
               <Route exact path="/emailinvite" component={SendEmailInvite} />
+              <Route exact path="/new/friends" component={addFriends} />
 
             </Switch>
       

@@ -40,7 +40,7 @@ function Navigation() {
                         <Nav.Link style={{color: "white"}} href="/dashboard">Dashboard</Nav.Link>
                         <Nav.Link style={{color: "white"}} href="/newplayer">New Player</Nav.Link>
                         <Nav.Link style={{color: "white"}} href="/newtournament">New Tournament</Nav.Link>
-                        <Nav.Link style={{color: "white"}} href="/emailinvite">Email Invite</Nav.Link>
+                        <Nav.Link style={{color: "white"}} href="/new/friends">Add Friends</Nav.Link>
                     </Nav>
                     <Nav>
                         {/* <Form inline>

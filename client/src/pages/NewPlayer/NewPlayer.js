@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
 import app from "../../firebase";
@@ -49,7 +50,7 @@ const NewPlayer = ({history}) =>{
 
 
     return (
-            <Container><div class="Np-Page">
+            <Container><div className="Np-Page">
                 <Navigation />
 
             {/* <Row>
@@ -57,57 +58,89 @@ const NewPlayer = ({history}) =>{
             </Row> */}
 
             <Row>
-                {/* <Col md={2}></Col> */}
-                <Col className="col-form" md={6}>
-                    <br></br><br></br>
-                    <Card className= "card-body">
-                        
-                        <Card.Body>
-                            <h3 style={{color: "white"}}> New Player</h3>
+                <Col md={2}></Col>
+                <Col md={8}>
+                    <Card>
+                        <Card.Body className="modalBkgLight">
                             <Form onSubmit = {handleSignUp}>
-                            <Form.Group controlId="formGamerTag">
-                                <Form.Label style={{color: "white"}} >Gamer Tag</Form.Label>
-                                <Form.Control name ="gamerTag" type="text" placeholder="Enter Gamer Tag" />
-                            </Form.Group>
+                                <Form.Row>
+                                    <Col>
+                                        <Form.Group controlId="formGamerTag">
+                                            <Form.Label >Gamer Tag</Form.Label>
+                                            <Form.Control name ="gamerTag" type="text" placeholder="Enter Gamer Tag" />
+                                        </Form.Group>
+                                    </Col>
+                                    <Col>
+                                        <Form.Group controlId="formBasicPassword">
+                                            <Form.Label>Password</Form.Label>
+                                            <Form.Control  name ="password"type="password" placeholder="Password" />
+                                        </Form.Group>
+                                    </Col>
+                                </Form.Row>
 
-                            <Form.Group controlId="formBasicPassword">
-                                <Form.Label  style={{color: "white"}}>Password</Form.Label>
-                                <Form.Control  name ="password"type="password" placeholder="Password" />
-                            </Form.Group>
+                            <br></br>
 
-                            <Form.Group controlId="exampleForm.ControlSelect1">
-                                <Form.Label  style={{color: "white"}}>Choose a platform</Form.Label>
-                                <Form.Control name ="platform" as="select">
-                                <option defaultValue = "psn">Playstation - (psn)</option>
-                                <option defaultValue = "steam">Steam - (steam)</option>
-                                <option defaultValue = "xbox">XBox - (xbl)</option>
-                                <option defaultValue = "act">Activision - (battle) Include your Activision ID#</option>
-                                </Form.Control>
-                            </Form.Group>
+                                <Form.Row>
+                                    <Col>
+                                        <Form.Group controlId="exampleForm.ControlSelect1">
+                                            <Form.Label>Choose a platform</Form.Label>
+                                            <Form.Control name ="platform" as="select">
+                                            <option defaultValue = "psn">Playstation - (psn)</option>
+                                            <option defaultValue = "steam">Steam - (steam)</option>
+                                            <option defaultValue = "xbox">XBox - (xbl)</option>
+                                            <option defaultValue = "act">Activision - (battle) Include your Activision ID#</option>
+                                            </Form.Control>
+                                        </Form.Group>
+                                    </Col>
 
-                            <Form.Group controlId="formActivisionId">
-                                <Form.Label  style={{color: "white"}}>Activision ID (optional)</Form.Label>
-                                <Form.Control  name ="activisionId"type="text" placeholder="Enter ID" />
-                            </Form.Group>
+                                    <Col>
+                                        <Form.Group controlId="formActivisionId">
+                                            <Form.Label>Activision ID (optional)</Form.Label>
+                                            <Form.Control  name ="activisionId"type="text" placeholder="Enter ID" inactive />
+                                        </Form.Group>
+                                    </Col>
+                                </Form.Row>
 
-                            <Form.Group controlId="formFirstName">
-                                <Form.Label  style={{color: "white"}}>First Name</Form.Label>
-                                <Form.Control name ="firstName" type="text" placeholder="Enter First Name" />
-                            </Form.Group>
+                            <br></br>
 
-                            <Form.Group controlId="formLastName">
-                                <Form.Label  style={{color: "white"}}>Last Name</Form.Label>
-                                <Form.Control  name ="lastName" type="text" placeholder="Enter Last Name" />
-                            </Form.Group>
+                            <Form.Row>
+                                    <Col>
 
-                            <Form.Group controlId="formBasicEmail">
-                                <Form.Label  style={{color: "white"}}>Email address</Form.Label>
-                                <Form.Control  name ="email" type="email" placeholder="Enter email" />
-                            </Form.Group>
+                                    <Form.Group controlId="formFirstName">
+                                        <Form.Label>First Name</Form.Label>
+                                        <Form.Control name ="firstName" type="text" placeholder="Enter First Name" />
+                                    </Form.Group>
 
-                            <Button variant="primary" type="submit">
-                                Submit
-                            </Button>
+                                    </Col>
+                                    <Col>
+
+                                    <Form.Group controlId="formLastName">
+                                        <Form.Label>Last Name</Form.Label>
+                                        <Form.Control  name ="lastName" type="text" placeholder="Enter Last Name" />
+                                    </Form.Group>
+
+                                    </Col>
+                            </Form.Row>
+                            <Form.Row>
+
+                                    <Col>
+
+                                        <Form.Group controlId="formBasicEmail">
+                                            <Form.Label>Email address</Form.Label>
+                                            <Form.Control  name ="email" type="email" placeholder="Enter email" />
+                                        </Form.Group>
+
+                                    </Col>
+                            </Form.Row>
+
+                            <Form.Row>
+
+                                <Button variant="dark" type="submit" size="sm" block>
+                                    Submit
+                                </Button>
+
+                            </Form.Row>
+
                             </Form>
                         </Card.Body>
                     </Card>
