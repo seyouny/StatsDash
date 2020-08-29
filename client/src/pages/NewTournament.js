@@ -21,6 +21,7 @@ import { AuthContext } from "../Auth";
 import API from "../utils/API";
 import Navigation from "../components/Navigation";
 import SendEmailInvite from "./CreateNewTournament/SendEmailInvite";
+import * as emailjs from 'emailjs-com';
 import { render } from "react-dom";
 
 // const classes = useStyles();
@@ -86,7 +87,8 @@ const NewTournament= () =>{
     const TournCodeSend = (message) => {
 
         alert(message);
-        //TODO: GO TO SENDEMAILINVITE PAGE
+
+        //TODO: GO TO SENDEMAILINVITE PAGE AND PASS TOURNAMENT NAME & CODE TO THAT
             // <SendEmailInvite {...tournament} />
     }
 
@@ -99,6 +101,7 @@ const NewTournament= () =>{
         console.log(currentUser);
         var randomNum = Math.floor(Math.random()*1000)
         const tournamentCode = title.value+"#"+randomNum
+        const newTournamentCode = tournamentCode.replace(/ /g, "")
         const tournament = {
             tName: title.value,
             games: parseInt(games.value),
@@ -113,13 +116,13 @@ const NewTournament= () =>{
             damageToKillsMultiplier: state.damageToKills,
             status: "pending",
             adminId: currentUser.userId,
-            joinCode: tournamentCode
+            joinCode: newTournamentCode
         }
 
         API.createTournament(tournament, currentUser.userId);
         console.log(tournament);
         TournCodeSend("Your tournament, "+ tournament.tName + " has been created, to have your friends join,"
-        +"send them this invite code: \n"+ tournamentCode);
+        +"send them this invite code: \n"+ newTournamentCode);
 
         // these go with tournCodeSend
         // const [show, setShow] = useState(false);

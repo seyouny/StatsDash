@@ -14,13 +14,13 @@ export default {
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://call-of-duty-modern-warfare.p.rapidapi.com/warzone-matches/"+userName+"/"+formattedPlat,
+            // "url": "https://call-of-duty-modern-warfare.p.rapidapi.com/warzone-matches/"+userName+"/"+formattedPlat,
+            "url": "https://cors-anywhere.herokuapp.com/https://call-of-duty-modern-warfare.p.rapidapi.com/warzone-matches/"+userName+"/"+formattedPlat,
             "headers": {
                 "x-rapidapi-host": "call-of-duty-modern-warfare.p.rapidapi.com",
                 "x-rapidapi-key": "401c08f482msha8f3fc31e872911p10a56cjsn9db42713d2d4"
             }
         }
-        
         return axios.get(settings.url,settings).then(function (response) {
             console.log(response.data.matches);
             return response.data.matches;
@@ -59,6 +59,36 @@ export default {
             console.log(results);
             return callback(results)
         })
-    }
+    },
 
+    joinTournament:function(user){
+        axios.put("/api/join/tournament",user)
+    },
+    findFriend:function(search,callback){
+        console.log(search)
+        axios.get("/api/find/friends/"+search.query+"/"+search.title).then((results)=>{
+            return callback(results);
+        })
+    },
+    getAllUsers:function(callback){
+        axios.get("/api/all/users").then((results)=>{
+            return callback(results);
+        })
+    },
+
+    // getPerformances: function(userId, callback){
+    //     axios.get("/api/user/"+userId+"/performances").then((results) =>{
+    //         console.log(results);
+    //         return callback(results.data)
+    //     })
+    // }
+    addFriend:function(user){
+        axios.post("/api/friends",user);
+    },
+    getFriends:function(userId,callback){
+        axios.get("/api/friends/"+userId).then((results)=>{
+            return callback(results);
+        });
+    }
+    
 }

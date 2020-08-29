@@ -7,6 +7,7 @@ import NewPlayer from "./pages/NewPlayer/NewPlayer"
 import NewTournament from "./pages/NewTournament"
 import Start from "./components/Start"
 import {AuthProvider} from "./Auth";
+import Friends from "./pages/addFriends"
 import PrivateRoute from "./PrivateRoute";
 import "./App.scss";
 import Splash from "./pages/Splash";
@@ -16,6 +17,7 @@ import Dashboard from './pages/TournamentDash';
 import SampleDash from './pages/jensample';
 import Chart from "./pages/Chart";
 import { blueGrey, deepOrange, blue, red } from '@material-ui/core/colors';
+import SendEmailInvite from './pages/CreateNewTournament/SendEmailInvite';
 
 //These colors can be changed and will affect colors on any Material UI components. See Jen for details.
 const theme = createMuiTheme({
@@ -26,7 +28,7 @@ const theme = createMuiTheme({
     secondary: {
       main: red[500],
     },
-    type: 'dark'
+    type: 'light'
   },
 });
 
@@ -48,10 +50,13 @@ function App() {
               <Route exact path="/new/tournament" component={NewTournament}/>
               <Route exact path="/newtournament" component={NewTournament}/>
               <Route exact path="/new" component={NewChoose}/>
+              <Route exact path="/new/friends" component={Friends}/>
+
               <Route exact path="/dashboard" component={Dashboard}/>
               <Route exact path="/tournament/:tid/dashboard/:userid" component={Dashboard}/>
               <Route exact path="/sampledash" component={SampleDash}/>
               <Route exact path="/chart" component={Chart} />
+              <Route exact path="/emailinvite" component={SendEmailInvite} />
 
             </Switch>
       

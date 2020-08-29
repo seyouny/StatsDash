@@ -23,6 +23,8 @@ import TourneySeeds from "../../utils/tourneySeeds";
 import Smoke from "./homeVidBanner";
 import Banner from "./homeBanner";
 import Styles from './style.css';
+import ReactPlayer from 'react-player'
+
 
 
 const useStyles = makeStyles({
@@ -38,6 +40,7 @@ const useStyles = makeStyles({
 function MyHome() {
   const { currentUser } = useContext(AuthContext);
   const [state, setState] = useState([])
+  const [friends, setFriends] = useState([])
   const classes = useStyles();
   
   useEffect(()=>{
@@ -49,7 +52,9 @@ function MyHome() {
   function getTable(){
     API.getTournaments(currentUser.userId,(results)=>{
       console.log(results.data.Tournaments);
-      setState(results.data.Tournaments)
+      setState(results.data.Tournaments);
+      setFriends(results.data.Friends);
+      console.log("friends",friends);
       return results.data.Tournaments
     })
   }
@@ -57,6 +62,12 @@ function MyHome() {
     event.preventDefault()
     const {tournamentJoiner} = event.target.elements;
     console.log(tournamentJoiner.value);
+    var user = currentUser;
+    user.joinCode = tournamentJoiner.value
+    API.joinTournament(user).then(()=>{
+      window.location.reload(false);
+    });
+    
 
   }
   console.log(currentUser)
@@ -123,8 +134,7 @@ function MyHome() {
 
     <Grid item xs={4} className="homeButtonDiv">
 
-
-          <Button variant="contained" align="left" color="primary" href="/new/tournament">Create New Tournament</Button>
+          <Button variant="contained" align="left" color="primary" href="/new/friends">Add friends</Button>
 
     </Grid>
     
