@@ -36,9 +36,14 @@ function StopTournButton (props) {
         let StopTime = new Date().getTime();
         console.log("Stop time", StopTime);
         console.log(props.tournamentData)
+        var data = props.tournamentData
+        data.endDate = StopTime
+        API.getPerformances(data.tournamentId,(results)=>{
+          console.log(results);
+        });
         //TODO: change status in Tournament to "active" and set start date in Tournament table to now in UTC time
         //API.updateTournament...    
-        API.endTournament(props.tournamentData);
+        API.endTournament(data);
     };
   
   
