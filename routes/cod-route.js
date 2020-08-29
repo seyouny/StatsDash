@@ -141,6 +141,7 @@ router.post("/api/user", (req, res) => {
     })
 })
 
+// Adding a friend
 router.post("/api/friends",(req,res)=>{
   console.log("ROUTE HIT");
   console.log(req.body.userId);
@@ -240,6 +241,17 @@ router.put("/api/join/tournament",(req,res)=>{
       console.log(user);
       res.json(user);
     })
+  })
+})
+
+// Ending tournament
+router.put("/api/end/tournament",(req,res)=>{
+  console.log(req.body);
+  db.Tournaments.findOne({
+    where:{joinCode: req.body.joinCode},
+    include:[db.Performances]
+  }).then((tournament)=>{
+    console.log(tournament);
   })
 })
 
