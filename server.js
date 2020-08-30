@@ -31,13 +31,13 @@ if (process.env.NODE_ENV === "production") {
 //=======================================================================
 
 //This section comes from instructions for deploying with Sequelize to Heroku
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 
 // development only
-if ('development' === app.get('env')) {
-  app.use(express.errorHandler());
-}
+// if ('development' === app.get('env')) {
+//   app.use(express.errorHandler());
+// }
 
 // Send every other request to the React app
 // Define any API routes before this runs
