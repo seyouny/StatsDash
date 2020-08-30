@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
 import braggingwhiteImg from "./braggingwhite.svg";
 import { AuthContext } from "../../Auth";
 import { withRouter, Redirect } from "react-router";
@@ -11,8 +11,11 @@ const Login = ({history},props)=>{
   // constructor(props) {
   //   super(props);
   // }
-  // app.auth().signOut();
+  // 
   const { currentUser } = useContext(AuthContext);
+  // useEffect(()=>{
+  //   app.auth().signOut();
+  // })
   const handleLogin = useCallback(
     async event => {
       console.log("hello");

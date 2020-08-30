@@ -32,7 +32,7 @@ function StopTournButton (props) {
 
     const getMatchData = async(performances)=> {
       var tournament = props.tournamentData;
-      
+      console.log(performances);
       var newPerformances =[]
       for(var i =0; i<performances.length; i++){
         var startingMatchIndex=0;
@@ -87,7 +87,9 @@ function StopTournButton (props) {
       console.log("Stop time", StopTime);
       tournament.endDate = StopTime
       console.log(tournament)
-      API.endTournament(tournament);
+      if(tournament.performances.length!==0){
+        API.endTournament(tournament);
+      }
     }
     
     const calculateScore = (performance)=>{
