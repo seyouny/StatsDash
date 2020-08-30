@@ -8,11 +8,11 @@ export default class LineChart extends React.Component {
     constructor(props) {
         super(props);
 
-    this.state = {
-        teamPlacement: props.teamPlacement,
-        objectiveReviver: props.objectiveReviver,
-        performance: props.performance
-    }};
+    this.state ={
+        performance:props.performance
+    }
+        
+    };
 
     componentDidMount() {
         const canvas = document.getElementById('canvas');
@@ -31,8 +31,8 @@ export default class LineChart extends React.Component {
         var fillerArr = []
         this.state.performance.map((match, i) => {
             fillerArr.push( {
-                label: 'Player ' + (i + 1),
-                data: [match.playerStats.teamPlacement, match.playerStats.objectiveReviver],
+                label: match.gamerTag,
+                data: [match.kills, match.deaths, match.damageToKills ],
                 // fill: false,
                 borderColor: color[i],
                 pointRadius: 2,
@@ -47,7 +47,7 @@ export default class LineChart extends React.Component {
             
             type: 'line',
             data: {
-                labels: ['Placement', 'Revives'],
+                labels: ['Clutch Kills',  'Deaths','Damage to Kills'],
                 datasets:  fillerArr
                    
             },

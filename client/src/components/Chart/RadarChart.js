@@ -31,8 +31,8 @@ export default class RadarChart extends React.Component {
         var fillerArr = []
         this.state.performance.map((match, i) => {
             fillerArr.push( {
-                label: 'Player ' + (i + 1),
-                data: [match.playerStats.kills, match.playerStats.deaths, match.playerStats.gulagKills, match.playerStats.gulagDeaths, match.playerStats.clutchKills],
+                label: match.gamerTag,
+                data: [match.clutchKills, match.revives, match.gulagKills, match.gulagDeaths, match.placement],
                 // fill: false,
                 borderColor: color[i],
                 radius: 1,
@@ -48,7 +48,7 @@ export default class RadarChart extends React.Component {
         const myChart = new Chart(ctx, {
             type: "radar",
             data: {
-                labels: ["Kills", "Death", "Gulag Kills", "Gulag Deaths", "Clutch Kills"],
+                labels: ["Last Standing Kills", "Revives", "Gulag Kills", "Gulag Deaths", "Wins"],
                 datasets: fillerArr
             },
 

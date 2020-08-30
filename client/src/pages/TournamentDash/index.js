@@ -29,30 +29,7 @@ class Dashboard extends Component {
         tournamentData: {},
         currentUser: {},
         friends:[],
-        userstats: [{
-            userId:"Stacey",
-            deaths:5,
-            gulagdeaths:6,
-            gulagkills:3,
-            damage:2,
-            kills:4
-        },
-        {
-            userId:"Bob",
-            deaths:3,
-            gulagdeaths:3,
-            gulagkills:2,
-            damage:4,
-            kills:6
-        },
-        {
-            userId:"Sam",
-            deaths:5,
-            gulagdeaths:3,
-            gulagkills:2,
-            damage:8,
-            kills:6
-        }],
+        userstats: [],
         admin: false
     }
 
@@ -78,6 +55,7 @@ class Dashboard extends Component {
                         joinCode: results.data.joinCode,
                         status: results.data.status,
                         tournamentId:tId,
+                        performances: results.data.Performances,
                         multiplier: {
                             clutchKillsMultiplier: results.data.clutchKillsMultiplier,
                             damageMultiplier: results.data.damageMultiplier,
@@ -90,6 +68,9 @@ class Dashboard extends Component {
                             revivesMultiplier: results.data.revivesMultiplier
                         }
                     }
+                    tournamentData.performances.forEach((performance)=>{
+                        
+                    })
                     
                     
                     var user = {}
@@ -110,9 +91,9 @@ class Dashboard extends Component {
                     }
                     this.setState({ ...this.state, tournamentData: tournamentData, currentUser:user,friends:friendsNotInTournament });
                     
-
+                    
                     //map out user and fill in Get latest match for each user
-                    const userstats = [];
+                    
                     // const getMatch = async (user)=>{
                     //     await API.getMatches(user.gamerTag,user.platform)
                     //     .then(res => {
@@ -135,20 +116,36 @@ class Dashboard extends Component {
 
                     //     })
                     // }
-                    var users = this.state.tournamentData.users;
-                    for(var i = 0; i<users.length; i++) {
-                        userstats.push({
-                            userId:users[i].gamerTag,
-                            deaths:0,
-                            gulagdeaths:0,
-                            gulagkills:0,
-                            damage:0,
-                            kills:0,
-                            score:0
-                        })
+                    const userstats = [];
+                    if(tournamentData.status ==="completed"){
+                        var users = this.state.tournamentData.users;
+                        for(var i = 0; i<users.length; i++) {
+                            for(var j=0; j<tournamentData.performances.length; j++){
+                                if(tournamentData.performances[j].UserId===users[i].id){
+                                    userstats.push({
+                                        userId:tournamentData.performances[j].UserId,
+                                        gamerTag:users[i].gamerTag,
+                                        deaths:tournamentData.performances[j].deaths,
+                                        gulagdeaths:tournamentData.performances[j].gulagDeaths,
+                                        gulagkills:tournamentData.performances[j].gulagKills,
+                                        damage:tournamentData.performances[j].damage,
+                                        kills:tournamentData.performances[j].kills,
+                                        score:tournamentData.performances[j].overallScore,
+                                        revives: tournamentData.performances[j].revives,
+                                        clutchKills: tournamentData.performances[j].clutchKills,
+                                        damageToKills:tournamentData.performances[j].damageToKills,
+                                        wins: tournamentData.performances[j].placement,
+                                    })
+                                }
+                               
+                            }
+                            
+                        }
+                        this.setState({ ...this.state, userstats: userstats });
+                           
                     }
-                    this.setState({ ...this.state, userstats: userstats });
-                       
+                    
+                    
                     console.log(this.state)   
                     
                       
@@ -205,9 +202,10 @@ class Dashboard extends Component {
                         tournamentData ={this.state.tournamentData}
                         friends = {this.state.friends}
                     />
-                    <Middle>
-                        <Chart />
-                    </Middle>
+                    <Middle
+                        performances= {this.state.userstats}
+                    />
+                
                     <br></br>
                     <hr></hr>
                     {/* <div className={classes.root}> */}
