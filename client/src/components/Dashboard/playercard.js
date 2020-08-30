@@ -40,18 +40,20 @@ export default function Bot(props) {
     <Card className={classes.root}>
       <CardHeader
 
-        title={props.userId}
+        title={props.gamerTag}
         subheader = " "
         // subheader={"Rank: " + props.rank}
 
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
+        <p>{"Kills: "+props.kills + "\n"}</p>   
         <p>{"Deaths: "+ props.deaths + "\n"}</p>
-       <p>{"Gulag Death: "+props.gulagdeaths + "\n"}</p>   
-       <p>{"Gulag Kills: "+props.gulagkills + "\n"}</p>   
-
        <p>{"Damage: "+props.damage + "\n"}</p>   
+       <p>{"Revives: "+props.revives + "\n"}</p> 
+       <p>{" Overall Score: "+props.overallScore + "\n"}</p>   
+
+         
         </Typography>
       </CardContent>
     </Card>

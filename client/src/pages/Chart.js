@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
@@ -10,13 +10,36 @@ import RadarChart from '../components/Chart/RadarChart';
 import LineChart from '../components/Chart/LineChart';
 import performanceSeeds from "../utils/performanceSeeds.json";
 
-export default class Chart extends React.Component {
-    componentDidMount() {
-        console.log(performanceSeeds.matches);
-        console.log("Checking");
-    } 
+// export default class Chart extends React.Component {
+    export default function Chart(props){
 
-    render() {
+
+    // constructor(props) {
+    //     super(props);
+    //     console.log(props);
+    //     this.state = {
+    //         performances:props.performances
+    //         };
+    // }
+   
+    // componentDidMount() {
+    //     console.log(this.state);
+    //     console.log("Checking");
+    //     console.log("In Charts");
+        
+    // } 
+
+    // render() {
+        const [performances, setPerformances] = React.useState(props.performances)
+        React.useEffect(()=>{
+            console.log(props.performances);
+            if(props.performances.length!==0){
+                    setPerformances(props.performances);
+                    console.log(performances);
+            }
+        })
+        
+    if(performances.length>0){
         return (
             <Container>
                 <Grid container spacing={3} >
@@ -24,7 +47,9 @@ export default class Chart extends React.Component {
                     <Grid item xs={12} sm={6} md={6} align="center" component={Paper} >
                         
                         <BarChart 
-                          performance = {performanceSeeds.matches}
+                        //   performance = {this.state.performances}
+                        performance = {performances}
+
                         />
                         
                     </Grid>
@@ -36,14 +61,16 @@ export default class Chart extends React.Component {
                     <Grid item xs={12} sm={6} md={6} align="center" component={Paper} >
                         
                         <RadarChart 
-                            performance = {performanceSeeds.matches}
+                            //   performance = {this.state.performances}
+                            performance = {performances}                        
                         />
                     
                     </Grid>
                     <Grid item xs={12} sm={6} md={6} align="center" component={Paper}>
                         
                         <LineChart 
-                            performance = {performanceSeeds.matches}
+                           //   performance = {this.state.performances}
+                            performance = {performances}
                         />
                     
                     </Grid>
@@ -60,4 +87,8 @@ export default class Chart extends React.Component {
             </Container>
         );
     }
+    return(
+        <h1>Loading...</h1>
+    );
+    // }
 }
