@@ -18,11 +18,10 @@ function Navigation() {
     const history = useHistory();
     function handleOnclick(event){
         event.preventDefault();
-        return app.auth().signOut().then(()=>{
+        app.auth().signOut().then(()=>{
             alert("OK we're signing you out.");
             console.log("HELLO");
             console.log(currentUser);
-            history.push("/");
         });
 
      
