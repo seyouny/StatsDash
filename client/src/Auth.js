@@ -10,7 +10,6 @@ export const AuthProvider = ({children}) => {
     useEffect(()=>{
         app.auth().onAuthStateChanged(function(user){
             if(user){
-                console.log(user)
                 var id =user.uid
                 API.getUsers(id,(results)=>{
                     const newState ={
@@ -24,6 +23,10 @@ export const AuthProvider = ({children}) => {
                     }
                     setCurrentUser(newState);
                 })
+            }
+            if(!user){
+                console.log("Signed out");
+                setCurrentUser(null);
             }
         });
     },[]);
