@@ -16,10 +16,10 @@
         "dialect": "mysql"
     },
     "production": {
-        "username": "root",
-        "password": "password",
-        "database": "StatDashDB",
-        "host": "127.0.0.1",
+        "username": "sbbg3zakw7rqxuc7",
+        "password": "upgtoueg3fmejp2b",
+        "database": "zlr8wau3cuiweniv",
+        "host": "dno6xji1n8fm828n.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
         "port": 3306,
         "dialect": "mysql"
     }
