@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 
 export default function Stats(props) {
   const classes = useStyles();
-if(props.mystats.kills){
+if(props.mystats){
   return (
     <Card className={classes.root}>
 
@@ -28,7 +28,7 @@ if(props.mystats.kills){
       </CardActions>
       <CardActionArea>
         <h4>Rank: 1st </h4>
-        <h5>Kills: {props.mystats.kills}</h5>
+        {/* <h5>Kills: {props.mystats.kills}</h5> */}
         <h5>Gulag Kills: {props.mystats.gulagkills}</h5>
         <h5>Gulag Deaths: {props.mystats.gulagdeaths}</h5>
         <h5>Overall Damage: {props.mystats.damage}</h5>
