@@ -247,12 +247,12 @@ export default function AddFriends(props) {
 
                 </DialogContent>
             <DialogActions>
-                    <InviteFriend align="left"/>
+                    {/* <InviteFriend align="left"/> */}
                 <ButtonGroup aria-label="button group">
                     <Button variant="outlined" onClick={handleClose} color="secondary">
                     Cancel
                     </Button>
-                    <Button id="addFriendBtn" className="adminBtn" variant="outlined" color="secondary" type="submit" onClick={handleSubmit}>
+                    <Button id="addFriendBtn" className="adminBtn" variant="contained" color="secondary" type="submit" onClick={handleSubmit}>
                     Add
                     </Button>
                 </ButtonGroup>

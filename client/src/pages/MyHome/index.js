@@ -29,15 +29,72 @@ import Smoke from "./homeVidBanner";
 import Banner from "./homeBanner";
 import Styles from './style.css';
 import ReactPlayer from 'react-player'
+import { blueGrey } from '@material-ui/core/colors';
 
 
 const useStyles = makeStyles({
+  root: {
+    backgroundColor: 'transparent',
+  },
   table: {
     minWidth: 450,
+    tableLayout: 'fixed',
+    float: 'none',
+    backgroundColor: 'rgb(255, 255, 255)',
+    borderRadius: '2%',
+    padding: '.5em',
   },
   header: {
+    marginTop: '1em',
     color: 'white',
-  }
+  },
+  joinTournDiv: {
+    display: 'block',
+    float: 'none',
+    marginRight: '30%',
+    marginLeft: '25%',
+  },
+  subheader: {
+    color: blueGrey[500],
+    marginTop: '1em',
+    marginBottom: '.5em',
+    marginLeft: '20%',
+    float: 'left',
+    display: 'inline-block',
+  },
+  button: {
+    marginTop: '.6em',
+    marginLeft: '1em',
+    display: 'inline-block',
+    float: 'right',
+  },
+  input: {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)'
+  },
+  tableDiv: {
+    width: '80%',
+    maxHeight: '20em',
+    overflowX: 'hidden',
+    overflowY: 'auto',
+    display: 'block',
+    float: 'none',
+    size: 'contain'
+  },
+  rowHead: {
+    backgroundColor: '#2e5170',
+    color: '#7a8c9d',
+  },
+  myFriendsDiv: {
+    // width: 'fit-content',
+    maxHeight: '20em',
+    overflowX: 'hidden',
+    overflowY: 'auto',
+    display: 'block',
+    float: 'none',
+    align: 'center',
+    marginRight: '14%',
+    marginLeft: '24%',
+  },
 });
 
 
@@ -55,7 +112,7 @@ function MyHome() {
   })
   function getTable(){
     API.getTournaments(currentUser.userId,(results)=>{
-      console.log(results.data.Tournaments);
+      console.log("Tournament Data:", results.data.Tournaments);
       setState(results.data.Tournaments);
       setFriends(results.data.Friends);
       console.log("friends",friends);
@@ -77,6 +134,9 @@ function MyHome() {
   console.log(currentUser)
 // Working on getting real data from MySQL but getting error uid not defined
 
+  {/* ====================RETURN SECTION========================= */}
+
+
   return (
     <Box>
       <Smoke className={classes.video} />
@@ -89,7 +149,7 @@ function MyHome() {
                 className="myHomeCont">
 
 
-  {/* GAMER GREETING */}
+  {/* ==================GAMER GREETING================== */}
 
       <Grid item xs={10}>
 
@@ -97,20 +157,55 @@ function MyHome() {
 
       </Grid>
 
-      <Grid item xs={10}>
 
-  {/* MY TOURNAMENTS TABLE */}
+  {/* ==================JOIN TOURNAMENT SECTION================== */}
+    
+      <Grid item xs={10} className={classes.joinTournDiv}>
+          <form  
+            className={classes.root} 
+            noValidate autoComplete="off" 
+            onSubmit ={joinTournament} >
 
-          <TableContainer component={Paper}>
+          <label 
+            for='joinTournByCode' 
+            className={classes.subheader}>
+              Join a Tournament
+          </label>
+
+          <TextField 
+            className={classes.input} 
+            id="joinTournByCode" 
+            name= "tournamentJoiner"  
+            placeholder="Enter Tournament Code" 
+            variant="outlined" 
+            borderColor="primary" />
+
+          <Button 
+            className={classes.button} 
+            variant="contained" 
+            color="primary" 
+            type ="submit">
+              Join
+          </Button>
+        </form>
+
+      </Grid>
+
+
+  {/* ==================MY TOURNAMENTS TABLE================== */}
+
+      <Grid item xs={6} className={classes.tableDiv}>
+
+          <TableContainer>
               <Table className={classes.table} 
-              aria-label="simple table">
+              aria-label="My Tournaments Table">
                 <TableHead>
-                  <TableRow>
-                    <TableCell><strong>Tournaments</strong></TableCell>
-                    <TableCell>Games</TableCell>
-                    <TableCell>Start Date</TableCell>
-                    <TableCell>End Date</TableCell>
-                    <TableCell>Status</TableCell>
+                  <TableRow className={classes.rowHead}>
+                    <TableCell colSpan={2}><strong>Tournaments</strong></TableCell>
+                    <TableCell colSpan={1}>Games</TableCell>
+                    <TableCell colSpan={1}>Start Date</TableCell>
+                    <TableCell colSpan={1}>End Date</TableCell>
+                    <TableCell colSpan={1}>Status</TableCell>
                   </TableRow>
                 </TableHead>
 
@@ -118,14 +213,14 @@ function MyHome() {
                   {state.map((row)=>{
                       return(
                       <TableRow key={row.tName}>
-                      <TableCell component="th" scope="row">
+                      <TableCell component="th" scope="row" colSpan={2}>
                         <a href={"tournament/"+row.id+"/dashboard/"+currentUser.userId}>
                         {row.tName}</a>
                       </TableCell>
-                      <TableCell>{row.games}</TableCell>
-                      <TableCell>{row.startDate}</TableCell>
-                      <TableCell>{row.endDate}</TableCell>
-                      <TableCell>{row.status}</TableCell>
+                      <TableCell colSpan={1}>{row.games}</TableCell>
+                      <TableCell colSpan={1}><small>{row.startDate}</small></TableCell>
+                      <TableCell colSpan={1}><small>{row.endDate}</small></TableCell>
+                      <TableCell colSpan={1}><i>{row.status}</i></TableCell>
                       </TableRow>
                       )
                     })
@@ -134,15 +229,20 @@ function MyHome() {
               </Table>
             </TableContainer>
 
-      </Grid>   
+      </Grid>
 
-  {/* COLLAPSIBLE MY FRIENDS SECTION */}  
+
+
+  {/* ===============COLLAPSIBLE MY FRIENDS SECTION=============== */}  
+
+      <Container item xs={10} className={classes.myFriendsDiv}>
 
        <Grid item xs={10}>
  
         <Accordion>
 
         <AccordionSummary
+            className={classes.rowHead}
             expandIcon={<ExpandMoreIcon />}
             aria-controls="My Friends Panel"
             id="myFriendsPanelHead"
@@ -152,24 +252,25 @@ function MyHome() {
 
           <AccordionDetails>
 
-          <Grid container spacing={3}
+          <Grid container spacing={1}
                 direction="row"
                 justify="center"
                 alignItems="center"
-                className="myFriendsCont">
+                className="myFriendsCont"
+                >
 
-            <Grid item xs={8}>
+            <Grid item xs={10}>
 
-                <TableContainer component={Paper}>
+                <TableContainer>
                   <Table className={classes.table} 
                   aria-label="Friends Table">
                     <TableHead>
                       <TableRow>
-                        <TableCell>ID</TableCell>
-                        <TableCell>Name</TableCell>
-                        <TableCell>GamerTag</TableCell>
-                        <TableCell>Platform</TableCell>
-                        <TableCell>Player Since</TableCell>
+                        {/* <TableCell>ID</TableCell> */}
+                        <TableCell colSpan={1}>Name</TableCell>
+                        <TableCell colSpan={1}>GamerTag</TableCell>
+                        <TableCell colSpan={1}>Platform</TableCell>
+                        <TableCell colSpan={1}>Player Since</TableCell>
                       </TableRow>
                     </TableHead>
 
@@ -177,12 +278,12 @@ function MyHome() {
                       {friends.map((row)=>{
                           return(
                           <TableRow key={row.id}>
-                          <TableCell component="th" scope="row">{row.id}
-                          </TableCell>
-                          <TableCell>{row.firstName} {row.lastName}</TableCell>
-                          <TableCell>{row.gamerTag}</TableCell>
-                          <TableCell>{row.platform}</TableCell>
-                          <TableCell>{row.createdAt}</TableCell>
+                          {/* <TableCell component="th" scope="row">{row.id}
+                          </TableCell> */}
+                          <TableCell colSpan={1}>{row.firstName} {row.lastName}</TableCell>
+                          <TableCell colSpan={1}component="th">{row.gamerTag}</TableCell>
+                          <TableCell colSpan={1}>{row.platform}</TableCell>
+                          <TableCell colSpan={1}><small>{row.createdAt}</small></TableCell>
                           </TableRow>
                           )
                         })
@@ -193,11 +294,21 @@ function MyHome() {
 
             </Grid>
 
-            <Grid item xs={2}>
+            <Container>
+            <Grid item xs={10}>
 
-              <Button id="addFriendsBtn" variant="contained" align="left" color="primary" href="/new/friends">Add friends</Button>
+              <Button 
+                className={classes.button} 
+                id="addFriendsBtn" 
+                variant="contained" 
+                align="left" 
+                color="primary" 
+                href="/new/friends">
+                  Add friends
+              </Button>
 
             </Grid>
+            </Container>
 
           </Grid>
 
@@ -207,21 +318,11 @@ function MyHome() {
         </Accordion>
 
       </Grid>
+      </Container>
+
+{/* ========================================================== */}
 
 
-  {/* CREATE OR JOIN TOURNAMENT SECTION */}
-    
-    <Grid item xs={4}>
-
-          <h5 className={classes.header}>Join a Tournament</h5>
-
-          <form  className={classes.root} noValidate autoComplete="off" onSubmit ={joinTournament} >
-
-          <TextField id="joinTournByCode" name= "tournamentJoiner" label="Enter Tournament Code" variant="outlined" />
-          <Button variant="contained" color="primary" type ="submit">Join</Button>
-        </form>
-
-    </Grid>
     </Grid>
 
   </Box>

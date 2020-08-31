@@ -1,11 +1,9 @@
 CREATE DATABASE statdashdb;
 
-USE statdashdb;
-
-
 //DO THE FOLLOWING IN SUBSEQUENT STEPS IN MYSQL WORKBENCH
 
-//1 - Create Users Table
+//1 - Create Users Table - Skip this step if using Sequelize
+USE statdashdb;
 
 DROP TABLE IF EXISTS Users;
 
@@ -25,9 +23,9 @@ CREATE TABLE Users  (
     )
 
 
-//2 - Create Performances Table
+//2 - Create Performances Table - Skip this step if using Sequelize
 
-USE zlr8wau3cuiweniv;
+USE statdashdb;
 
 DROP TABLE IF EXISTS Performances;
 
@@ -54,6 +52,7 @@ CREATE TABLE Performances (
 
 
 //3 - Insert Seed User Data into Users Table
+USE statdashdb;
 
 INSERT INTO Users (id, firstName, lastName, email, gamerTag, platform, activisionId, username, password, createdAt, updatedAt)
 VALUES ('10', 'Jen', 'Jayme', 'jeniferjayme@gmail.com', 'GeneralJayme', 'Steam - (steam)', '', 'Jen', 'password', '2020-08-28 04:56:40', '2020-08-28 04:56:40');
@@ -72,6 +71,7 @@ VALUES ('50', 'Gio', 'Noisy', 'gio@gmail.com', 'gameonFoo', 'XBox - (xbl)', '', 
 
 
 //4- Insert Seed Tournaments into Tournaments Table
+USE statdashdb;
 
 INSERT INTO Tournaments (id, tName, games, gulagKillsMultiplier, gulagDeathsMultiplier, killsMultiplier, damageMultiplier, placementMultiplier, revivesMultiplier, clutchKillsMultiplier, damageToKillsMultiplier, startDate, endDate, status, joinCode, adminId, createdAt, updatedAt)
 VALUES ('100','Memorial Day Tournament',12,75,-25,50,1,50,10,10,25,'2020-08-28 04:56:40', '2020-08-29 04:56:40','active','MemorialDayTournament#267', 40, '2020-08-26 04:56:40', '2020-08-30 04:56:40');
@@ -85,6 +85,7 @@ VALUES ('300',"Demo Tournament",12,75,-25,50,1,50,10,10,25,'2020-07-28 04:56:40'
 
 
 //5- Insert Seed Date into Performances Table
+USE statdashdb;
 
 INSERT INTO Performances (id, gulagKills, gulagDeaths, kills, deaths, damage, placement, revives, clutchKills, damageToKills, overallScore, startMatch, createdAt, updatedAt, TournamentId, UserId)
 VALUES ('10',21,12,64,3,51,3,22,19,55,103,null,'2020-08-28 04:56:40', '2020-08-28 04:56:40','300','10');
@@ -102,3 +103,8 @@ INSERT INTO Performances (id, gulagKills, gulagDeaths, kills, deaths, damage, pl
 VALUES ('50',25,28,49,4,61,1,35,20,61,107,null,'2020-08-28 04:56:40', '2020-08-28 04:56:40','300','50');
 
 
+//6 - To Delete a row, use this syntax
+USE statdashdb;
+
+DELETE FROM tournaments
+WHERE id = 302;
