@@ -40,7 +40,7 @@ const Login = ({history},props)=>{
 
  return(
       <div className="base-container" ref={props.containerRef}>
-        <div className="header">Login</div>
+        <div className="header">Welcome</div>
         <div className="content">
           <div className="image">
             <img src={braggingwhiteImg} alt=""/>

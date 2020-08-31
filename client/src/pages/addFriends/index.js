@@ -31,6 +31,9 @@ const BootstrapInput = withStyles((theme) => ({
       marginTop: theme.spacing(3),
     },
   },
+  searchBtn: {
+    marginTop: '1em'
+  },
   input: {
     borderRadius: 4,
     position: 'relative',
@@ -65,6 +68,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
   }, header: {
     color: 'black',
+    marginTop: '1em',
   }
 }));
 

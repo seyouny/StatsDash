@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 
+body {
+  align-items: center;
+}
+
 .splash {
   text-align: center;
   display: flex;
@@ -20,7 +24,8 @@
 }
 
 .App {
-  height: 40em;
+  height: 50em;
+  width: 100%;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -181,7 +186,7 @@
   margin-top: 10%;
   margin-left: 20%;
   height: 35em;
-  size: contain;
+  size: cover;
 }
 
 .homeButtonDiv {
@@ -191,6 +196,26 @@
 
 .smokeyBkg {
   background-image: url("./components/NewChoose/smokey-background.svg");
+}
+
+.hidden {
+  display: none;
+  visibility: none;
+}
+
+#tournCodeDiv {
+  margin-top: 1em;
+  margin-bottom: .5em;
+  margin-left: 17%;
+  margin-right: 17%;
+  background-color: black;
+  color: cornflowerblue;
+}
+
+#tournCode {
+  font-size: 2em;
+  font-weight: bold;
+  color: blue;
 }
 
 // ==========================
