@@ -82,25 +82,28 @@ VALUES ('200',"Royce's Birthday Tournament",12,75,-25,50,1,50,10,10,25,'2020-07-
 INSERT INTO Tournaments (id, tName, games, gulagKillsMultiplier, gulagDeathsMultiplier, killsMultiplier, damageMultiplier, placementMultiplier, revivesMultiplier, clutchKillsMultiplier, damageToKillsMultiplier, startDate, endDate, status, joinCode, adminId, createdAt, updatedAt)
 VALUES ('300',"Demo Tournament",12,75,-25,50,1,50,10,10,25,'2020-07-28 04:56:40', '2020-07-29 04:56:40','active','DemoTournament#300', 40, '2020-07-26 04:56:40', '2020-07-30 04:56:40');
 
+INSERT INTO Tournaments (id, tName, games, gulagKillsMultiplier, gulagDeathsMultiplier, killsMultiplier, damageMultiplier, placementMultiplier, revivesMultiplier, clutchKillsMultiplier, damageToKillsMultiplier, startDate, endDate, status, joinCode, adminId, createdAt, updatedAt)
+VALUES ('400',"Final Project Day Tournament",12,75,-25,50,1,50,10,10,25,'2020-07-28 04:56:40', '2020-07-29 04:56:40','active','FinalProjectDay#400', 40, '2020-07-26 04:56:40', '2020-07-30 04:56:40');
+
 
 
 //5- Insert Seed Date into Performances Table
 USE statdashdb;
 
 INSERT INTO Performances (id, gulagKills, gulagDeaths, kills, deaths, damage, placement, revives, clutchKills, damageToKills, overallScore, startMatch, createdAt, updatedAt, TournamentId, UserId)
-VALUES ('10',21,12,64,3,51,3,22,19,55,103,null,'2020-08-28 04:56:40', '2020-08-28 04:56:40','300','10');
+VALUES ('10',21,12,64,3,51,3,22,19,55,103,null,'2020-08-28 04:56:40', '2020-08-28 04:56:40','400','10');
 
 INSERT INTO Performances (id, gulagKills, gulagDeaths, kills, deaths, damage, placement, revives, clutchKills, damageToKills, overallScore, startMatch, createdAt, updatedAt, TournamentId, UserId)
-VALUES ('20',12,33,52,2,59,1,33,12,43,99,null,'2020-08-28 04:56:40', '2020-08-28 04:56:40','300','20');
+VALUES ('20',12,33,52,2,59,1,33,12,43,99,null,'2020-08-28 04:56:40', '2020-08-28 04:56:40','400','20');
 
 INSERT INTO Performances (id, gulagKills, gulagDeaths, kills, deaths, damage, placement, revives, clutchKills, damageToKills, overallScore, startMatch, createdAt, updatedAt, TournamentId, UserId)
-VALUES ('30',17,23,57,2,65,2,29,16,52,92,null,'2020-08-28 04:56:40', '2020-08-28 04:56:40','300','30');
+VALUES ('30',17,23,57,2,65,2,29,16,52,92,null,'2020-08-28 04:56:40', '2020-08-28 04:56:40','400','30');
 
 INSERT INTO Performances (id, gulagKills, gulagDeaths, kills, deaths, damage, placement, revives, clutchKills, damageToKills, overallScore, startMatch, createdAt, updatedAt, TournamentId, UserId)
-VALUES ('40',25,28,49,4,61,1,35,20,61,107,null,'2020-08-28 04:56:40', '2020-08-28 04:56:40','300','40');
+VALUES ('40',25,28,49,4,61,1,35,20,61,107,null,'2020-08-28 04:56:40', '2020-08-28 04:56:40','400','40');
 
 INSERT INTO Performances (id, gulagKills, gulagDeaths, kills, deaths, damage, placement, revives, clutchKills, damageToKills, overallScore, startMatch, createdAt, updatedAt, TournamentId, UserId)
-VALUES ('50',25,28,49,4,61,1,35,20,61,107,null,'2020-08-28 04:56:40', '2020-08-28 04:56:40','300','50');
+VALUES ('50',25,28,49,4,61,1,35,20,61,107,null,'2020-08-28 04:56:40', '2020-08-28 04:56:40','400','50');
 
 
 //6 - To Delete a row, use this syntax

@@ -87,8 +87,8 @@ const useStyles = makeStyles({
   myFriendsDiv: {
     // width: 'fit-content',
     maxHeight: '20em',
-    overflowX: 'hidden',
-    overflowY: 'auto',
+    // overflowX: 'hidden',
+    // overflowY: 'auto',
     display: 'block',
     float: 'none',
     align: 'center',
