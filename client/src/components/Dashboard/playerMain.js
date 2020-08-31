@@ -27,11 +27,11 @@ export default function Stats(props) {
 
       </CardActions>
       <CardActionArea>
-        <h4>Rank:{props.rank} </h4>
-        <h5>Kills: {props.kills}</h5>
-        <h5>Gulag Kills: {props.gulagkills}</h5>
-        <h5>Gulag Deaths: {props.gulagdeaths}</h5>
-        <h5>Overall Damage: {props.damage}</h5>
+        <h4>Rank: 1st </h4>
+        <h5>Kills: {props.mystats.kills}</h5>
+        <h5>Gulag Kills: {props.mystats.gulagkills}</h5>
+        <h5>Gulag Deaths: {props.mystats.gulagdeaths}</h5>
+        <h5>Overall Damage: {props.mystats.damage}</h5>
       </CardActionArea>
     </Card>
   );
