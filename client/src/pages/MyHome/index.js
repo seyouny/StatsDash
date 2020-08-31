@@ -33,7 +33,8 @@ import ReactPlayer from 'react-player'
 
 const useStyles = makeStyles({
   table: {
-    minWidth: 450,
+    minWidth: 400,
+    width: 500,
   },
   header: {
     color: 'white',
@@ -97,9 +98,9 @@ function MyHome() {
 
       </Grid>
 
-      <Grid item xs={10}>
-
   {/* MY TOURNAMENTS TABLE */}
+
+      <Grid item xs={8}>
 
           <TableContainer component={Paper}>
               <Table className={classes.table} 
@@ -137,6 +138,7 @@ function MyHome() {
       </Grid>   
 
   {/* COLLAPSIBLE MY FRIENDS SECTION */}  
+
 
        <Grid item xs={10}>
  
