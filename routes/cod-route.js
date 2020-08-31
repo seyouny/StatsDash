@@ -34,7 +34,11 @@ router.get("/api/performances/:id",(req,res)=>{
     db.Users.findAll({
       where:{
         id: req.params.id
-      }
+      },
+      include: [{
+        model: db.Users,
+        as: 'Friends'
+      }]    
     }).then((user)=>{
       console.log(user)
       res.json(user)
@@ -45,7 +49,7 @@ router.get("/api/performances/:id",(req,res)=>{
   router.get("/api/tournament/:id", (req,res)=>{
     db.Tournaments.findOne({
       where:{id:req.params.id},
-      include: [db.Users]
+      include: [db.Users,db.Performances]
     }).then((results)=>{
       console.log(results);
       res.json(results);

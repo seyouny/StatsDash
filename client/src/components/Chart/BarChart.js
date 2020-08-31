@@ -5,12 +5,11 @@ import Chart from 'chart.js';
 export default class BarChart extends React.Component {
     constructor(props) {
         super(props);
-
+        console.log(props);
     this.state = {
-        damageDone: props.damageDone,
-        damageTaken: props.damageTaken,
-        performance: props.performance
-    }};
+                    performance:props.performance
+                }
+    };
     componentDidMount() {
        
         const color = [
@@ -29,8 +28,8 @@ export default class BarChart extends React.Component {
         var fillerArr = []
         this.state.performance.map((match, i) => {
             fillerArr.push( {
-                label: 'Player ' + (i + 1),
-                data: [match.playerStats.damageDone, match.playerStats.damageTaken, match.playerStats.score],
+                label: match.gamerTag,
+                data: [match.damage, match.score],
                 // fill: false,
                 borderColor: color[i],
                 backgroundColor: color[i],
@@ -41,7 +40,7 @@ export default class BarChart extends React.Component {
         const barChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Damage', 'Damage To Kills', 'Overall Score'],
+                labels: ['Damage', 'Overall Score'],
                 datasets: fillerArr
             },
 

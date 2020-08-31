@@ -35,8 +35,8 @@ performance.matches.map((stats)=>{
     var play = 
     {
         kills:stats.playerStats.kills,
-        headshots:stats.playerStats.headshots,
-        assists:stats.playerStats.assists,
+        deaths:stats.playerStats.deaths,
+        damage:stats.playerStats.damage,
         rank:stats.playerStats.rank
     }
     players.push(play)
@@ -50,11 +50,12 @@ export default function SingleLineGridList(props) {
       <GridList className={classes.gridList} cols={5}>
         {props.list.map((play)=>{
             return <Bot
-            userId = {play.userId}
+            gamerTag = {play.gamerTag}
             deaths = {play.deaths}
             damage = {play.damage}
-            gulagdeaths = {play.gulagdeaths}
-            gulagkills = {play.gulagkills}
+            overallScore = {play.score}
+            kills = {play.kills}
+            revives = {play.revives}
             />
         })}
       </GridList>

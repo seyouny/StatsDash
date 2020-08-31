@@ -68,9 +68,9 @@ function MyHome() {
     console.log(tournamentJoiner.value);
     var user = currentUser;
     user.joinCode = tournamentJoiner.value
-    API.joinTournament(user).then(()=>{
+    API.joinTournament(user,(results)=>{
       window.location.reload(false);
-    });
+    })
     
 
   }

@@ -18,6 +18,7 @@ const useStyles = makeStyles({
 
 export default function Middle(props) {
   const classes = useStyles();
+  console.log(props);
 
   return (
     <Card className={classes.root}>
@@ -37,7 +38,9 @@ export default function Middle(props) {
 
       </CardActions>
       <CardActionArea>
-        <Chart/>
+        <Chart
+          performances = {props.performances}
+        />
 
       </CardActionArea>
     </Card>
