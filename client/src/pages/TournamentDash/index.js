@@ -161,7 +161,7 @@ class Dashboard extends Component {
                         }
                     }
                     if(tournamentData.status === "pending"){
-                        var users = this.state.tournamentData.users;
+                        var users = tournamentData.users;
                         for(var i = 0; i<users.length; i++) {
                             
                             userstats.push({
