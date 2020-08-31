@@ -18,8 +18,8 @@ export const AuthProvider = ({children}) => {
                         lastName: results.data[0].lastName,
                         gamerTag: results.data[0].gamerTag,
                         platform: results.data[0].platform,
-                        email: results.data[0].email
-
+                        email: results.data[0].email,
+                        friends: results.data[0].Friends
                     }
                     setCurrentUser(newState);
                 })
