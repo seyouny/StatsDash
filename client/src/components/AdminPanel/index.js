@@ -41,44 +41,137 @@ export default function AdminPanel (props) {
     console.log(props.tournamentData);
     const { currentUser } = useContext(AuthContext)
     console.log(currentUser)
-
-    return (
-
-        <div className={classes.root}>
-            <Accordion>
-
-                <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-                >
-                <Typography className={classes.heading}><strong>Admin Panel</strong></Typography>
-                </AccordionSummary>
-                
-                <AccordionDetails>
-
-                    <Container>
-                            <ButtonGroup aria-label="admin button group">
-                                <InviteFriend />
-                                <StartTournButton 
-                                tournamentData = {props.tournamentData}
-                                
-                                />
-                                <StopTournButton 
-                                tournamentData = {props.tournamentData}
-                                />
-                                <UpdateStatsButton />
-                                <AddFriends 
-                                    friends = {props.friends}
-                                    joinCode = {props.tournamentData.joinCode}
-                                />
-                            </ButtonGroup>
-                    </Container>
-
-                </AccordionDetails>
-
-            </Accordion>
-        </div>
+    if(currentUser){
+        if(props.tournamentData.adminId === currentUser.userId&&props.tournamentData.status==="pending"){
+            return (
+    
+                <div className={classes.root}>
+                    <Accordion>
+    
+                        <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                        >
+                        <Typography className={classes.heading}><strong>Admin Panel</strong></Typography>
+                        </AccordionSummary>
+                        
+                        <AccordionDetails>
+    
+                            <Container>
+                                    <ButtonGroup aria-label="admin button group">
+                                        <StartTournButton 
+                                        tournamentData = {props.tournamentData}
+                                        
+                                        />
+                                       
+                                        <AddFriends 
+                                            friends = {props.friends}
+                                            joinCode = {props.tournamentData.joinCode}
+                                        />
+                                    </ButtonGroup>
+                            </Container>
+    
+                        </AccordionDetails>
+    
+                    </Accordion>
+                </div>
+            )
+        }
+        if(props.tournamentData.adminId === currentUser.userId&&props.tournamentData.status==="active"){
+            return (
+    
+                <div className={classes.root}>
+                    <Accordion>
+        
+                        <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                        >
+                        <Typography className={classes.heading}><strong>Admin Panel</strong></Typography>
+                        </AccordionSummary>
+                        
+                        <AccordionDetails>
+        
+                            <Container>
+                                    <ButtonGroup aria-label="admin button group">
+                                        
+                                        <StopTournButton 
+                                        tournamentData = {props.tournamentData}
+                                        />
+                                        
+                                    </ButtonGroup>
+                            </Container>
+        
+                        </AccordionDetails>
+        
+                    </Accordion>
+                </div>
+            )
+        }
+        if(props.tournamentData.status==="completed"){
+            return (
+    
+                <div className={classes.root}>
+                    <Accordion>
+        
+                        <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                        >
+                        <Typography className={classes.heading}><strong>Admin Panel</strong></Typography>
+                        </AccordionSummary>
+                        
+                        <AccordionDetails>
+        
+                            <Container>
+                                    <ButtonGroup aria-label="admin button group">
+                                        <h4>This Tournament is completed.</h4>
+                                       
+                                    </ButtonGroup>
+                            </Container>
+        
+                        </AccordionDetails>
+        
+                    </Accordion>
+                </div>
+            )
+        }
+        if(props.tournamentData.adminId!== currentUser.userId){
+            return (
+    
+                <div className={classes.root}>
+                    <Accordion>
+        
+                        <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                        >
+                        <Typography className={classes.heading}><strong>Admin Panel</strong></Typography>
+                        </AccordionSummary>
+                        
+                        <AccordionDetails>
+        
+                            <Container>
+                                    <ButtonGroup aria-label="admin button group">
+                                        <h4>You do not have admin access to this tournament.</h4>
+                                       
+                                    </ButtonGroup>
+                            </Container>
+        
+                        </AccordionDetails>
+        
+                    </Accordion>
+                </div>
+            )
+        }
+    }
+    return(
+        <h4>Loading...</h4>
     )
+    
 
 }

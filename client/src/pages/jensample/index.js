@@ -11,9 +11,9 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { AuthContext } from "../../Auth";
 import API from "../../utils/API";
-// import banner from "../components/Images/soldier1.jpg";
+import banner from "../../components/NewChoose/soldier1.jpg";
 import { Card } from "@material-ui/core";
-import Styles from "../style.css";
+import Styles from "../jensample/style.css";
 
 class TDashboard1 extends React.Component {
     render() {

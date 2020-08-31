@@ -37,7 +37,7 @@ export default {
     },
 
     startTournament: function(tournament) {
-        axios.put("/api/tournament/"+tournament.id,tournament)
+        axios.put("/api/tournament/"+tournament.tournamentId,tournament)
     },
 
 
@@ -60,8 +60,10 @@ export default {
         })
     },
 
-    joinTournament:function(user){
-        axios.put("/api/join/tournament",user)
+    joinTournament:function(user,callback){
+        axios.put("/api/join/tournament",user).then((results)=>{
+            callback(results);
+        })
     },
     findFriend:function(search,callback){
         console.log(search)
@@ -80,7 +82,8 @@ export default {
     //         console.log(results);
     //         return callback(results.data)
     //     })
-    // }
+    // },
+
     addFriend:function(user){
         axios.post("/api/friends",user);
     },
@@ -91,6 +94,11 @@ export default {
     },
     endTournament: function(tournament){
         axios.put("/api/end/tournament",tournament)
+    },
+    getPerformances: function(tournamentId,callback){
+        axios.get("/api/performances/"+tournamentId).then((results)=>{
+            return callback(results);
+        })
     }
     
 }

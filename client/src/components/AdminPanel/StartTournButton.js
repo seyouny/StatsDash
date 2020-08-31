@@ -2,6 +2,8 @@
 
 import React from 'react';
 import Button from '@material-ui/core/Button';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import Styles from './adminpanelstyle.css';
 import API from "../../utils/API"
 
@@ -11,7 +13,22 @@ function StartTournButton (props) {
   console.log("TOURNAMENT DATA IN START BUTTON");
   console.log(props.tournamentData);
         //Incomplete backend. this function will need to set the start date and time so that the API query can pull the next x# of games from that starting point.
-
+        const submit = () => {
+          confirmAlert({
+            title: 'Confirm to submit',
+            message: 'Are you sure to start tournament? Once started you cannot add new players to this tournament.',
+            buttons: [
+              {
+                label: 'Yes',
+                onClick: () => startTournament()
+              },
+              {
+                label: 'No',
+                onClick: () => alert("ok")
+              }
+            ]
+          });
+        };
     const  startTournament = async () => {
 
         alert ("When you click OK, the tournament will start and the official UTC start time will be logged");
@@ -40,7 +57,7 @@ function StartTournButton (props) {
   
     return (
       <div className="adminPanel">
-        <Button id="startTournBtn" className="adminBtn" variant="contained" color="secondary" onClick={startTournament}>
+        <Button id="startTournBtn" className="adminBtn" variant="contained" color="secondary" onClick={submit}>
           Start Tournament
         </Button>
       </div>

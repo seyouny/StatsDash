@@ -18,12 +18,27 @@ router.get("/api/user/:id/tournament",(req,res)=>{
     })
 })
 
+// getting all performances associated to a tournament
+router.get("/api/performances/:id",(req,res)=>{
+    db.Tournaments.findOne({
+      where:{id:req.params.id},
+      include:[db.Performances]
+    }).then((results)=>{
+      res.json(results);
+    })
+})
+
+
 // Searching for user on login 
   router.get("/api/user/:id",(req,res)=>{
     db.Users.findAll({
       where:{
         id: req.params.id
-      }
+      },
+      include: [{
+        model: db.Users,
+        as: 'Friends'
+      }]    
     }).then((user)=>{
       console.log(user)
       res.json(user)
@@ -34,12 +49,14 @@ router.get("/api/user/:id/tournament",(req,res)=>{
   router.get("/api/tournament/:id", (req,res)=>{
     db.Tournaments.findOne({
       where:{id:req.params.id},
-      include: [db.Users]
+      include: [db.Users,db.Performances]
     }).then((results)=>{
       console.log(results);
       res.json(results);
     })
   })
+
+  // what the hell?
   router.get("/api/user/:id/performances",(req,res)=>{
     db.Performances.findAll({
       order: [
@@ -181,12 +198,11 @@ router.post("/api/friends",(req,res)=>{
 
 // Starting tournament
 router.put("/api/tournament/:id",(req,res)=>{
+  console.log("HELLO ROUTE HIT");
   console.log(req.params.id);
-
+  console.log(req.params);
   var users = req.body.users;
   console.log(users);
-  res.json(users);
-
   db.Tournaments.findOne({
     where:{id:req.params.id}
   }).then((tournament)=>{
@@ -197,9 +213,9 @@ router.put("/api/tournament/:id",(req,res)=>{
   })
   for(var i=0; i<users.length; i++){
     db.Performances.create({
-      UserId:users[i].id,
       TournamentId: req.params.id,
       startMatch: users[i].startMatch,
+      UserId:users[i].id,
       gulagKills: 0,
       gulagDeaths: 0,
       kills: 0,
@@ -252,6 +268,20 @@ router.put("/api/end/tournament",(req,res)=>{
     include:[db.Performances]
   }).then((tournament)=>{
     console.log(tournament);
+    tournament.update({
+      status: "completed",
+      endDate: req.body.endDate
+    })
+    for(var i =0; i<tournament.Performances.length; i ++){
+      console.log("attempting to update");
+      console.log(req.body.performances[i]);
+      console.log(tournament.Performances[i])
+      tournament.Performances[i].update(req.body.performances[i]).then((results)=>{
+        console.log(results);
+      })
+    }
+    res.json("success");
+   
   })
 })
 
