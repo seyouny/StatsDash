@@ -181,7 +181,7 @@ class Dashboard extends Component {
     // update stats -> admin panel -> main page -> charts
     render() {
         return (
-            <div>
+            <div className="backgroundTD">
                 <Navigation />
                 <Box className="body">
                     <Container>

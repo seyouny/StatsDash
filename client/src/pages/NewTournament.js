@@ -137,8 +137,8 @@ const NewTournament= () =>{
     // render() {
         
         return (
-            <div>
-            <Container className= "Container-NT">
+            <div className="backgroundNT">
+            <Container>
                 <Navigation />
             <Row>
                 <Col><h3 style={{color: "white"}} className="my-5 text-center">Create a Tournament</h3></Col>
@@ -147,7 +147,7 @@ const NewTournament= () =>{
             <Row>
                 <Col md={2}></Col>
                 <Col md={8}>
-                    <Card>
+                    <Card >
                         <Card.Body className="card-NT">
                             <Form onSubmit ={handleFormSubmit}>
                             <Form.Group controlId="formNumGamesTournament">
@@ -161,10 +161,10 @@ const NewTournament= () =>{
                             </Form.Group>
 
                             <br></br>
-                            <Button variant="dark" size="sm" className="d-block mb-3" onClick={handleModalShowHide}>
+                            <Button  className="pulse btn wow animated d-block mb-3" onClick={handleModalShowHide}>
                                 Adjust Game Settings
                             </Button>
-                            <Button variant="dark" size="sm" type="submit">
+                            <Button className="pulse btn wow animated"type="submit">
                                 Generate Link
                             </Button>
                             </Form>
@@ -172,7 +172,7 @@ const NewTournament= () =>{
 
                             <Modal show={state.showHide}>
                                 <Modal.Header closeButton onClick={handleModalShowHide}>
-                                <Modal.Title style={{color: "white"}}>Adjust Game Settings</Modal.Title>
+                                <Modal.Title className="pulse btn wow animated">Adjust Game Settings</Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body className="modalBkg">
                                     <Row>

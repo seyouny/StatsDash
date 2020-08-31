@@ -50,17 +50,18 @@ const NewPlayer = ({history}) =>{
 
 
     return (
-            <Container><div className="Np-Page">
-                <Navigation />
+        <div className="Np-Page"><Container>
+                <Navigation /><br></br><br></br>
+
 
             {/* <Row>
                 <Col><h3 aria-controls="responsive-col"className="my-5 text-center">New Player</h3></Col>
             </Row> */}
 
             <Row>
-                <Col md={2}></Col>
-                <Col md={8}>
-                    <Card>
+                {/* <Col md={1}></Col> */}
+                <Col md={6}>
+                    <Card style={{backgroundColor: "transparent"}} className="NP-card">
                         <Card.Body className="modalBkgLight">
                             <Form onSubmit = {handleSignUp}>
                                 <Form.Row>
@@ -135,7 +136,7 @@ const NewPlayer = ({history}) =>{
 
                             <Form.Row>
 
-                                <Button variant="dark" type="submit" size="sm" block>
+                                <Button  type="submit" size="sm" block>
                                     Submit
                                 </Button>
 
@@ -148,7 +149,7 @@ const NewPlayer = ({history}) =>{
                 </Col>
                 <Col md={6}></Col>
             </Row>
-            </div></Container>
+            </Container></div>
         )
 }
 

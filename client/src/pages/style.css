@@ -15,8 +15,8 @@
     } 
 
     .card-contentNC{
-    background-color:rgba(146, 145, 142, 0.356);
-    color:black;
+    background-color: gray;
+    color: gray;
     }
 /*     
     .NC-card{
@@ -27,13 +27,15 @@
 
 
  /* Styling for New Tournament Page    */
-    .Container-NT{
-        background-image: url(../components/NewChoose/tournamentbracketlayout.png);
+    /* .Container-NT{
+        background-image: url(../components/NewChoose/parallaxgreybg.jpg);
         background-repeat: no-repeat;
         background-size: cover;
+        width: 100%;
         height: 100vh;
+;
         
-        }
+        } */
 
         .card-NT{
             background-color: rgb(12, 11, 11);
@@ -41,4 +43,12 @@
           
         }
 
+       /* Styling for Tournament Dashboard    */  
+.backgroundNT{
+    background-image: url(../components/NewChoose/parallaxgreybg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}
  
