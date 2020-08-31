@@ -60,8 +60,10 @@ export default {
         })
     },
 
-    joinTournament:function(user){
-        axios.put("/api/join/tournament",user)
+    joinTournament:function(user,callback){
+        axios.put("/api/join/tournament",user).then((results)=>{
+            callback(results);
+        })
     },
     findFriend:function(search,callback){
         console.log(search)

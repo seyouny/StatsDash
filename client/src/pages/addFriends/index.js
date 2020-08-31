@@ -74,22 +74,33 @@ const useStyles = makeStyles((theme) => ({
 
 function Friends() {
     const { currentUser } = useContext(AuthContext);
-    console.log(currentUser);
     const classes = useStyles();
     const [query, setQuery] = useState('');
     const [users,setUsers] = useState([]);
+    const [friends,setFriends] = useState([])
+    const [friendIds,setFriendIds] = useState([])
 
     useEffect(()=>{
-        console.log(users)
-        if(users.length===0){
+        if(users.length===0&&currentUser){
           getTable()
         }
     })
 
     function getTable(){
         API.getAllUsers((results)=>{
-          console.log(results.data);
+          var tester = []
+          for(var i =0; i<currentUser.friends.length;i++){
+            tester.push(currentUser.friends[i].id)
+          }
+          // var users =[]
+          // for(var i =0; i<results.data.length; i ++){
+          //   if(tester.indexOf(results.data[i].id)===-1){
+          //     users.push(results.data[i])
+          //   }
+          // }
           setUsers(results.data)
+          setFriends(currentUser.friends);
+          setFriendIds(tester);
           return results.data;
         })
     }
@@ -123,10 +134,17 @@ function Friends() {
             console.log(event.target.parentNode.value);
             id = event.target.parentNode.value;
         }
-        var user = currentUser;
-        user.friendId = id;
-        console.log(user);
-        API.addFriend(user);
+        var tester = friendIds;
+        if(tester.indexOf(id)===-1){
+          var user = currentUser;
+          user.friendId = id;
+          console.log(user);
+          setFriendIds([...tester,id])
+          API.addFriend(user);
+        }else if(tester.indexOf(id)!==-1){
+          alert("You already have this user as a friend");
+        }
+        
     }
     return(
       <div>
