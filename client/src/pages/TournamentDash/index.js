@@ -117,7 +117,7 @@ class Dashboard extends Component {
                     //     })
                     // }
                     const userstats = [];
-                    if(tournamentData.status ==="completed"){
+                    if(tournamentData.status ==="completed"|| tournamentData.status ==="active"){
                         var users = this.state.tournamentData.users;
                         for(var i = 0; i<users.length; i++) {
                             for(var j=0; j<tournamentData.performances.length; j++){
@@ -143,6 +143,27 @@ class Dashboard extends Component {
                         }
                         this.setState({ ...this.state, userstats: userstats });
                            
+                    }
+                    if(tournamentData.status === "pending"){
+                        var users = this.state.tournamentData.users;
+                        for(var i = 0; i<users.length; i++) {
+                            
+                            userstats.push({
+                                userId:users[i].id,
+                                gamerTag:users[i].gamerTag,
+                                deaths:0,
+                                gulagdeaths:0,
+                                gulagkills:0,
+                                damage:0,
+                                kills:0,
+                                score:0,
+                                revives:0,
+                                clutchKills:0,
+                                damageToKills:0,
+                                wins: 0,
+                            })
+                        }
+                        this.setState({ ...this.state, userstats: userstats });
                     }
                     
                     
