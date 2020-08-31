@@ -18,7 +18,7 @@ const useStyles = makeStyles({
 
 export default function Stats(props) {
   const classes = useStyles();
-
+if(props.mystats.kills){
   return (
     <Card className={classes.root}>
 
@@ -35,4 +35,22 @@ export default function Stats(props) {
       </CardActionArea>
     </Card>
   );
+}
+return (
+  <Card className={classes.root}>
+
+    <CardActions>
+     <p>{props.currentuser}'s Statistics For This Tournament </p>
+
+    </CardActions>
+    <CardActionArea>
+      <h4>Rank: -- </h4>
+      <h5>Kills: --</h5>
+      <h5>Gulag Kills: --</h5>
+      <h5>Gulag Deaths: --</h5>
+      <h5>Overall Damage: --</h5>
+    </CardActionArea>
+  </Card>
+);
+  
 }
