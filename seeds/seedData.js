@@ -7,8 +7,6 @@ USE statdashdb;
 
 //1 - Create Users Table
 
-USE zlr8wau3cuiweniv;
-
 DROP TABLE IF EXISTS Users;
 
 CREATE TABLE Users  (
