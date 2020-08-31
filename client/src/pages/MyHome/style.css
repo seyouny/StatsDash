@@ -1,5 +1,5 @@
-body {
-  background-color: black;
+body, html {
+  background-color: transparent;
 }
 
 .placeholder {
@@ -32,3 +32,11 @@ body {
     display: -webkit-flex;
     float: none;
   }
+
+.myFriendsCont {
+  position: relative;
+  width: 100%;
+  margin-left: 10%;
+  width: fit-content;
+}
+
