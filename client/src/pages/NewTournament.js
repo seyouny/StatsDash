@@ -28,6 +28,7 @@ import { render } from "react-dom";
 import styles from './CreateNewTournament/style.css';
 import $ from 'jquery';
 
+
 // class NewTournament extends Component {
 const NewTournament= () =>{
   
