@@ -6,11 +6,12 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card'
-import app from "../firebase";
+import app from "../../firebase";
 import {withRouter} from "react-router";
-import API from "../utils/API";
-import Navigation from "../components/Navigation";
-import styles from './CreateNewTournament/style.css';
+import API from "../../utils/API";
+import Navigation from "../../components/Navigation";
+import styles from '../../pages/CreateNewTournament/style.css';
+import "./style.css"
 
 
 
@@ -54,15 +55,15 @@ const NewPlayer = ({history}) =>{
                 <Navigation /><br></br><br></br>
 
 
-            <Row>
+            {/* <Row>
                 <Col><h3 className="my-5 text-center">New Player</h3></Col>
-            </Row>
+            </Row> */}
 
             <Row>
                 {/* <Col md={1}></Col> */}
                 <Col md={6}>
                     <Card style={{backgroundColor: "transparent"}} className="NP-card">
-                        <Card.Body className="modalBkgLight">
+                        <Card.Body >
                             <Form onSubmit = {handleSignUp}>
                                 <Form.Row>
                                     <Col>

@@ -200,15 +200,15 @@ class Dashboard extends Component {
     render() {
         return (
             <div className="backgroundTD">
-                <Navigation />
+                <Navigation className="Nav_TD"/>
                 <Box className="body">
-                    <Container>
-                        <h1 className="tournamentNameHead">{this.state.tournamentData.tName}</h1>
-                    </Container>
+                    <Container >
+                        <h1 style={{color:"white"}} className="tournamentNameHead">{this.state.tournamentData.tName}</h1>
+                    </Container >
                     <Top></Top>
                     <br></br>
                     <hr></hr>
-                    <Stats
+                    <Stats className="Gulag-box"
                         currentuser={this.state.currentUser.firstName}
                         rank= "--"
                         kills= "--"
