@@ -30,6 +30,7 @@ class Dashboard extends Component {
         currentUser: {},
         friends:[],
         userstats: [],
+        myStats:{},
         admin: false
     }
 
@@ -89,7 +90,7 @@ class Dashboard extends Component {
                             friendsNotInTournament.push(friends[i])
                         }
                     }
-                    this.setState({ ...this.state, tournamentData: tournamentData, currentUser:user,friends:friendsNotInTournament });
+
                     
                     
                     //map out user and fill in Get latest match for each user
@@ -118,7 +119,7 @@ class Dashboard extends Component {
                     // }
                     const userstats = [];
                     if(tournamentData.status ==="completed"|| tournamentData.status ==="active"){
-                        var users = this.state.tournamentData.users;
+                        var users = tournamentData.users;
                         for(var i = 0; i<users.length; i++) {
                             for(var j=0; j<tournamentData.performances.length; j++){
                                 if(tournamentData.performances[j].UserId===users[i].id){
@@ -137,15 +138,30 @@ class Dashboard extends Component {
                                         wins: tournamentData.performances[j].placement,
                                     })
                                 }
-                               
+                                if(tournamentData.performances[j].UserId ===userId){
+                                    var mystats = {
+                                        userId:tournamentData.performances[j].UserId,
+                                        gamerTag:users[i].gamerTag,
+                                        deaths:tournamentData.performances[j].deaths,
+                                        gulagdeaths:tournamentData.performances[j].gulagDeaths,
+                                        gulagkills:tournamentData.performances[j].gulagKills,
+                                        damage:tournamentData.performances[j].damage,
+                                        kills:tournamentData.performances[j].kills,
+                                        score:tournamentData.performances[j].overallScore,
+                                        revives: tournamentData.performances[j].revives,
+                                        clutchKills: tournamentData.performances[j].clutchKills,
+                                        damageToKills:tournamentData.performances[j].damageToKills,
+                                        wins: tournamentData.performances[j].placement,
+                                    }
+                                }
+                               console.log(user);
                             }
-                            
+                            this.setState({ ...this.state, tournamentData: tournamentData, currentUser:user,friends:friendsNotInTournament,userstats:userstats, myStats:mystats });                           
+
                         }
-                        this.setState({ ...this.state, userstats: userstats });
-                           
                     }
                     if(tournamentData.status === "pending"){
-                        var users = this.state.tournamentData.users;
+                        var users = tournamentData.users;
                         for(var i = 0; i<users.length; i++) {
                             
                             userstats.push({
@@ -165,7 +181,8 @@ class Dashboard extends Component {
                         }
                         this.setState({ ...this.state, userstats: userstats });
                     }
-                    
+                    this.setState({ ...this.state, tournamentData: tournamentData, currentUser:user,friends:friendsNotInTournament,userstats:userstats });                           
+
                     
                     console.log(this.state)   
                     
@@ -209,12 +226,14 @@ class Dashboard extends Component {
                     <br></br>
                     <hr></hr>
                     <Stats className="Gulag-box"
+                    
+                        mystats = {this.state.myStats}
                         currentuser={this.state.currentUser.firstName}
-                        rank= "--"
-                        kills= "--"
-                        gulagkills = "--"
-                        gulagdeaths= "--"
-                        damage = "--"
+                        // rank= {this.state.currentUser.myStats}
+                        // kills= {this.state.currentUser.myStats.kills}
+                        // gulagkills = {this.state.currentUser.myStats.gulagKills}
+                        // gulagdeaths= {this.state.currentUser.myStats.gulagDeaths}
+                        // damage = {this.state.currentUser.myStats.damage}
 
                     />
                     <br></br>

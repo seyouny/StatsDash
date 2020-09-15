@@ -38,7 +38,7 @@ function Navigation() {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link style={{color: "white"}} href="/myhome">My Home</Nav.Link>
-                        <Nav.Link style={{color: "white"}} href="/dashboard">Dashboard</Nav.Link>
+                        {/* <Nav.Link style={{color: "white"}} href="/dashboard">Dashboard</Nav.Link> */}
                         <Nav.Link style={{color: "white"}} href="/newplayer">New Player</Nav.Link>
                         <Nav.Link style={{color: "white"}} href="/newtournament">New Tournament</Nav.Link>
                         <Nav.Link style={{color: "white"}} href="/new/friends">Add Friends</Nav.Link>
