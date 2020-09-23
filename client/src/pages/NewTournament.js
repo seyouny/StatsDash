@@ -11,6 +11,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Modal from 'react-bootstrap/Modal';
+import Accordion from 'react-bootstrap/Accordion';
 
 //MATERIAL UI ELEMENTS
 import { makeStyles } from '@material-ui/core/styles';
@@ -25,18 +26,7 @@ import SendEmailInvite from "./CreateNewTournament/SendEmailInvite";
 import * as emailjs from 'emailjs-com';
 import { render } from "react-dom";
 import styles from './CreateNewTournament/style.css';
-
-// const classes = useStyles();
-
-// const useStyles = makeStyles({
-//     root: {
-//       width: 300,
-//     },
-//   });
-  
-//   function valuetext(value) {
-//     return `${value}°C`;
-//   }
+import $ from 'jquery';
 
 
 // class NewTournament extends Component {
@@ -86,10 +76,12 @@ const NewTournament= () =>{
 
     }
 
-    const TournCodeSend = (message) => {
-
-        alert(message);
-
+    const TournCodeSend = (code) => {
+        console.log("PASSED IN TOURNCODE SEND =", code);
+        $('#tournCodeDiv').removeClass('hidden');
+        $('#tournCode').append(code);
+        return (code)
+        // alert(message);
         //TODO: GO TO SENDEMAILINVITE PAGE AND PASS TOURNAMENT NAME & CODE TO THAT
             // <SendEmailInvite {...tournament} />
     }
@@ -122,12 +114,19 @@ const NewTournament= () =>{
         }
 
         API.createTournament(tournament, currentUser.userId);
-        console.log(tournament);
+        console.log("TOURNAMENT", tournament);
+        console.log("tournament.JOINCODE", tournament.joinCode);
+        console.log("tournament.GAMES", tournament.games);
+        if (isNaN(tournament.games)) {
+            alert("Please enter the number of games for your Tournament.");
+        } else if (tournament.tName === "") {
+            alert("Please enter a name for your Tournament.")
+        } else {
+            TournCodeSend(tournament.joinCode)
+        }
+        // TournCodeSend("Your tournament, "+ tournament.tName + " has been created, to have your friends join,"
+        // +"send them this invite code: \n"+ newTournamentCode);
 
-        TournCodeSend("Your tournament, "+ tournament.tName + " has been created, to have your friends join,"
-        +"send them this invite code: \n"+ newTournamentCode);
-
-        window.location.href = "/myhome";
         // these go with tournCodeSend
         // const [show, setShow] = useState(false);
         // const handleClose = () => setShow(false);
@@ -137,38 +136,37 @@ const NewTournament= () =>{
     // render() {
         
         return (
-            <div>
-            <Container className="background">
+            <div className="backgroundNT">
+            <Container>
                 <Navigation />
             <Row>
-                <Col><h3 className="my-5 text-center">Create a Tournament</h3></Col>
+                <Col><h3 style={{color:"white"}}className="my-5 text-center">Create a Tournament</h3></Col>
             </Row>
 
             <Row>
                 <Col md={2}></Col>
                 <Col md={8}>
-                    <Card>
-                        <Card.Body>
+                    <Card >
+                        <Card.Body className="card-NT">
                             <Form onSubmit ={handleFormSubmit}>
                             <Form.Group controlId="formNumGamesTournament">
-                                <Form.Label >Number of Games per Tournament (maximum 19)</Form.Label>
+                                <Form.Label style={{color:"white"}}>Number of Games per Tournament (maximum 19)</Form.Label>
                                 <Form.Control name= "games" type="text" placeholder="Enter Number" />
                             </Form.Group>
 
                             <Form.Group controlId="formTournamentName">
-                                <Form.Label>Tournament Name (optional)</Form.Label>
+                                <Form.Label style={{color:"white"}}>Tournament Name (optional)</Form.Label>
                                 <Form.Control name= "title" type="text" placeholder="Enter Name" />
                             </Form.Group>
 
                             <br></br>
-                            <Button variant="dark" size="sm" className="d-block mb-3" onClick={handleModalShowHide}>
+                            <Button  className="pulse btn wow animated d-block mb-3" onClick={handleModalShowHide}>
                                 Adjust Game Settings
                             </Button>
-                            <Button variant="dark" size="sm" type="submit">
+                            <Button className="pulse btn wow animated"type="submit">
                                 Generate Link
                             </Button>
-                            </Form>
-                           
+                            </Form>             
 
                             <Modal show={state.showHide}>
                                 <Modal.Header closeButton onClick={handleModalShowHide}>
@@ -265,7 +263,7 @@ const NewTournament= () =>{
 
                                 </Modal.Body> 
                                 <Modal.Footer>
-
+}
                                 <Button variant="dark" onClick={() => handleModalShowHide()}>
                                     Close
                                 </Button>
@@ -281,9 +279,21 @@ const NewTournament= () =>{
 
             </Row>
 
-            <Row></Row>
-            </Container>
-            </div>
+            <Row>
+
+            <Col md={12}>
+
+                <div id="tournCodeDiv" className="hidden">
+                    <p>Your tournament has been created!  Now invite others to join by sending them this invite code:<br></br>
+                    <span id="tournCode"></span></p>
+                    <Button size="sm" href="/myhome">Return to MyHome</Button>
+                </div>
+
+            </Col>
+
+            </Row>
+        </Container>
+    </div>
         )
 }
 
