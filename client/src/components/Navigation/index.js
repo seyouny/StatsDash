@@ -49,7 +49,7 @@ function Navigation() {
                             <Button variant="outline-primary">Search</Button>
                         </Form> */}
 
-                        <Nav.Link  style={{color: "white"}}href="/new">New</Nav.Link>
+                        <Nav.Link  style={{color: "white"}}href="/new">About us</Nav.Link>
                         {/* <Nav.Link href="/new/player">New Player</Nav.Link> */}
                         <Nav.Link style={{color: "white"}}onClick = {handleOnclick}>Sign Out</Nav.Link>
                     </Nav>
