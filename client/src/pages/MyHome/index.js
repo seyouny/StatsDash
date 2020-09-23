@@ -166,13 +166,14 @@ function MyHome() {
             noValidate autoComplete="off" 
             onSubmit ={joinTournament} >
 
-          <label 
+          <label style={{color:"white"}}  
             for='joinTournByCode' 
             className={classes.subheader}>
               Join a Tournament
           </label>
 
-          <TextField 
+          <TextField
+            style={{color:"white"}}  
             className={classes.input} 
             id="joinTournByCode" 
             name= "tournamentJoiner"  
@@ -201,11 +202,11 @@ function MyHome() {
               aria-label="My Tournaments Table">
                 <TableHead>
                   <TableRow className={classes.rowHead}>
-                    <TableCell colSpan={2}><strong>Tournaments</strong></TableCell>
-                    <TableCell colSpan={1}>Games</TableCell>
-                    <TableCell colSpan={1}>Start Date</TableCell>
-                    <TableCell colSpan={1}>End Date</TableCell>
-                    <TableCell colSpan={1}>Status</TableCell>
+                    <TableCell style={{color:"white"}} colSpan={2}><strong>Tournaments</strong></TableCell>
+                    <TableCell style={{color:"white"}} colSpan={1}>Games</TableCell>
+                    <TableCell style={{color:"white"}} colSpan={1}>Start Date</TableCell>
+                    <TableCell style={{color:"white"}} colSpan={1}>End Date</TableCell>
+                    <TableCell style={{color:"white"}} colSpan={1}>Status</TableCell>
                   </TableRow>
                 </TableHead>
 
