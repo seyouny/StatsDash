@@ -1,9 +1,29 @@
 /* Styling for NewChoose page */
+
+.aboutHead, .aboutText {
+    color: white;
+}
+
+.aboutProjectPaper {
+    color: white;
+    /* background-color: black; */
+    margin-top: 3em;
+    margin-bottom: 2em;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 2em;
+    background-image: url('../components/NewChoose/backgroundsmoke.jpg');
+    background-size: cover;
+}
+
+
 .Container-NC{
     background-image: url(../components/NewChoose/backgroundsmoke.jpg);
     /* background-repeat: no-repeat; */
     background-size: cover;
-    height: 2500px;
+    /* height: 2500px; */
+    height: fit-content;
     
     }
     /* .card-contentNC:hover{
