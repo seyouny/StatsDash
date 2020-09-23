@@ -19,6 +19,7 @@ import Chart from "./pages/Chart";
 import { blueGrey, deepOrange, blue, red } from '@material-ui/core/colors';
 import SendEmailInvite from './pages/CreateNewTournament/SendEmailInvite';
 import addFriends from './pages/addFriends';
+import About from './pages/About';
 
 //These colors can be changed and will affect colors on any Material UI components. See Jen for details.
 const theme = createMuiTheme({
@@ -51,6 +52,7 @@ function App() {
               <Route exact path="/new/tournament" component={NewTournament}/>
               <Route exact path="/newtournament" component={NewTournament}/>
               <Route exact path="/new" component={NewChoose}/>
+              <Route exact path="/about" component={About}/>
               <Route exact path="/new/friends" component={Friends}/>
 
               <Route exact path="/dashboard" component={Dashboard}/>
