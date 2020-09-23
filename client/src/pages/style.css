@@ -2,21 +2,21 @@
 .Container-NC{
     background-image: url(../components/NewChoose/CODlandscapeimage.jpg);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: absolute;
     height: 100vh;
     
     }
-    .card-contentNC:hover{
-    /* opacity: 0.5; */
+    /* .card-contentNC:hover{
+    
     transition-duration: 0.5s;
     background-color: black;
     color: white;
     
-    } 
+    }  */
 
     .card-contentNC{
     background-color: black;
-    color: black;
+    color: white;
     }
 /*     
     .NC-card{
