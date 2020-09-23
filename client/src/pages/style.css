@@ -1,9 +1,9 @@
 /* Styling for NewChoose page */
 .Container-NC{
-    background-image: url(../components/NewChoose/CODlandscapeimage.jpg);
-    background-repeat: no-repeat;
-    background-size: absolute;
-    height: 100vh;
+    background-image: url(../components/NewChoose/backgroundsmoke.jpg);
+    /* background-repeat: no-repeat; */
+    background-size: cover;
+    height: 2500px;
     
     }
     /* .card-contentNC:hover{

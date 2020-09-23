@@ -37,12 +37,12 @@ export default function NewChoose () {
                             <CardMedia
                                 component="img"
                                 alt="Gio Noisy"
-                                height="240"
+                                height="300"
                                 image={GioNoisy}
                                 title="Contemplative Reptile"
                                 />
                             <CardContent className="card-contentNC">
-                                If you have not yet signed up, here's where to do that.
+                            Hello, I'm Giovanni. I'm a Web Developer who recently graduated from the UC Berkeley Full Stack Web Development Program. I spent the previous fifteen years working as a Graphic Designer in the entertainment industry creating theatrical, home entertainment and television advertising campaigns. For the last five years my focus has been in the gaming industry. I've created campaigns used for marketing core titles in platforms such as the Apple Store, Google Play, Facebook, and Discord.
                                 {/* <CardActionArea>
                                     <Button style={{color: "blue"}}className="action-button"size="small" color="primary" href="/new/player">
                                     New Player
@@ -59,7 +59,7 @@ export default function NewChoose () {
                             <CardMedia
                                 component="img"
                                 alt="Stacy Pic"
-                                height="240"
+                                height="300"
                                 image={StacyS}
                                 title="Contemplative Reptile"
                                 />
@@ -82,12 +82,12 @@ export default function NewChoose () {
                             <CardMedia
                                 component="img"
                                 alt="Jen Jayme"
-                                height="240"
+                                height="300"
                                 image={JenJayme}
                                 title="Contemplative Reptile"
                                 />
                             <CardContent className="card-contentNC">
-                            Jen is enjoying a second career in full-stack web development after 20+ years in fundraising, marketing and communications for great causes. Jen holds a B.A. in English with Honors from UC Berkeley and a Certificate in Full Stack Web Development from Berkeley Coding Boot Camp. Jen's proficiencies include Javascript, React, APIs, and Front-End Design as well as server-side and database architectures such as MySql, MongoDB and Node/Express servers.  She is currently exploring employment opportunities while running a consulting business
+                            Jen is enjoying a second career in full-stack web development after 20+ years in fundraising, marketing and communications for great causes. Jen holds a B.A. in English with Honors from UC Berkeley and a Certificate in Full Stack Web Development from Berkeley Coding Boot Camp. Jen's proficiencies include Javascript, React, APIs, and Front-End Design as well as server-side and database architectures such as MySql, MongoDB and Node/Express servers.  She is currently exploring employment opportunities while running a consulting business.
                                 {/* <CardActionArea>
                                     <Button style={{color: "blue"}}className="action-button"size="small" color="primary" href="/new/player">
                                     New Player
@@ -105,12 +105,12 @@ export default function NewChoose () {
                             <CardMedia
                                 component="img"
                                 alt="Royce Pic"
-                                height="240"
+                                height="300"
                                 image={RoycePic}
                                 title="Contemplative Reptile"
                                 />
                             <CardContent className="card-contentNC">
-                                If you have not yet signed up, here's where to do that.
+                            Royce is a full stack developer out of Berkeley, California, with a background in Computer Science.  He holds a Certificate in Full Stack Development from UC Berkeley Coding Boot Camp and an International Baccalaureate diploma.  While currently earning his B.A. in Computer Science at U.C. Santa Cruz, Royce is deepening his skills in various programming languages and technologies.  He has advanced proficiency in Javascript (including ES6), SQL, Mongodb, React.js, Node.js, Git, Github, JSX, AJAX, REST, Jquery, HTML5, and CSS, and is currently learning learning Python, Ruby,  and Java.  Royce is open to new internship and job opportunities and will be an adept technical anchor on any coding team.
                                 {/* <CardActionArea>
                                     <Button style={{color: "blue"}}className="action-button"size="small" color="primary" href="/new/player">
                                     New Player
@@ -128,14 +128,14 @@ export default function NewChoose () {
                         <CardMedia
                             component="img"
                             alt="Alex Pic"
-                            height="240"
+                            height="300"
                             image={AlexPic}
                             title="Contemplative Reptile"
                             />
                             <CardContent className="card-contentNC">
-                            I am aspiring to move into the technology space as a Full Stack Web Developer. Currently working towards earning a certificate from UC Berkeley Coding Bootcamp.
+                            Hi, I'm Alex. I am aspiring to move into the technology space as a Full Stack Web Developer. Earned a certificate from UC Berkeley Coding Bootcamp.
 
-Proficient in JavaScript, CSS(Cascading Style Sheets), HTML, API, MySQL/SQL, GitHub, Heroku, Git, JQuery, Express.js, JSON, OOP(Object Oriented Programming), and experienced in developing with React, Node.js, MongoDB, and using cloud based computing platforms like AWS, and CSS Frameworks like Bootstrap and Materialize.
+Proficient in JavaScript, CSS(Cascading Style Sheets), HTML, API, MySQL/SQL, GitHub, Heroku, Git, JQuery, Express.js, JSON, OOP(Object Oriented Programming), and experienced in developing with React, Node.js, MongoDB, and using cloud based computing platforms like AWS(Amazon Web Services), and CSS Frameworks like Bootstrap and Materialize.
                                 {/* <CardActionArea>
                                     <Button style={{color: "blue"}}className="action-button"size="small" color="primary" href="/new/tournament">
                                     New Tournament
