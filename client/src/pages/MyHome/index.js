@@ -112,9 +112,15 @@ function MyHome() {
   })
   function getTable(){
     API.getTournaments(currentUser.userId,(results)=>{
+
       console.log("Tournament Data:", results.data.Tournaments);
-      setState(results.data.Tournaments);
       setFriends(results.data.Friends);
+      if(results.data.Tournaments.length===0){
+        setState(["You have no Tournaments"]);
+      }
+      if(results.data.Tournaments.length>0){
+        setState(results.data.Tournaments);
+      }
       console.log("friends",friends);
       return results.data.Tournaments
     })
